@@ -8,3 +8,6 @@ dist/
 
 # claude plugin eval output: reports and traces, local only
 evals/results/
+# claude plugin eval writes each resumed session into the case folder,
+# named by session id; it holds machine paths and the system prompt
+evals/*/*-*-*-*-*.jsonl
