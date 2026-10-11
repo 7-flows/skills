@@ -5,3 +5,6 @@ __pycache__/
 .ruff_cache/
 dist/
 .DS_Store
+
+# claude plugin eval output: reports and traces, local only
+evals/results/
