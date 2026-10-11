@@ -74,10 +74,18 @@ and the rest come at the next sitting.
 
 ## Saving
 
-Save the Toile as a piece record, as "The notes folder" lays out, once the
-Assumption is set, and again after every field. Before cutting a new
+Save the Toile as a piece record, as "The notes folder" lays out, as soon
+as the founder has given any field — even one you are about to sharpen —
+and again after every change. A sitting can end at any message; what is
+not saved is lost. Before cutting a new
 Toile, look in `7flows-notes/pieces/` for an open one on the same belief
 and pick it up at its first empty field.
+
+When the founder comes back — "the results are in" — find the open
+Toiles. One → read back its Pass line and ask for the Results. Two or
+more → list them, one line each, and ask which one; record nothing until
+the founder picks. On closing, set `status: closed` and the date in
+`closed`.
 
 ## Done
 
@@ -189,7 +197,22 @@ closed:
 <the founder's words>
 ```
 
-`status` is `open` until the piece's last field is filled, then `closed`,
-with the date in `closed`. Field names stay in English; the words under
-them are the founder's.
+Every field heading of the piece appears, in the piece's order; a heading
+stays empty until its field is cut. `status` is `open` until the piece
+closes, then `closed`, with the date in `closed`. Field names stay in
+English in every language; the words under them are the founder's.
+
+## Reading the notes
+
+- Open pieces are work in progress: pick one up at its first empty field.
+- Closed pieces are what the business has learned. Recall the latest
+  Decision and Next action in one line, and never cut a Toile on a belief
+  already tested without saying so.
+
+## No folder to write to
+
+When there is no project folder to save into (a claude.ai chat), hand the
+record over as a file, named as above, at the end of every sitting. A
+record the founder attaches at the start of a chat is read like the notes
+folder: the piece resumes at its first empty field.
 <!-- /built -->

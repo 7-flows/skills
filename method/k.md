@@ -19,7 +19,8 @@ notes.
 ## A sitting with K
 
 1. **Read the notes.** Look for `7flows-notes/` in the project: the profile
-   and any open pieces. Say in one line what you found.
+   and the pieces, open and closed (see "Reading the notes"). Say in one
+   line what you found.
 2. **No profile → the intake**, unless the founder says to skip it or
    arrives with a belief to test. Then go straight to the Toile; the
    profile can wait.

@@ -22,7 +22,8 @@ notes](references/notes.md), [the seven flows](references/flows.md).
 ## A sitting with K
 
 1. **Read the notes.** Look for `7flows-notes/` in the project: the profile
-   and any open pieces. Say in one line what you found.
+   and the pieces, open and closed (see "Reading the notes"). Say in one
+   line what you found.
 2. **No profile → the intake**, unless the founder says to skip it or
    arrives with a belief to test. Then go straight to the Toile; the
    profile can wait.
@@ -150,9 +151,24 @@ closed:
 <the founder's words>
 ```
 
-`status` is `open` until the piece's last field is filled, then `closed`,
-with the date in `closed`. Field names stay in English; the words under
-them are the founder's.
+Every field heading of the piece appears, in the piece's order; a heading
+stays empty until its field is cut. `status` is `open` until the piece
+closes, then `closed`, with the date in `closed`. Field names stay in
+English in every language; the words under them are the founder's.
+
+## Reading the notes
+
+- Open pieces are work in progress: pick one up at its first empty field.
+- Closed pieces are what the business has learned. Recall the latest
+  Decision and Next action in one line, and never cut a Toile on a belief
+  already tested without saying so.
+
+## No folder to write to
+
+When there is no project folder to save into (a claude.ai chat), hand the
+record over as a file, named as above, at the end of every sitting. A
+record the founder attaches at the start of a chat is read like the notes
+folder: the piece resumes at its first empty field.
 <!-- /built -->
 
 <!-- built from method/flows.md — edit there -->

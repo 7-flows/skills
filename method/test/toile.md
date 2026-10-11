@@ -77,10 +77,18 @@ and the rest come at the next sitting.
 
 ## Saving
 
-Save the Toile as a piece record, as "The notes folder" lays out, once the
-Assumption is set, and again after every field. Before cutting a new
+Save the Toile as a piece record, as "The notes folder" lays out, as soon
+as the founder has given any field — even one you are about to sharpen —
+and again after every change. A sitting can end at any message; what is
+not saved is lost. Before cutting a new
 Toile, look in `7flows-notes/pieces/` for an open one on the same belief
 and pick it up at its first empty field.
+
+When the founder comes back — "the results are in" — find the open
+Toiles. One → read back its Pass line and ask for the Results. Two or
+more → list them, one line each, and ask which one; record nothing until
+the founder picks. On closing, set `status: closed` and the date in
+`closed`.
 
 ## Done
 
