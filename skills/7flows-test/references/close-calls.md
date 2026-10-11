@@ -13,7 +13,8 @@ coin toss dressed as evidence.
 
 When the Results are a count against the pass line — sign-ups out of
 visitors, buyers out of people asked — call the result before Learnings.
-Run the close-call script from the skill's folder:
+Run the close-call script from the skill's folder (`python` where there
+is no `python3`):
 
 ```
 python3 scripts/close_call.py SUCCESSES TRIALS PASS_LINE
@@ -34,17 +35,9 @@ sits in.
   of reach, say so after it and offer a sharper test as a second option;
   the founder chooses between them — you never drop the larger test.
 
-Never call it by eye. When you cannot run code, work the formula in
-[Close calls](references/close-calls.md) step by step, in writing; when
-still unsure, the call is TOO CLOSE.
-<!-- /core -->
-
-## The arithmetic
-
-The range is the Wilson score interval at 90%, recommended by the NIST
-e-Handbook (§7.2.4.1) because it holds up at small numbers, where the
-textbook interval goes wrong. With *x* successes out of *n* trials,
-*p* = *x*/*n* and *z* = 1.645:
+Never call it by eye. When you cannot run code, work the range out in
+writing, step by step, with *x* successes of *n*, *p* = *x*/*n* and
+*z* = 1.645:
 
 ```
 centre = p + z²/(2n)
@@ -52,6 +45,16 @@ spread = z × √( p(1−p)/n + z²/(4n²) )
 scale  = 1 + z²/n
 range  = (centre − spread)/scale  to  (centre + spread)/scale
 ```
+
+PASS if the low end is at or above the line, MISS if the high end is
+below it, TOO CLOSE otherwise.
+<!-- /core -->
+
+## The arithmetic
+
+The range above is the Wilson score interval at 90%, recommended by the
+NIST e-Handbook (§7.2.4.1) because it holds up at small numbers, where
+the textbook interval goes wrong.
 
 Worked for 9 of 200 against 5%: *p* = 0.045, *z*²/*n* = 0.0135, centre =
 0.0518, spread = 0.0250, scale = 1.0135. The range runs 2.6% to 7.6%; 5%

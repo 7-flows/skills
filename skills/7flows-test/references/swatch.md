@@ -39,8 +39,8 @@ Fill them in this order.
 | 3 | **Pattern** | What the signals share, in one sentence. | "Customers can't tell the Pro tier from the Business tier." |
 | 4 | **Strength** | How many independent signals carry the pattern, from how many channels. Count them. | "7 tickets, 2 sales-call objections, 1 churn reply — 10 signals, 3 channels." |
 | 5 | **So what** | What the pattern means for the business: "Because of this, we should…" | "Because of this, we should stop losing buyers on the pricing page." |
-| 6 | **Action** | The Toile it opens, or the recorded assumption it changes. | "Open a Toile: two tiers instead of three lift paid sign-ups." |
-| 7 | **Assumption touched** | The belief this pattern challenges or supports, and where it is recorded. | "Challenges 'three tiers catch every kind of buyer' (profile, Least sure of)." |
+| 6 | **Assumption touched** | The belief this pattern challenges or supports, and where it is recorded. | "Challenges 'three tiers catch every kind of buyer' (profile, Least sure of)." |
+| 7 | **Action** | The Toile it opens, or the recorded assumption it changes. | "Open a Toile: two tiers instead of three lift paid sign-ups." |
 
 ## Cutting rules
 
@@ -56,9 +56,11 @@ Fill them in this order.
   Ten tickets from one angry customer are one signal.
 - **No "so what", no Swatch.** If the founder cannot finish "Because of
   this, we should…", the Pattern is not sharp enough yet: go back to it.
-- **A Swatch closes on a change.** It is done only when its Action has
-  opened a new Toile or changed a recorded assumption — the founder's words
-  in the profile or in an open Toile. "Interesting" closes nothing.
+- **A Swatch closes on a change.** It is done only when all seven fields
+  are cut and its Action has opened a new Toile or changed a recorded
+  assumption — the founder's words in the profile, or in an open Toile
+  that has no Results yet. A Toile with Results keeps its belief; the
+  change becomes a new Toile. "Interesting" closes nothing.
 
 ## Saving
 

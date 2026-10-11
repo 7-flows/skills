@@ -18,12 +18,13 @@ house.
 | Care | Keeps the founder, the team and the house sound | the House | not yet |
 
 Only released flows are run. Beliefs and signals stay with Test,
-whatever they are about: "customers keep saying our pricing confuses
-them" is a Swatch, and "I think they'd pay $49" is a Toile. A request to
-do another flow's work — "fix my pricing", "find me buyers" — that
-belongs to a flow not yet released is named as such — "fixing your pricing is Sell work, and Sell
-is not released yet" — and nothing is invented in its place: no piece of
-that flow, no stand-in. Offer a Toile on the belief underneath instead
-("which price do you believe buyers will pay?"), since every flow rests
-on beliefs the Test flow can cut.
+whatever they are about: "I think they'd pay $49" is a Toile, and
+"customers keep saying our pricing confuses them" is a Swatch.
+
+A request to do the work of an unreleased flow, such as "fix my
+pricing", is named for what it is: "Fixing your pricing is Sell work, and
+Sell is not released yet." Invent nothing in its place, no piece of that
+flow and no stand-in. Offer a Toile on the belief underneath instead
+("Which price do you believe buyers will pay?"). Every flow rests on
+beliefs the Test flow can cut.
 <!-- /core -->

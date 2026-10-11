@@ -47,7 +47,7 @@ last four after the results come in.
 | 2 | **Risk** | What breaks if the belief is wrong: High, Medium or Low, with one line on why. | "High — it is our whole revenue model." |
 | 3 | **Evidence so far** | What you already know, and how strong it is. A gut feeling is no evidence; a deposit is strong evidence. | "Three designers named invoicing as a pain. No one has been asked to pay." |
 | 4 | **Test design** | The cheapest, fastest test that could prove the belief wrong. Real behaviour, not opinions: a landing page, a direct ask, a pre-sale. | "A landing page at $49 a month; 200 visitors from targeted ads; count sign-ups." |
-| 5 | **Pass line** | The number that means the belief holds, written down before the test runs. | "5% of visitors sign up — 10 of 200." |
+| 5 | **Pass line** | The number that means the belief holds, written down before the test runs. A result has to clear it by more than chance — see "Close calls". | "5% of visitors sign up — 10 of 200." |
 | 6 | **Time box** | How long the test runs. Days, not months; a test that needs three months needs a smaller cut. | "7 days." |
 | 7 | **Results** | What happened, as raw numbers and quotes. No interpretation yet. | "9 of 200 signed up (4.5%). Two asked whether there was a cheaper plan." |
 | 8 | **Learnings** | What the results mean, what surprised you, what you had wrong. | "One sign-up short of the line — too close to tell from chance. Price came up twice unprompted." |
@@ -167,6 +167,7 @@ about it? A vague answer means the Toile is still on the table.
 | Consider implementing | Do this |
 | You might want to | Do this |
 | Great question | (cut it — answer the question) |
+| Brilliant, amazing | Say what in it works |
 <!-- /built -->
 
 <!-- built from method/notes.md — edit there -->
@@ -240,7 +241,8 @@ folder: the piece resumes at its first empty field.
 
 When the Results are a count against the pass line — sign-ups out of
 visitors, buyers out of people asked — call the result before Learnings.
-Run the close-call script from the skill's folder:
+Run the close-call script from the skill's folder (`python` where there
+is no `python3`):
 
 ```
 python3 scripts/close_call.py SUCCESSES TRIALS PASS_LINE
@@ -261,9 +263,19 @@ sits in.
   of reach, say so after it and offer a sharper test as a second option;
   the founder chooses between them — you never drop the larger test.
 
-Never call it by eye. When you cannot run code, work the formula in
-[Close calls](references/close-calls.md) step by step, in writing; when
-still unsure, the call is TOO CLOSE.
+Never call it by eye. When you cannot run code, work the range out in
+writing, step by step, with *x* successes of *n*, *p* = *x*/*n* and
+*z* = 1.645:
+
+```
+centre = p + z²/(2n)
+spread = z × √( p(1−p)/n + z²/(4n²) )
+scale  = 1 + z²/n
+range  = (centre − spread)/scale  to  (centre + spread)/scale
+```
+
+PASS if the low end is at or above the line, MISS if the high end is
+below it, TOO CLOSE otherwise.
 <!-- /built -->
 
 <!-- built from method/test/swatch.md — edit there -->
@@ -278,8 +290,8 @@ Fill them in this order.
 | 3 | **Pattern** | What the signals share, in one sentence. | "Customers can't tell the Pro tier from the Business tier." |
 | 4 | **Strength** | How many independent signals carry the pattern, from how many channels. Count them. | "7 tickets, 2 sales-call objections, 1 churn reply — 10 signals, 3 channels." |
 | 5 | **So what** | What the pattern means for the business: "Because of this, we should…" | "Because of this, we should stop losing buyers on the pricing page." |
-| 6 | **Action** | The Toile it opens, or the recorded assumption it changes. | "Open a Toile: two tiers instead of three lift paid sign-ups." |
-| 7 | **Assumption touched** | The belief this pattern challenges or supports, and where it is recorded. | "Challenges 'three tiers catch every kind of buyer' (profile, Least sure of)." |
+| 6 | **Assumption touched** | The belief this pattern challenges or supports, and where it is recorded. | "Challenges 'three tiers catch every kind of buyer' (profile, Least sure of)." |
+| 7 | **Action** | The Toile it opens, or the recorded assumption it changes. | "Open a Toile: two tiers instead of three lift paid sign-ups." |
 
 ## Cutting rules
 
@@ -295,9 +307,11 @@ Fill them in this order.
   Ten tickets from one angry customer are one signal.
 - **No "so what", no Swatch.** If the founder cannot finish "Because of
   this, we should…", the Pattern is not sharp enough yet: go back to it.
-- **A Swatch closes on a change.** It is done only when its Action has
-  opened a new Toile or changed a recorded assumption — the founder's words
-  in the profile or in an open Toile. "Interesting" closes nothing.
+- **A Swatch closes on a change.** It is done only when all seven fields
+  are cut and its Action has opened a new Toile or changed a recorded
+  assumption — the founder's words in the profile, or in an open Toile
+  that has no Results yet. A Toile with Results keeps its belief; the
+  change becomes a new Toile. "Interesting" closes nothing.
 
 ## Saving
 

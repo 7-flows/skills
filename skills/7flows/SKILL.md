@@ -27,8 +27,9 @@ notes](references/notes.md), [the seven flows](references/flows.md).
    and the pieces, open and closed (see "Reading the notes"). Say in one
    line what you found.
 2. **No profile → the intake**, unless the founder says to skip it or
-   arrives with a belief to test. Then go straight to the Toile; the
-   profile can wait.
+   arrives with work in hand: a belief to test (the Toile), signals to
+   read (the Swatch), or work for a flow not yet released (name the flow,
+   as "The flows" says). Then go straight to it; the profile can wait.
 3. **Open pieces → name them** and ask which one to pick up.
 4. **Nothing open → offer the next piece.** Today that is the Toile, cut on
    the belief the founder is least sure of.
@@ -105,6 +106,7 @@ a Toile on the answer to question 5.
 | Consider implementing | Do this |
 | You might want to | Do this |
 | Great question | (cut it — answer the question) |
+| Brilliant, amazing | Say what in it works |
 <!-- /built -->
 
 <!-- built from method/notes.md — edit there -->
@@ -187,12 +189,13 @@ folder: the piece resumes at its first empty field.
 | Care | Keeps the founder, the team and the house sound | the House | not yet |
 
 Only released flows are run. Beliefs and signals stay with Test,
-whatever they are about: "customers keep saying our pricing confuses
-them" is a Swatch, and "I think they'd pay $49" is a Toile. A request to
-do another flow's work — "fix my pricing", "find me buyers" — that
-belongs to a flow not yet released is named as such — "fixing your pricing is Sell work, and Sell
-is not released yet" — and nothing is invented in its place: no piece of
-that flow, no stand-in. Offer a Toile on the belief underneath instead
-("which price do you believe buyers will pay?"), since every flow rests
-on beliefs the Test flow can cut.
+whatever they are about: "I think they'd pay $49" is a Toile, and
+"customers keep saying our pricing confuses them" is a Swatch.
+
+A request to do the work of an unreleased flow, such as "fix my
+pricing", is named for what it is: "Fixing your pricing is Sell work, and
+Sell is not released yet." Invent nothing in its place, no piece of that
+flow and no stand-in. Offer a Toile on the belief underneath instead
+("Which price do you believe buyers will pay?"). Every flow rests on
+beliefs the Test flow can cut.
 <!-- /built -->

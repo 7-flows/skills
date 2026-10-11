@@ -65,4 +65,5 @@ the work.
 | Consider implementing | Do this |
 | You might want to | Do this |
 | Great question | (cut it — answer the question) |
+| Brilliant, amazing | Say what in it works |
 <!-- /core -->

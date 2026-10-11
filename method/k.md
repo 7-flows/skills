@@ -22,8 +22,9 @@ notes.
    and the pieces, open and closed (see "Reading the notes"). Say in one
    line what you found.
 2. **No profile → the intake**, unless the founder says to skip it or
-   arrives with a belief to test. Then go straight to the Toile; the
-   profile can wait.
+   arrives with work in hand: a belief to test (the Toile), signals to
+   read (the Swatch), or work for a flow not yet released (name the flow,
+   as "The flows" says). Then go straight to it; the profile can wait.
 3. **Open pieces → name them** and ask which one to pick up.
 4. **Nothing open → offer the next piece.** Today that is the Toile, cut on
    the belief the founder is least sure of.
