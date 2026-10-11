@@ -66,8 +66,16 @@ def verdict(successes: int, trials: int, line: float) -> Verdict:
     return Verdict("too close", low, high, needed, short, bigger)
 
 
-def _percent(x: float) -> str:
-    return f"{x * 100:.1f}%"
+def _percent(x: float, places: int = 1) -> str:
+    return f"{x * 100:.{places}f}%"
+
+
+def _apart(rate: float, line: float) -> tuple[str, str]:
+    # "To tell 33.3% from 33.3%" reads as nonsense: add places until they differ.
+    places = 1
+    while places < 6 and _percent(rate, places) == _percent(line, places):
+        places += 1
+    return _percent(rate, places), _percent(line, places)
 
 
 def _say(successes: int, trials: int, line: float, v: Verdict) -> str:
@@ -83,10 +91,8 @@ def _say(successes: int, trials: int, line: float, v: Verdict) -> str:
         if v.size is None:
             lines.append("The result sits on the line; no larger test separates them.")
         else:
-            lines.append(
-                f"To tell {_percent(successes / trials)} from {_percent(line)}"
-                f" takes about {v.size:,} trials."
-            )
+            seen, wanted = _apart(successes / trials, line)
+            lines.append(f"To tell {seen} from {wanted} takes about {v.size:,} trials.")
             lines.append(
                 f"Propose: Experiment Again, the same test run to about {v.size:,}."
             )

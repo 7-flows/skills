@@ -94,3 +94,15 @@ def test_impossible_input_is_refused_with_a_reason(
 ) -> None:
     assert close_call.main(argv) == 2
     assert capsys.readouterr().err.strip()
+
+
+def test_a_line_that_floats_just_over_a_whole_count_still_needs_that_count() -> None:
+    # 0.07 * 100 is 7.000000000000001 in floating point.
+    assert close_call.verdict(7, 100, 0.07).needed == 7
+
+
+def test_rates_that_round_alike_are_shown_apart(
+    capsys: pytest.CaptureFixture[str],
+) -> None:
+    close_call.main(["1", "3", "33.3%"])
+    assert "from 33.3% takes" not in capsys.readouterr().out
