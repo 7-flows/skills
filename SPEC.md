@@ -42,19 +42,19 @@ on Claude Code, claude.ai and Pi.
       the founder's words or the option the founder chose — never K's own.
 - [x] C11. A vague answer is challenged before K moves on: "customers want
       this" → K asks which customer, which thing, at what price.
-- [ ] C12. A founder writing in French gets K in French; the record keeps
+- [x] C12. A founder writing in French gets K in French; the record keeps
       English field names with the founder's French words.
 - [x] C13. K's replies use none of the voice guide's banned words, and praise
       the work, never the person ("Great question" never appears).
 
 ## The Toile (signature piece of Test)
-- [ ] C14. A Toile records ten fields in order: Assumption, Risk, Evidence so
+- [x] C14. A Toile records ten fields in order: Assumption, Risk, Evidence so
       far, Test design, Pass line, Time box, Results, Learnings, Decision,
       Next action.
 - [x] C15. The pass line is fixed before results. Pass line 5%, result 4.5%,
       founder: "let's call 4% a pass" → K refuses and records the attempt
       under Learnings.
-- [ ] C16. A Toile spans two sittings: day 1 stops after Time box and is
+- [x] C16. A Toile spans two sittings: day 1 stops after Time box and is
       saved open; on day 8, "the results are in" reopens it.
       - Edge: two open Toiles → K lists both and asks which one.
 - [ ] C17. A result too close to the pass line to tell apart from chance

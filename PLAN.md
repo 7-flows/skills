@@ -41,6 +41,10 @@ fresh install, headless run — no Read, no denials, ten fields in order.
 2.2 done (C10, C11, C15, C18, C20 ticked): `--tag toile` exit 0, six
 cases 1.00 with the plugin, mean Δ +0.83, $3.00. The Test skill now
 carries notes.md (it saves on its own); toile-no-read guards the Hybrid.
+2.3 done (C12, C14, C16 ticked; C19 waits for its claude.ai edge in 4.4):
+`--tag toile sittings` exit 0, twelve cases 1.00 with the plugin, $6.17.
+The Toile now saves on the first field given (toile-quick regressed
+when saving waited for a confirmed Assumption; fixed in one attempt).
 - Learned: a plugin skill's Read of its own references/ is refused under
   `claude -p` (prompted interactively); `allowed-tools: Read` makes the
   Skill call itself need approval — dead end (ADR). Evals grant Read, so
@@ -52,7 +56,7 @@ carries notes.md (it saves on its own); toile-no-read guards the Hybrid.
   met; C1 is the unticked one.
 - Gate hygiene: never pipe a gate through tail without pipefail — a red
   ruff hid behind exit 0 once (amended before push).
-- Spend so far on evals: ~$14.50.
+- Spend so far on evals: ~$31.
 - Evals that write notes need `--allow-tools Write Edit` on the command
   line; `allowed_tools` in the case alone isn't a grant. Judge rubrics must
   say what isn't a failure (a preface "five questions, one at a time" was
@@ -61,6 +65,9 @@ carries notes.md (it saves on its own); toile-no-read guards the Hybrid.
   seeded workspaces run only with `--scaffold`; `--case` keeps only the
   last value given (use a glob); `file_exists` can't see scaffolded files —
   grade them with `target: { source: file, path: … }`.
+- history_file cases: record a real `claude -p --plugin-dir` walk, then
+  keep only user/assistant rows and replace machine paths — the raw
+  transcript carries the home path and the system prompt (public repo).
 - Plugin version unchanged → `plugin update` keeps the old cache; a fresh
   check needs uninstall + install (bump the version at release).
 
@@ -128,7 +135,7 @@ carries notes.md (it saves on its own); toile-no-read guards the Hybrid.
       Interfaces: consumes notes layout from 2.1.
       Done: `claude plugin eval . --tag toile` exit 0; pass-line-lock case
       shows the refusal and the attempt under Learnings.
-- [ ] 2.3 Two sittings and records (C16, C19). Doc: plugin-evals
+- [x] 2.3 Two sittings and records (C16, C19). Doc: plugin-evals
       (case.yaml `context`, seeded workspace, `file_exists`).
       Files: modify method/notes.md, method/test/toile.md;
       create evals/toile-{resume,two-open,record-saved}/ with seeded
@@ -174,18 +181,19 @@ carries notes.md (it saves on its own); toile-no-read guards the Hybrid.
       under evidence/.
 
 ## Gaps
-- 2.3: C12's record half — a French Toile saved with English field names;
-  tick C12 there.
-- 2.3: no eval walks the intake's questions 2–5 one per turn (C9 shown by
-  first-question pacing, all-at-once save, skip). Add a history_file case.
+- 4.4: C19's claude.ai edge — the record handed over as a file, and an
+  attached record resuming in a new chat. Method text is in (notes.md "No
+  folder to write to"); no eval can reach claude.ai. Tick C19 there.
+- Δ 0 on toile-resume, toile-two-open, toile-record-saved: with notes
+  seeded, a plain agent does it too. The cases still guard the skill.
+- One intake-walk run wrote profile.md in its own shape ("What we make")
+  rather than the template's; no grader checks the template keys.
 - C17 (3.1): the pass-line-lock case leaves the close-call verdict to
   3.1 — today it only checks that 4.5% isn't taken as a pass.
 - Owner review: method/flows.md's one-line "what it does" for the six
   unreleased flows was drafted from the ADR's gaps — not yet approved text.
 - 4.2: `claude plugin validate` advises a README install line
   (`/plugin install 7flows --marketplace 7-flows/skills`).
-- C14 not ticked: the method text and its field-order test are in (1.1),
-  but a *saved record* with the ten fields lands in 2.3 — tick C14 there.
 - claude.ai acceptance (C2, C3) has no automated gate — manual evidence only.
 - Unverified until 4.2/4.4: private-repo marketplaces on claude.ai; `pi
   install` from a git repo without package.json; claude.ai frontmatter
