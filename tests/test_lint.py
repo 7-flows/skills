@@ -2,7 +2,7 @@ from pathlib import Path
 
 import pytest
 
-from sevenflows.lint import lint_skill
+from sevenflows.lint import banned_words, lint, lint_skill
 
 VALID = "name: 7flows-test\ndescription: Test a belief before you build on it.\n"
 
@@ -93,3 +93,94 @@ def test_windows_line_endings_still_read_the_frontmatter(tmp_path: Path) -> None
     crlf = f"---\n{VALID}---\n\nBody.\n".replace("\n", "\r\n")
     (skill / "SKILL.md").write_bytes(crlf.encode())
     assert lint_skill(skill) == []
+
+
+VOICE = (
+    "# K's voice\n\n## Banned words\n\n"
+    "| Banned | Say instead |\n|---|---|\n"
+    "| Leverage | Use |\n| Align | Agree |\n| Great question | (cut it) |\n"
+)
+
+
+def make_words_repo(root: Path, voice: str | None = VOICE) -> None:
+    (root / "method").mkdir()
+    if voice is not None:
+        (root / "method" / "voice.md").write_text(voice)
+    (root / "skills").mkdir()
+    write_skill(root / "skills", VALID)
+
+
+def test_banned_words_come_from_the_voice_table(tmp_path: Path) -> None:
+    (tmp_path / "voice.md").write_text(VOICE)
+    assert banned_words(tmp_path / "voice.md") == [
+        "leverage",
+        "align",
+        "great question",
+    ]
+
+
+def test_a_banned_word_in_method_text_is_a_finding_with_its_line(
+    tmp_path: Path,
+) -> None:
+    make_words_repo(tmp_path)
+    (tmp_path / "method" / "k.md").write_text("# K\n\nK helps you leverage time.\n")
+    assert lint(tmp_path) == ["method/k.md:3: banned word 'leverage'"]
+
+
+def test_inflections_and_case_are_caught_but_not_words_inside_words(
+    tmp_path: Path,
+) -> None:
+    make_words_repo(tmp_path)
+    (tmp_path / "method" / "k.md").write_text(
+        "Teams ALIGNED.\nA malign realignment.\nGreat Question!\n"
+    )
+    assert lint(tmp_path) == [
+        "method/k.md:1: banned word 'align'",
+        "method/k.md:3: banned word 'great question'",
+    ]
+
+
+def test_a_banned_word_in_a_skill_is_a_finding(tmp_path: Path) -> None:
+    make_words_repo(tmp_path)
+    skill_md = tmp_path / "skills" / "7flows-test" / "SKILL.md"
+    skill_md.write_text(skill_md.read_text() + "Leverage it.\n")
+    assert lint(tmp_path) == ["skills/7flows-test/SKILL.md:7: banned word 'leverage'"]
+
+
+def test_the_list_itself_its_copies_and_its_built_region_are_exempt(
+    tmp_path: Path,
+) -> None:
+    make_words_repo(tmp_path)
+    skill = tmp_path / "skills" / "7flows-test"
+    (skill / "references").mkdir()
+    (skill / "references" / "voice.md").write_text(VOICE)
+    (skill / "SKILL.md").write_text(
+        (skill / "SKILL.md").read_text()
+        + "<!-- built from method/voice.md — edit there -->\n"
+        + VOICE
+        + "<!-- /built -->\nNever align.\n"
+    )
+    line = (skill / "SKILL.md").read_text().splitlines().index("Never align.") + 1
+    assert lint(tmp_path) == [
+        f"skills/7flows-test/SKILL.md:{line}: banned word 'align'"
+    ]
+
+
+def test_a_missing_voice_file_is_a_finding(tmp_path: Path) -> None:
+    make_words_repo(tmp_path, voice=None)
+    assert lint(tmp_path) == ["method/voice.md is missing — no banned words to check"]
+
+
+def test_a_voice_file_without_the_table_is_a_finding(tmp_path: Path) -> None:
+    make_words_repo(tmp_path, voice="# K's voice\n")
+    assert lint(tmp_path) == ["method/voice.md lists no banned words"]
+
+
+def test_skill_md_of_499_lines_passes_and_500_fails(tmp_path: Path) -> None:
+    skill = write_skill(tmp_path, VALID)
+    head = (skill / "SKILL.md").read_text()
+    pad = 499 - head.count("\n")
+    (skill / "SKILL.md").write_text(head + "x\n" * pad)
+    assert lint_skill(skill) == []
+    (skill / "SKILL.md").write_text(head + "x\n" * (pad + 1))
+    assert lint_skill(skill) == ["7flows-test: SKILL.md is 500 lines, max 499"]

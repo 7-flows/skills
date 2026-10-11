@@ -15,6 +15,9 @@ def make_repo(root: Path) -> None:
         for source in sources:
             (root / "method" / source).parent.mkdir(parents=True, exist_ok=True)
             (root / "method" / source).write_text("# Source\n")
+    (root / "method" / "voice.md").write_text(
+        "## Banned words\n\n| Banned | Say instead |\n|---|---|\n| Leverage | Use |\n"
+    )
     build(root)
 
 

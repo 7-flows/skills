@@ -14,7 +14,10 @@ from pathlib import Path
 
 # Each skill's share of the method, as paths under method/.
 MANIFEST: dict[str, list[str]] = {
-    "7flows-test": ["test/toile.md"],
+    "7flows": ["k.md", "voice.md", "notes.md", "flows.md"],
+    # The Test skill must stand alone (a claude.ai user may upload only it),
+    # so it carries K's voice too.
+    "7flows-test": ["test/toile.md", "voice.md"],
 }
 
 Manifest = Mapping[str, Sequence[str]]
