@@ -52,7 +52,11 @@ method; the size grader didn't require the band), 7 minor — all fixed.
 `--tag toile swatch trade` then the two new closes: 24 cases 1.00 with
 the plugin. 4.1 done (C23): both licence texts in every skill folder and
 ZIP; `sevenflows package` writes dist/<skill>.zip, each unzips to a valid
-skill. A dated Next action ("by Friday") broke our own 48-hour rule
+skill. 4.2 done (C4): the README's Pi steps, followed verbatim in a fresh
+project (Pi 1.1.0, its default model Kimi K2.6 via OpenRouter), answer as
+K with "What do you make or offer?". Pi needs no package.json: it finds
+skills/ by convention; project packages load only once the project is
+trusted (`pi -a` for one run, `/trust` to keep it). A dated Next action ("by Friday") broke our own 48-hour rule
 on a Monday — cases now use "today"/"tomorrow". Batch 2 reviewed and closed (2.0–2.3). Batch 1 closed
 (1.1–1.3; C5, C7 ticked).
 Owner: Hybrid chosen (ADR); batch 2 approved. 2.0 done (C1 ticked):
@@ -262,7 +266,7 @@ minor (Gaps). `--tag toile sittings` exit 0: 14 cases 1.00, $7.67.
       src/sevenflows/package.py, tests/test_package.py.
       Done: each dist/<skill>.zip has `<skill>/SKILL.md` at its top level
       plus both licence texts.
-- [ ] 4.2 Install page and Pi (C4). Doc: pi.dev/docs/latest/packages.
+- [x] 4.2 Install page and Pi (C4). Doc: pi.dev/docs/latest/packages.
       Files: README.md. Done: in a fresh project, the README's Pi steps
       followed verbatim make `pi -p "K, let's work"` answer as K.
 - [ ] 4.3 Release gate (C22, C24). Doc: plugin-evals (exit codes,
@@ -294,15 +298,15 @@ minor (Gaps). `--tag toile sittings` exit 0: 14 cases 1.00, $7.67.
   headings in order.
 - Δ 0 on swatch-anecdote, swatch-all-seven, intake-skip: a plain agent
   does it too from the prompt alone. The cases still guard the skill.
-- 4.2: `claude plugin validate` advises a README install line
-  (`/plugin install 7flows --marketplace 7-flows/skills`).
 - claude.ai acceptance (C2, C3) has no automated gate — manual evidence only.
 - 4.4: claude.ai's upload page names only name and description; the
   `license` line (Apache-2.0 and CC BY-SA 4.0) is the spec's, unproven on
   claude.ai until the ZIP upload.
-- Unverified until 4.2/4.4: private-repo marketplaces on claude.ai; `pi
-  install` from a git repo without package.json; claude.ai frontmatter
-  strictness beyond the six fields.
+- Unverified until 4.4: claude.ai frontmatter strictness beyond the six
+  fields. (The repo is public, so private-repo marketplaces no longer
+  matter.)
+- 4.3: the README installs from main; once v0.1.0 is tagged, consider
+  pinning the install lines to the tag (`#v0.1.0`, `@v0.1.0`).
 - C26 minors kept: the bistro's 150 lunch customers over 10 services is
   thin for 40 covers (kept: it matches the spec's numbers); the care rule
   names health and learning — childcare, care homes, vets are not named;

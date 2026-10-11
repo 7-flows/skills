@@ -15,7 +15,7 @@ on Claude Code, claude.ai and Pi.
 - [ ] C3. A claude.ai user on any plan who uploads the K and Test skills as two
       ZIP files from the release page meets the same K in a new chat.
       - Edge: only the Test skill uploaded → a Toile still runs end to end.
-- [ ] C4. A Pi user who follows the install page's Pi steps meets K in a new
+- [x] C4. A Pi user who follows the install page's Pi steps meets K in a new
       session in that project.
 - [x] C5. Every skill passes the Agent Skills validator, and the suite passes
       the Claude plugin validator in strict mode, with zero errors.
