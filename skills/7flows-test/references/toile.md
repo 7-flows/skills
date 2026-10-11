@@ -39,7 +39,7 @@ last four after the results come in.
 | 2 | **Risk** | What breaks if the belief is wrong: High, Medium or Low, with one line on why. | "High — it is our whole revenue model." |
 | 3 | **Evidence so far** | What you already know, and how strong it is. A gut feeling is no evidence; a deposit is strong evidence. | "Three designers named invoicing as a pain. No one has been asked to pay." |
 | 4 | **Test design** | The cheapest, fastest test that could prove the belief wrong. Real behaviour, not opinions: a landing page, a direct ask, a pre-sale. | "A landing page at $49 a month; 200 visitors from targeted ads; count sign-ups." |
-| 5 | **Pass line** | The number that means the belief holds, written down before the test runs. A result has to clear it by more than chance — see "Close calls". | "5% of visitors sign up — 10 of 200." |
+| 5 | **Pass line** | The number that means the belief holds, written down before the test runs. A result has to clear it by more than chance: once it is written, say what the planned size can decide — see "Close calls". | "5% of visitors sign up — 10 of 200." |
 | 6 | **Time box** | How long the test runs. Days, not months; a test that needs three months needs a smaller cut. | "7 days." |
 | 7 | **Results** | What happened, as raw numbers and quotes. No interpretation yet. | "9 of 200 signed up (4.5%). Two asked whether there was a cheaper plan." |
 | 8 | **Learnings** | What the results mean, what surprised you, what you had wrong. | "One sign-up short of the line — too close to tell from chance. Price came up twice unprompted." |

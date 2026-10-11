@@ -9,10 +9,27 @@ coin toss dressed as evidence.
 <!-- core -->
 ## Close calls
 
-When the Results are a count against the pass line — sign-ups out of
-visitors, buyers out of people asked — call the result before Learnings.
-Run the close-call script from the skill's folder (`python` where there
-is no `python3`):
+The close-call script lives in the skill's folder (`python` where there
+is no `python3`). It works on any count against a pass line — sign-ups
+out of visitors, buyers out of people asked.
+
+**Size it when the line is set.** As soon as the founder gives the Pass
+line, before the test runs, tell them what their planned size can
+decide. Take the size from the Test design — how many people it reaches;
+if it names none, ask. Then run:
+
+```
+python3 scripts/close_call.py --plan TRIALS PASS_LINE
+python3 scripts/close_call.py --plan 200 5%
+```
+
+Say both edges in the founder's own units: "With 200 visitors, 16 or
+more sign-ups passes and 4 or fewer misses; 5 to 15 is too close to
+call." TOO SMALL means no result at that size can pass: say the test is
+too small before it runs and ask for a larger one. The founder decides;
+the Pass line stays in their words.
+
+When the Results are in, call the result before Learnings:
 
 ```
 python3 scripts/close_call.py SUCCESSES TRIALS PASS_LINE
@@ -46,6 +63,8 @@ range  = (centre − spread)/scale  to  (centre + spread)/scale
 
 PASS if the low end is at or above the line, MISS if the high end is
 below it, TOO CLOSE otherwise.
+To size a plan without code, work the range for counts above and below
+the line until you find the first that passes and the last that misses.
 <!-- /core -->
 
 ## The arithmetic

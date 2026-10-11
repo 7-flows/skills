@@ -31,8 +31,9 @@ and [the Swatch](references/swatch.md) hold the full text.
    the first field, even when the founder's first message already gives it
    — read it back and ask them to confirm or sharpen it. Keep any later
    fields they gave.
-4. When a Toile's Results come in as a count, call them by "Close calls"
-   before Learnings.
+4. Once a Toile's Pass line is written, say what the planned size can
+   decide; when its Results come in as a count, call them before
+   Learnings — both by "Close calls".
 5. Save the record as the piece's "Saving" and "The notes folder" lay out.
 
 <!-- built from method/test/toile.md — edit there -->
@@ -47,7 +48,7 @@ last four after the results come in.
 | 2 | **Risk** | What breaks if the belief is wrong: High, Medium or Low, with one line on why. | "High — it is our whole revenue model." |
 | 3 | **Evidence so far** | What you already know, and how strong it is. A gut feeling is no evidence; a deposit is strong evidence. | "Three designers named invoicing as a pain. No one has been asked to pay." |
 | 4 | **Test design** | The cheapest, fastest test that could prove the belief wrong. Real behaviour, not opinions: a landing page, a direct ask, a pre-sale. | "A landing page at $49 a month; 200 visitors from targeted ads; count sign-ups." |
-| 5 | **Pass line** | The number that means the belief holds, written down before the test runs. A result has to clear it by more than chance — see "Close calls". | "5% of visitors sign up — 10 of 200." |
+| 5 | **Pass line** | The number that means the belief holds, written down before the test runs. A result has to clear it by more than chance: once it is written, say what the planned size can decide — see "Close calls". | "5% of visitors sign up — 10 of 200." |
 | 6 | **Time box** | How long the test runs. Days, not months; a test that needs three months needs a smaller cut. | "7 days." |
 | 7 | **Results** | What happened, as raw numbers and quotes. No interpretation yet. | "9 of 200 signed up (4.5%). Two asked whether there was a cheaper plan." |
 | 8 | **Learnings** | What the results mean, what surprised you, what you had wrong. | "One sign-up short of the line — too close to tell from chance. Price came up twice unprompted." |
@@ -239,10 +240,27 @@ folder: the piece resumes at its first empty field.
 <!-- built from method/test/close-calls.md — edit there -->
 ## Close calls
 
-When the Results are a count against the pass line — sign-ups out of
-visitors, buyers out of people asked — call the result before Learnings.
-Run the close-call script from the skill's folder (`python` where there
-is no `python3`):
+The close-call script lives in the skill's folder (`python` where there
+is no `python3`). It works on any count against a pass line — sign-ups
+out of visitors, buyers out of people asked.
+
+**Size it when the line is set.** As soon as the founder gives the Pass
+line, before the test runs, tell them what their planned size can
+decide. Take the size from the Test design — how many people it reaches;
+if it names none, ask. Then run:
+
+```
+python3 scripts/close_call.py --plan TRIALS PASS_LINE
+python3 scripts/close_call.py --plan 200 5%
+```
+
+Say both edges in the founder's own units: "With 200 visitors, 16 or
+more sign-ups passes and 4 or fewer misses; 5 to 15 is too close to
+call." TOO SMALL means no result at that size can pass: say the test is
+too small before it runs and ask for a larger one. The founder decides;
+the Pass line stays in their words.
+
+When the Results are in, call the result before Learnings:
 
 ```
 python3 scripts/close_call.py SUCCESSES TRIALS PASS_LINE
@@ -276,6 +294,8 @@ range  = (centre − spread)/scale  to  (centre + spread)/scale
 
 PASS if the low end is at or above the line, MISS if the high end is
 below it, TOO CLOSE otherwise.
+To size a plan without code, work the range for counts above and below
+the line until you find the first that passes and the last that misses.
 <!-- /built -->
 
 <!-- built from method/test/swatch.md — edit there -->

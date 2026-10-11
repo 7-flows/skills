@@ -106,3 +106,52 @@ def test_rates_that_round_alike_are_shown_apart(
 ) -> None:
     close_call.main(["1", "3", "33.3%"])
     assert "from 33.3% takes" not in capsys.readouterr().out
+
+
+@pytest.mark.parametrize(
+    ("trials", "line", "passes", "misses"),
+    [(200, 0.05, 16, 4), (150, 0.20, 39, 21)],
+)
+def test_a_planned_size_names_the_pass_and_the_miss(
+    trials: int, line: float, passes: int, misses: int
+) -> None:
+    plan = close_call.plan(trials, line)
+    assert (plan.passes, plan.misses) == (passes, misses)
+    # The bounds are the verdict's own edges, not a second rule.
+    assert close_call.verdict(passes, trials, line).call == "pass"
+    assert close_call.verdict(passes - 1, trials, line).call == "too close"
+    assert close_call.verdict(misses, trials, line).call == "miss"
+    assert close_call.verdict(misses + 1, trials, line).call == "too close"
+
+
+def test_a_size_no_result_can_pass_is_too_small() -> None:
+    assert close_call.plan(10, 0.8).passes is None
+
+
+def test_a_size_no_result_can_miss_says_so() -> None:
+    assert close_call.plan(20, 0.05).misses is None
+
+
+def test_the_command_line_sizes_a_plan(capsys: pytest.CaptureFixture[str]) -> None:
+    assert close_call.main(["--plan", "200", "5%"]) == 0
+    out = capsys.readouterr().out
+    assert "16 or more passes" in out
+    assert "4 or fewer misses" in out
+    assert "5 to 15 is too close to call" in out
+
+
+def test_the_command_line_warns_a_plan_is_too_small(
+    capsys: pytest.CaptureFixture[str],
+) -> None:
+    assert close_call.main(["--plan", "10", "80%"]) == 0
+    assert capsys.readouterr().out.startswith("TOO SMALL")
+
+
+@pytest.mark.parametrize(
+    "argv", [["--plan", "0", "5%"], ["--plan", "200"], ["--plan", "200", "5"]]
+)
+def test_an_impossible_plan_is_refused_with_a_reason(
+    argv: list[str], capsys: pytest.CaptureFixture[str]
+) -> None:
+    assert close_call.main(argv) == 2
+    assert capsys.readouterr().err.strip()
