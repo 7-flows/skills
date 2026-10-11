@@ -43,7 +43,7 @@ trade.
 | 4 | **Strength** | How many independent signals carry the pattern, from how many channels. Count them. | "7 tickets, 2 sales-call objections, 1 churn reply — 10 signals, 3 channels." | "11 reviews, 5 front-desk remarks, 2 cancellations over the hours — 18 signals, 3 channels." |
 | 5 | **So what** | What the pattern means for the business: "Because of this, we should…" | "Because of this, we should stop losing buyers on the pricing page." | "Because of this, we should open early before we add evening hours." |
 | 6 | **Assumption touched** | The belief this pattern challenges or supports, and where it is recorded. | "Challenges 'three tiers catch every kind of buyer' (profile, Least sure of)." | "Challenges 'patients want evening hours' (profile, Least sure of)." |
-| 7 | **Action** | The Toile it opens, or the recorded assumption it changes. | "Open a Toile: two tiers instead of three lift paid sign-ups." | "Open a Toile: a 7am slot two days a week books 6 of its 8 places within two weeks." |
+| 7 | **Action** | The Toile it opens, or the recorded assumption it changes. | "Open a Toile: two tiers instead of three lift paid sign-ups." | "Open a Toile: a quarter of the working patients offered a 7am slot book it." |
 
 ## Cutting rules
 

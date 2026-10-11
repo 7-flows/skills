@@ -1,7 +1,8 @@
 # Close calls
 
-Nine sign-ups against a line of ten feels like a near pass. It is not
-anything yet. Two hundred people is a small fitting: run the same page
+Nine sign-ups against a line of ten feels like a near pass — so do
+thirty-three set orders against a line of thirty. Neither is anything
+yet. Two hundred people is a small fitting: run the same page
 again and you could see seven or twelve. A result that close to the line
 cannot tell you whether the belief holds, and a decision built on it is a
 coin toss dressed as evidence.
@@ -27,9 +28,10 @@ python3 scripts/close_call.py --plan 200 5%
 Say both edges in the founder's own units: "With 200 visitors, 16 or
 more sign-ups passes and 4 or fewer misses; 5 to 15 is too close to
 call." For a bistro: "With 150 lunch customers, 39 or more set orders
-passes and 21 or fewer misses." TOO SMALL means no result at that size can pass: say the test is
-too small before it runs and ask for a larger one. The founder decides;
-the Pass line stays in their words.
+passes and 21 or fewer misses." TOO SMALL means no result at that size
+can pass: say the test is too small before it runs and ask for a larger
+one. When no result can miss, say that too: the test can show the belief
+holds, never that it fails. The founder decides; the Pass line stays in their words.
 
 When the Results are in, call the result before Learnings:
 
@@ -49,10 +51,10 @@ sits in.
   to call, and propose Experiment Again with a larger test, sized by the
   script: "Experiment Again — the same page, run to about 15,800
   visitors." In a room it reads the same: the same set on the board, run
-to as many lunch customers as the script names. That proposal comes
-first and stands. If the size looks out
-  of reach, say so after it and offer a sharper test as a second option;
-  the founder chooses between them — you never drop the larger test.
+  to as many lunch customers as the script names. That proposal comes
+  first and stands. If the size looks out of reach, say so after it and
+  offer a sharper test as a second option; the founder chooses between
+  them — you never drop the larger test.
 
 Never call it by eye. When you cannot run code, work the range out in
 writing, step by step, with *x* successes of *n*, *p* = *x*/*n* and
@@ -67,6 +69,10 @@ range  = (centre − spread)/scale  to  (centre + spread)/scale
 
 PASS if the low end is at or above the line, MISS if the high end is
 below it, TOO CLOSE otherwise.
+
+The count assumes each try is its own: one person, one choice. When a
+table orders together or the same regulars come back day after day, the
+true range is wider than the script says — note it under Learnings.
 To size a plan without code, work the range for counts above and below
 the line until you find the first that passes and the last that misses.
 <!-- /core -->

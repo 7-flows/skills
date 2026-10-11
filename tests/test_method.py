@@ -39,7 +39,8 @@ def test_the_swatch_has_the_seven_fields_in_order() -> None:
 # translate a software one (C26).
 WEB = re.compile(
     r"\b(page|website|online|visitors?|sign-?ups?|signed up|tickets?|tiers?|app"
-    r"|ads?|churn\w*|onboarding|users?|subscriptions?)\b",
+    r"|ads?|churn\w*|onboarding|users?|subscri\w*|newsletter|email list|checkout"
+    r"|clicks?|instagram|online shop)\b",
     re.IGNORECASE,
 )
 
@@ -54,12 +55,24 @@ def test_every_piece_has_an_example_off_the_web() -> None:
     for piece in ("toile.md", "swatch.md"):
         columns = example_columns(METHOD / "test" / piece)
         assert len(columns) >= 2, f"{piece}: one example column only"
-        assert all(all(col) for col in columns), f"{piece}: empty example"
+        # A quoted example, not a dash or blank standing in for one.
+        assert all(re.fullmatch(r'".{3,}"', c) for col in columns for c in col), (
+            f"{piece}: an example cell is not a quoted example"
+        )
         assert any(not any(WEB.search(c) for c in col) for col in columns), (
             f"{piece}: every example column leans on the web"
         )
 
 
+def toile_core() -> str:
+    return (METHOD / "test" / "toile.md").read_text().split("<!-- core -->")[1]
+
+
 def test_the_toile_tests_the_offer_never_the_care() -> None:
-    core = (METHOD / "test" / "toile.md").read_text().split("<!-- core -->")[1]
+    core = toile_core()
     assert "never the care" in core
+    assert "a Toile on the offer instead" in core
+
+
+def test_web_tools_wait_for_the_founder() -> None:
+    assert "unless the founder brings" in toile_core()

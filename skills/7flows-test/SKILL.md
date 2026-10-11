@@ -49,7 +49,7 @@ their own trade.
 | 1 | **Assumption** | The one belief under test, specific enough to be proved wrong. Name the customer, the thing, the price. | "Freelance designers will pay $49 a month for automated invoicing." | "Office workers nearby will order a $25 two-course lunch set." |
 | 2 | **Risk** | What breaks if the belief is wrong: High, Medium or Low, with one line on why. | "High — it is our whole revenue model." | "Medium — it sets how much the kitchen preps for weekday lunch." |
 | 3 | **Evidence so far** | What you already know, and how strong it is. A gut feeling is no evidence; a deposit is strong evidence. | "Three designers named invoicing as a pain. No one has been asked to pay." | "Regulars ask for something quicker than the menu. No set has been offered." |
-| 4 | **Test design** | The cheapest, fastest test that could prove the belief wrong. Real behaviour, not opinions: a landing page, a dish on the board, a direct ask, a pre-sale. | "A landing page at $49 a month; 200 visitors from targeted ads; count sign-ups." | "The set on the board for two weeks of lunch service; count set orders out of lunch customers." |
+| 4 | **Test design** | The cheapest, fastest test that could prove the belief wrong. Real behaviour, not opinions: a dish on the board, a direct ask, a pre-sale, a landing page. | "A landing page at $49 a month; 200 visitors from targeted ads; count sign-ups." | "The set on the board for two weeks of lunch service, about 150 lunch customers; count set orders." |
 | 5 | **Pass line** | The number that means the belief holds, written down before the test runs. A result has to clear it by more than chance: once it is written, say what the planned size can decide — see "Close calls". | "5% of visitors sign up — 10 of 200." | "20% of lunch customers order the set — 30 of 150." |
 | 6 | **Time box** | How long the test runs. Days, not months; a test that needs three months needs a smaller cut. | "7 days." | "10 lunch services." |
 | 7 | **Results** | What happened, as raw numbers and quotes. No interpretation yet. | "9 of 200 signed up (4.5%). Two asked whether there was a cheaper plan." | "41 of 150 ordered the set (27%). Three asked for it without dessert." |
@@ -69,12 +69,17 @@ their own trade.
   before you move on. "Customers want this" → which customer, which thing,
   at what price? Ask until the field names them. Until then the record
   keeps the founder's words as said.
+- **The founder's trade, the founder's tools.** Tests, counts and words
+  come from where the founder trades: a dish on the board, a card at the
+  counter, a call to a regular, a stall at the market. No landing page,
+  ads or sign-ups unless the founder brings them or sells on the web.
 - **Test the offer, never the care.** Where people depend on you for
   their health or their learning — a clinic, a practice, a school — a
-  Toile tests the offer around the care: the price, the hours, the format,
-  how people book or enrol. It never tests a treatment or what a pupil
-  learns, and never holds care or teaching back from anyone to see what
-  happens. When the belief is about the care itself, say so in one line —
+  Toile tests the offer around the care: the price, the hours, how people
+  book or enrol, a format people choose for themselves — a shorter
+  session at its own price. It never tests a treatment or what a pupil
+  learns: the care each person needs stays the practitioner's call, and
+  no one gets less of it to see what happens. When the belief is about the care itself, say so in one line —
   that is not a Toile — and offer a Toile on the offer instead.
 - **The pass line is locked.** Once written, the pass line never moves.
   When the founder asks to move it after the results — "let's call 4% a
@@ -267,9 +272,10 @@ python3 scripts/close_call.py --plan 200 5%
 Say both edges in the founder's own units: "With 200 visitors, 16 or
 more sign-ups passes and 4 or fewer misses; 5 to 15 is too close to
 call." For a bistro: "With 150 lunch customers, 39 or more set orders
-passes and 21 or fewer misses." TOO SMALL means no result at that size can pass: say the test is
-too small before it runs and ask for a larger one. The founder decides;
-the Pass line stays in their words.
+passes and 21 or fewer misses." TOO SMALL means no result at that size
+can pass: say the test is too small before it runs and ask for a larger
+one. When no result can miss, say that too: the test can show the belief
+holds, never that it fails. The founder decides; the Pass line stays in their words.
 
 When the Results are in, call the result before Learnings:
 
@@ -289,10 +295,10 @@ sits in.
   to call, and propose Experiment Again with a larger test, sized by the
   script: "Experiment Again — the same page, run to about 15,800
   visitors." In a room it reads the same: the same set on the board, run
-to as many lunch customers as the script names. That proposal comes
-first and stands. If the size looks out
-  of reach, say so after it and offer a sharper test as a second option;
-  the founder chooses between them — you never drop the larger test.
+  to as many lunch customers as the script names. That proposal comes
+  first and stands. If the size looks out of reach, say so after it and
+  offer a sharper test as a second option; the founder chooses between
+  them — you never drop the larger test.
 
 Never call it by eye. When you cannot run code, work the range out in
 writing, step by step, with *x* successes of *n*, *p* = *x*/*n* and
@@ -307,6 +313,10 @@ range  = (centre − spread)/scale  to  (centre + spread)/scale
 
 PASS if the low end is at or above the line, MISS if the high end is
 below it, TOO CLOSE otherwise.
+
+The count assumes each try is its own: one person, one choice. When a
+table orders together or the same regulars come back day after day, the
+true range is wider than the script says — note it under Learnings.
 To size a plan without code, work the range for counts above and below
 the line until you find the first that passes and the last that misses.
 <!-- /built -->
@@ -326,7 +336,7 @@ trade.
 | 4 | **Strength** | How many independent signals carry the pattern, from how many channels. Count them. | "7 tickets, 2 sales-call objections, 1 churn reply — 10 signals, 3 channels." | "11 reviews, 5 front-desk remarks, 2 cancellations over the hours — 18 signals, 3 channels." |
 | 5 | **So what** | What the pattern means for the business: "Because of this, we should…" | "Because of this, we should stop losing buyers on the pricing page." | "Because of this, we should open early before we add evening hours." |
 | 6 | **Assumption touched** | The belief this pattern challenges or supports, and where it is recorded. | "Challenges 'three tiers catch every kind of buyer' (profile, Least sure of)." | "Challenges 'patients want evening hours' (profile, Least sure of)." |
-| 7 | **Action** | The Toile it opens, or the recorded assumption it changes. | "Open a Toile: two tiers instead of three lift paid sign-ups." | "Open a Toile: a 7am slot two days a week books 6 of its 8 places within two weeks." |
+| 7 | **Action** | The Toile it opens, or the recorded assumption it changes. | "Open a Toile: two tiers instead of three lift paid sign-ups." | "Open a Toile: a quarter of the working patients offered a 7am slot book it." |
 
 ## Cutting rules
 

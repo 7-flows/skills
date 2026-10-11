@@ -40,7 +40,7 @@ their own trade.
 | 1 | **Assumption** | The one belief under test, specific enough to be proved wrong. Name the customer, the thing, the price. | "Freelance designers will pay $49 a month for automated invoicing." | "Office workers nearby will order a $25 two-course lunch set." |
 | 2 | **Risk** | What breaks if the belief is wrong: High, Medium or Low, with one line on why. | "High — it is our whole revenue model." | "Medium — it sets how much the kitchen preps for weekday lunch." |
 | 3 | **Evidence so far** | What you already know, and how strong it is. A gut feeling is no evidence; a deposit is strong evidence. | "Three designers named invoicing as a pain. No one has been asked to pay." | "Regulars ask for something quicker than the menu. No set has been offered." |
-| 4 | **Test design** | The cheapest, fastest test that could prove the belief wrong. Real behaviour, not opinions: a landing page, a dish on the board, a direct ask, a pre-sale. | "A landing page at $49 a month; 200 visitors from targeted ads; count sign-ups." | "The set on the board for two weeks of lunch service; count set orders out of lunch customers." |
+| 4 | **Test design** | The cheapest, fastest test that could prove the belief wrong. Real behaviour, not opinions: a dish on the board, a direct ask, a pre-sale, a landing page. | "A landing page at $49 a month; 200 visitors from targeted ads; count sign-ups." | "The set on the board for two weeks of lunch service, about 150 lunch customers; count set orders." |
 | 5 | **Pass line** | The number that means the belief holds, written down before the test runs. A result has to clear it by more than chance: once it is written, say what the planned size can decide — see "Close calls". | "5% of visitors sign up — 10 of 200." | "20% of lunch customers order the set — 30 of 150." |
 | 6 | **Time box** | How long the test runs. Days, not months; a test that needs three months needs a smaller cut. | "7 days." | "10 lunch services." |
 | 7 | **Results** | What happened, as raw numbers and quotes. No interpretation yet. | "9 of 200 signed up (4.5%). Two asked whether there was a cheaper plan." | "41 of 150 ordered the set (27%). Three asked for it without dessert." |
@@ -60,12 +60,17 @@ their own trade.
   before you move on. "Customers want this" → which customer, which thing,
   at what price? Ask until the field names them. Until then the record
   keeps the founder's words as said.
+- **The founder's trade, the founder's tools.** Tests, counts and words
+  come from where the founder trades: a dish on the board, a card at the
+  counter, a call to a regular, a stall at the market. No landing page,
+  ads or sign-ups unless the founder brings them or sells on the web.
 - **Test the offer, never the care.** Where people depend on you for
   their health or their learning — a clinic, a practice, a school — a
-  Toile tests the offer around the care: the price, the hours, the format,
-  how people book or enrol. It never tests a treatment or what a pupil
-  learns, and never holds care or teaching back from anyone to see what
-  happens. When the belief is about the care itself, say so in one line —
+  Toile tests the offer around the care: the price, the hours, how people
+  book or enrol, a format people choose for themselves — a shorter
+  session at its own price. It never tests a treatment or what a pupil
+  learns: the care each person needs stays the practitioner's call, and
+  no one gets less of it to see what happens. When the belief is about the care itself, say so in one line —
   that is not a Toile — and offer a Toile on the offer instead.
 - **The pass line is locked.** Once written, the pass line never moves.
   When the founder asks to move it after the results — "let's call 4% a
