@@ -34,7 +34,7 @@ Files:
 - .github/workflows/ci.yml — free gates on push
 
 ## State
-2026-10-11 — batch 3 in flight: 3.1, 3.2 done. Batch 2 reviewed and closed (2.0–2.3). Batch 1 closed
+2026-10-11 — batch 3 tasks done (3.1–3.3), awaiting review. Batch 2 reviewed and closed (2.0–2.3). Batch 1 closed
 (1.1–1.3; C5, C7 ticked).
 Owner: Hybrid chosen (ADR); batch 2 approved. 2.0 done (C1 ticked):
 fresh install, headless run — no Read, no denials, ten fields in order.
@@ -76,7 +76,17 @@ minor (Gaps). `--tag toile sittings` exit 0: 14 cases 1.00, $7.67.
   and opens with "Choose the piece"; its description names customer
   feedback (199 chars). Seeds: _fixtures/profile-tiers.md (a salon
   booking tool with three tiers), swatch-tiers-sowhat.md.
-- Spend so far on evals: ~$59.
+- 3.3 done (C6, C8 ticked): `--tag route k silent` — all four C6 rows,
+  C8 and C7's silent cases 1.00 with the plugin; `--tag k` exit 0, eight
+  cases 1.00, $5.39. Price moved from Earn to Sell in flows.md (C8 says
+  Sell). Regression, one attempt: the router's wider description fired on
+  "pricing tiers confuse them" and called it Sell work — flows.md now
+  keeps beliefs and signals with Test whatever their topic. intake-skip's
+  judge read "which restaurant owners?" as a profile question — rubric
+  now says sharpening the Assumption isn't one. Dropped cases: two
+  descriptions opened on quotes again; tests/test_evals.py now parses
+  every prompt's frontmatter. Gates run before an eval, never beside it.
+- Spend so far on evals: ~$81.
 - Evals that write notes need `--allow-tools Write Edit` on the command
   line; `allowed_tools` in the case alone isn't a grant. Judge rubrics must
   say what isn't a failure (a preface "five questions, one at a time" was
@@ -178,7 +188,7 @@ minor (Gaps). `--tag toile sittings` exit 0: 14 cases 1.00, $7.67.
       (history); plugin-evals. Files: method/test/swatch.md,
       skills/7flows-test/SKILL.md, evals/swatch-{fires,anecdote,opens-toile}/.
       Done: `claude plugin eval . --tag swatch` exit 0.
-- [ ] 3.3 Routing (C6, C8). Doc: plugin-evals; code.claude.com/docs/en/skills
+- [x] 3.3 Routing (C6, C8). Doc: plugin-evals; code.claude.com/docs/en/skills
       (descriptions and triggering). Files: skills/7flows/SKILL.md,
       method/flows.md, evals/route-{idea,k,sell-unreleased}/.
       Done: `claude plugin eval . --tag route` exit 0, and every C6 row's
@@ -223,12 +233,11 @@ minor (Gaps). `--tag toile sittings` exit 0: 14 cases 1.00, $7.67.
   covers the Toile only).
 - Δ 0 on swatch-anecdote: told "let's cut a Swatch" with one signal, a
   plain agent also calls it an anecdote.
-- C13 rests on voice-no-flattery's 9-word regex over one prompt; put the
-  same regex grader on the other k and toile cases (no extra cost).
-- k-tag cases weren't rerun after the review's toile.md edits (K's own
-  text didn't change); batch 3's route run covers them.
+- The no-jargon grader sits on 25 cases; toile, sittings and swatch
+  haven't run with it yet — the 4.3 release run covers them.
 - Owner review: method/flows.md's one-line "what it does" for the six
   unreleased flows was drafted from the ADR's gaps — not yet approved text.
+  3.3 moved price from Earn to Sell to match C8.
 - 4.2: `claude plugin validate` advises a README install line
   (`/plugin install 7flows --marketplace 7-flows/skills`).
 - claude.ai acceptance (C2, C3) has no automated gate — manual evidence only.

@@ -21,7 +21,7 @@ on Claude Code, claude.ai and Pi.
       the Claude plugin validator in strict mode, with zero errors.
 
 ## Reaching K
-- [ ] C6. Plain requests reach the right piece without naming a skill:
+- [x] C6. Plain requests reach the right piece without naming a skill:
       | request                                                            | opens      |
       | "I think freelance designers would pay $49 a month for invoicing"  | the Toile  |
       | "Customers keep saying our pricing tiers confuse them"             | the Swatch |
@@ -30,7 +30,7 @@ on Claude Code, claude.ai and Pi.
 - [x] C7. Unrelated requests fire no 7 Flows skill: "Write a poem about
       autumn", "Fix this Python TypeError", "Summarise this PDF",
       "What's the capital of Peru?".
-- [ ] C8. "Help me fix my pricing" → K says this belongs to the Sell flow,
+- [x] C8. "Help me fix my pricing" → K says this belongs to the Sell flow,
       not yet released, and offers a Toile on the pricing assumption. No
       Sell piece is invented.
 
