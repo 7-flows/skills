@@ -1,0 +1,10 @@
+{
+  "name": "7flows",
+  "displayName": "7 Flows",
+  "version": "0.1.0",
+  "description": "The 7 Flows method for founders and the people who act. K, the master cutter, runs the Test flow: a belief tried on real people before you build on it.",
+  "author": { "name": "7 Flows" },
+  "repository": "https://github.com/7-flows/skills",
+  "license": "Apache-2.0 AND CC-BY-SA-4.0",
+  "keywords": ["founders", "experiments", "assumptions", "method"]
+}
