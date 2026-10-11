@@ -21,7 +21,9 @@ master cutter of 7 Flows, by "How K speaks" below.
    at Assumption, even when the founder's first message already states
    it — read it back and ask them to confirm or sharpen it. Keep any later
    fields they gave.
-4. Save the record as "Saving" and "The notes folder" lay out.
+4. When the Results come in as a count, call them by "Close calls"
+   before Learnings.
+5. Save the record as "Saving" and "The notes folder" lay out.
 
 <!-- built from method/test/toile.md — edit there -->
 ## The ten fields
@@ -39,8 +41,8 @@ last four after the results come in.
 | 6 | **Time box** | How long the test runs. Days, not months; a test that needs three months needs a smaller cut. | "7 days." |
 | 7 | **Results** | What happened, as raw numbers and quotes. No interpretation yet. | "9 of 200 signed up (4.5%). Two asked whether there was a cheaper plan." |
 | 8 | **Learnings** | What the results mean, what surprised you, what you had wrong. | "One sign-up short of the line — too close to tell from chance. Price came up twice unprompted." |
-| 9 | **Decision** | Persevere, Pivot or Experiment Again — one word, then why. | "Experiment Again — the same $49 page, 800 visitors, so the answer is clear." |
-| 10 | **Next action** | The specific thing you will do in the next 48 hours because of the decision. | "Raise the ad budget to reach 800 visitors and relaunch by Wednesday." |
+| 9 | **Decision** | Persevere, Pivot or Experiment Again — one word, then why. | "Experiment Again — one short of ten is too close to call; the same $49 page on a larger run, sized by the close-call check." |
+| 10 | **Next action** | The specific thing you will do in the next 48 hours because of the decision. | "Raise the ad budget for the larger run and relaunch by Wednesday." |
 
 ## Cutting rules
 
@@ -60,7 +62,8 @@ last four after the results come in.
   attempt under Learnings in the founder's words. A new line needs a new
   Toile.
 - **Below the line is not a pass.** A result under the pass line never
-  closes as Persevere on that line.
+  closes as Persevere on that line, and a result too close to the line to
+  call closes as neither Persevere nor Pivot — see "Close calls".
 - **A Toile closes on a decision.** It closes only with a Decision —
   Persevere, Pivot or Experiment Again — and a Next action due within 48
   hours. A Learning such as "it went OK" says nothing: ask what the numbers
@@ -220,4 +223,35 @@ When there is no project folder to save into (a claude.ai chat), hand the
 record over as a file, named as above, at the end of every sitting. A
 record the founder attaches at the start of a chat is read like the notes
 folder: the piece resumes at its first empty field.
+<!-- /built -->
+
+<!-- built from method/test/close-calls.md — edit there -->
+## Close calls
+
+When the Results are a count against the pass line — sign-ups out of
+visitors, buyers out of people asked — call the result before Learnings.
+Run the close-call script from the skill's folder:
+
+```
+python3 scripts/close_call.py SUCCESSES TRIALS PASS_LINE
+python3 scripts/close_call.py 9 200 5%
+```
+
+It answers PASS, MISS or TOO CLOSE, with the range the true rate likely
+sits in.
+
+- **PASS** — the whole range clears the line. Persevere is open.
+- **MISS** — the whole range sits below it. Persevere is not.
+- **TOO CLOSE** — the line sits inside the range: the result cannot be
+  told from chance. The Toile cannot close as Persevere or Pivot. Name the
+  gap in plain numbers ("one sign-up short of ten"), say it is too close
+  to call, and propose Experiment Again with a larger test, sized by the
+  script: "Experiment Again — the same page, run to about 15,800
+  visitors." That proposal comes first and stands. If the size looks out
+  of reach, say so after it and offer a sharper test as a second option;
+  the founder chooses between them — you never drop the larger test.
+
+Never call it by eye. When you cannot run code, work the formula in
+[Close calls](references/close-calls.md) step by step, in writing; when
+still unsure, the call is TOO CLOSE.
 <!-- /built -->

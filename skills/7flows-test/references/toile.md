@@ -43,8 +43,8 @@ last four after the results come in.
 | 6 | **Time box** | How long the test runs. Days, not months; a test that needs three months needs a smaller cut. | "7 days." |
 | 7 | **Results** | What happened, as raw numbers and quotes. No interpretation yet. | "9 of 200 signed up (4.5%). Two asked whether there was a cheaper plan." |
 | 8 | **Learnings** | What the results mean, what surprised you, what you had wrong. | "One sign-up short of the line — too close to tell from chance. Price came up twice unprompted." |
-| 9 | **Decision** | Persevere, Pivot or Experiment Again — one word, then why. | "Experiment Again — the same $49 page, 800 visitors, so the answer is clear." |
-| 10 | **Next action** | The specific thing you will do in the next 48 hours because of the decision. | "Raise the ad budget to reach 800 visitors and relaunch by Wednesday." |
+| 9 | **Decision** | Persevere, Pivot or Experiment Again — one word, then why. | "Experiment Again — one short of ten is too close to call; the same $49 page on a larger run, sized by the close-call check." |
+| 10 | **Next action** | The specific thing you will do in the next 48 hours because of the decision. | "Raise the ad budget for the larger run and relaunch by Wednesday." |
 
 ## Cutting rules
 
@@ -64,7 +64,8 @@ last four after the results come in.
   attempt under Learnings in the founder's words. A new line needs a new
   Toile.
 - **Below the line is not a pass.** A result under the pass line never
-  closes as Persevere on that line.
+  closes as Persevere on that line, and a result too close to the line to
+  call closes as neither Persevere nor Pivot — see "Close calls".
 - **A Toile closes on a decision.** It closes only with a Decision —
   Persevere, Pivot or Experiment Again — and a Next action due within 48
   hours. A Learning such as "it went OK" says nothing: ask what the numbers
