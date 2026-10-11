@@ -123,7 +123,8 @@ def _say(successes: int, trials: int, line: float, v: Verdict) -> str:
 
 def _say_plan(trials: int, line: float, p: Plan) -> str:
     head = (
-        f"{trials} trials against a pass line of {_percent(line)}"
+        f"{trials} trial{'' if trials == 1 else 's'}"
+        f" against a pass line of {_percent(line)}"
         f" ({p.needed} of {trials})."
     )
     if p.passes is None:
@@ -140,7 +141,8 @@ def _say_plan(trials: int, line: float, p: Plan) -> str:
         lines.append(f"No result can miss: even 0 of {trials} is too close to call.")
     else:
         lines.append(f"{p.misses} or fewer misses.")
-    if low < p.passes:
+    # With no miss possible, the line above already says the low counts are close.
+    if p.misses is not None and low < p.passes:
         between = str(low) if low == p.passes - 1 else f"{low} to {p.passes - 1}"
         lines.append(f"{between} is too close to call.")
     return "\n".join(lines)
@@ -159,6 +161,8 @@ def main(argv: list[str]) -> int:
     )
     planning = argv[:1] == ["--plan"]
     try:
+        if len(argv) != 3:
+            raise ValueError("expected three arguments")
         if planning:
             successes, trials, line = 0, int(argv[1]), _line(argv[2])
         else:
@@ -166,6 +170,9 @@ def main(argv: list[str]) -> int:
             line = _line(argv[2])
     except (IndexError, ValueError) as error:
         print(f"{error}\n{usage}", file=sys.stderr)
+        return 2
+    if planning and trials < 1:
+        print("trials must be 1 or more", file=sys.stderr)
         return 2
     if trials < 1 or not 0 <= successes <= trials:
         print(

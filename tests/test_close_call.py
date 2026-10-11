@@ -155,3 +155,38 @@ def test_an_impossible_plan_is_refused_with_a_reason(
 ) -> None:
     assert close_call.main(argv) == 2
     assert capsys.readouterr().err.strip()
+
+
+@pytest.mark.parametrize(
+    "argv", [["9", "200", "5%", "junk"], ["--plan", "200", "5%", "extra"]]
+)
+def test_extra_arguments_are_refused(
+    argv: list[str], capsys: pytest.CaptureFixture[str]
+) -> None:
+    assert close_call.main(argv) == 2
+    assert capsys.readouterr().err.strip()
+
+
+def test_a_plan_of_no_trials_names_the_trials(
+    capsys: pytest.CaptureFixture[str],
+) -> None:
+    assert close_call.main(["--plan", "0", "5%"]) == 2
+    err = capsys.readouterr().err
+    assert "trials" in err
+    assert "successes" not in err
+
+
+def test_one_trial_reads_as_one(capsys: pytest.CaptureFixture[str]) -> None:
+    close_call.main(["--plan", "1", "50%"])
+    out = capsys.readouterr().out
+    assert "1 trial " in out
+    assert "1 trials" not in out
+
+
+def test_a_plan_no_result_can_miss_says_so_once(
+    capsys: pytest.CaptureFixture[str],
+) -> None:
+    close_call.main(["--plan", "20", "5%"])
+    out = capsys.readouterr().out
+    assert "No result can miss" in out
+    assert "0 to 2 is too close" not in out
