@@ -45,6 +45,11 @@ carries notes.md (it saves on its own); toile-no-read guards the Hybrid.
 `--tag toile sittings` exit 0, twelve cases 1.00 with the plugin, $6.17.
 The Toile now saves on the first field given (toile-quick regressed
 when saving waited for a confirmed Assumption; fixed in one attempt).
+Batch 2 reviewed: one critical (a raw eval transcript with the home path
+was committed — removed in 7a95ab8, now ignored; still in git history,
+owner's call), four important (C16 day 1 and C18's 48 hours unshown, C14
+graded the fixture, lint missed -ise forms), six minor. All fixed but one
+minor (Gaps). `--tag toile sittings` exit 0: 14 cases 1.00, $7.67.
 - Learned: a plugin skill's Read of its own references/ is refused under
   `claude -p` (prompted interactively); `allowed-tools: Read` makes the
   Skill call itself need approval — dead end (ADR). Evals grant Read, so
@@ -56,7 +61,7 @@ when saving waited for a confirmed Assumption; fixed in one attempt).
   met; C1 is the unticked one.
 - Gate hygiene: never pipe a gate through tail without pipefail — a red
   ruff hid behind exit 0 once (amended before push).
-- Spend so far on evals: ~$31.
+- Spend so far on evals: ~$40.
 - Evals that write notes need `--allow-tools Write Edit` on the command
   line; `allowed_tools` in the case alone isn't a grant. Judge rubrics must
   say what isn't a failure (a preface "five questions, one at a time" was
@@ -65,6 +70,8 @@ when saving waited for a confirmed Assumption; fixed in one attempt).
   seeded workspaces run only with `--scaffold`; `--case` keeps only the
   last value given (use a glob); `file_exists` can't see scaffolded files —
   grade them with `target: { source: file, path: … }`.
+- `claude plugin eval` writes each resumed session into the case folder
+  as `<session-id>.jsonl` — ignored now; never `git add -A` without a look.
 - history_file cases: record a real `claude -p --plugin-dir` walk, then
   keep only user/assistant rows and replace machine paths — the raw
   transcript carries the home path and the system prompt (public repo).
@@ -190,6 +197,10 @@ when saving waited for a confirmed Assumption; fixed in one attempt).
   rather than the template's; no grader checks the template keys.
 - C17 (3.1): the pass-line-lock case leaves the close-call verdict to
   3.1 — today it only checks that 4.5% isn't taken as a pass.
+- C13 rests on voice-no-flattery's 9-word regex over one prompt; put the
+  same regex grader on the other k and toile cases (no extra cost).
+- k-tag cases weren't rerun after the review's toile.md edits (K's own
+  text didn't change); batch 3's route run covers them.
 - Owner review: method/flows.md's one-line "what it does" for the six
   unreleased flows was drafted from the ADR's gaps — not yet approved text.
 - 4.2: `claude plugin validate` advises a README install line
