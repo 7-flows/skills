@@ -10,5 +10,3 @@ Architecture: pending the approved spec · Constraints: see AGENTS.md Stack.
 ## Gaps
 - Plugin and skill gates (`claude plugin validate --strict`, `skills-ref
   validate`, `claude plugin eval`) join Gates when the first skill lands.
-- Remotes still point at bertranddour/7flows-skills; target is 7-flows/skills
-  once the repo is transferred.
