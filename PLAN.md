@@ -40,7 +40,11 @@ Files:
 (size the test at the pass line) and C26 (every trade served as fully as
 the web — "just as important"); seated as batch 4a, before release.
 Owner calls: no "set aside" exit after TOO CLOSE for now; flows.md
-one-liners approved (price under Sell). Batch 2 reviewed and closed (2.0–2.3). Batch 1 closed
+one-liners approved (price under Sell).
+4a.1 done (C25): `--tag toile` exit 0, 11 cases 1.00. 4a.2 done (C26):
+full suite exit 0, 40 cases 1.00 with the plugin, mean Δ +0.30, $30.73
+estimated. A bistro and a physio clinic sit beside every software example;
+the Toile tests the offer, never the care. Batch 2 reviewed and closed (2.0–2.3). Batch 1 closed
 (1.1–1.3; C5, C7 ticked).
 Owner: Hybrid chosen (ADR); batch 2 approved. 2.0 done (C1 ticked):
 fresh install, headless run — no Read, no denials, ten fields in order.
@@ -103,7 +107,8 @@ minor (Gaps). `--tag toile sittings` exit 0: 14 cases 1.00, $7.67.
   Mean Δ +0.28, $24.16.
 - Learned: a rubric that lists FAIL topics must say which look-alikes
   pass; abstract method wording loses to a quoted example sentence.
-- Spend so far on evals: ~$114.
+- Eval spend so far: ~$161 estimated at API prices — drawn from the Max
+  plan's usage, not billed.
 - Evals that write notes need `--allow-tools Write Edit` on the command
   line; `allowed_tools` in the case alone isn't a grant. Judge rubrics must
   say what isn't a failure (a preface "five questions, one at a time" was
@@ -226,7 +231,7 @@ minor (Gaps). `--tag toile sittings` exit 0: 14 cases 1.00, $7.67.
       `claude plugin eval . --case 'toile-size-*'` exit 0 — K states both
       numbers when the Pass line is written, and "too small" before a
       test that can't pass; `--tag toile` stays exit 0.
-- [ ] 4a.2 Every trade (C26). Doc: method/voice.md; plugin-evals.
+- [x] 4a.2 Every trade (C26). Doc: method/voice.md; plugin-evals.
       Files: method/test/{toile,swatch,close-calls}.md, method/k.md,
       method/notes.md, skills/*/SKILL.md, evals/_fixtures/profile-*.md,
       evals/trade-*/.
@@ -286,3 +291,8 @@ minor (Gaps). `--tag toile sittings` exit 0: 14 cases 1.00, $7.67.
 - Unverified until 4.2/4.4: private-repo marketplaces on claude.ai; `pi
   install` from a git repo without package.json; claude.ai frontmatter
   strictness beyond the six fields.
+- C26 trade cases cover the intake, Test design, a close call, a Swatch
+  opening and care refused — no trade case closes a Toile (Decision, Next
+  action) or a Swatch (Action). The web cases cover those closes.
+- trade-toile-bistro's first rubric failed K's office pre-order card as
+  "not in the room": rubrics for trades name real-world look-alikes.

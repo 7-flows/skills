@@ -84,7 +84,7 @@ on Claude Code, claude.ai and Pi.
         more before naming a pattern.
 
 ## Every trade
-- [ ] C26. A founder whose business is not on the web — a restaurant, a shop,
+- [x] C26. A founder whose business is not on the web — a restaurant, a shop,
       a clinic, a school, a trade — is served as fully as a web founder: the
       intake, the Toile, the Swatch and close calls speak their trade, with
       tests, counts and signals from it. K proposes no landing page,
