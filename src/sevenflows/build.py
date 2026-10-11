@@ -25,19 +25,20 @@ def _expected(root: Path, manifest: Manifest) -> dict[Path, str]:
     expected: dict[Path, str] = {}
     for skill, sources in manifest.items():
         for source in sources:
-            text = (root / "method" / source).read_text()
+            text = (root / "method" / source).read_text(encoding="utf-8")
             target = root / "skills" / skill / "references" / Path(source).name
+            # references/ is flat, so two sources with one basename would
+            # silently overwrite each other.
+            if target in expected:
+                raise ValueError(f"{skill}: two sources would land on {target.name}")
             expected[target] = _header(source) + text
     return expected
 
 
-def _present(root: Path, manifest: Manifest) -> set[Path]:
-    present: set[Path] = set()
-    for skill in manifest:
-        references = root / "skills" / skill / "references"
-        if references.is_dir():
-            present.update(p for p in references.iterdir() if p.is_file())
-    return present
+def _present(root: Path) -> set[Path]:
+    # Every skill, not just the manifest's: one dropped from the manifest
+    # must not keep shipping its old copies.
+    return {p for p in (root / "skills").glob("*/references/*") if p.is_file()}
 
 
 def check(root: Path, manifest: Manifest = MANIFEST) -> list[Path]:
@@ -46,16 +47,16 @@ def check(root: Path, manifest: Manifest = MANIFEST) -> list[Path]:
     drifted = [
         path
         for path, text in expected.items()
-        if not path.is_file() or path.read_text() != text
+        if not path.is_file() or path.read_text(encoding="utf-8") != text
     ]
-    drifted += sorted(_present(root, manifest) - expected.keys())
+    drifted += sorted(_present(root) - expected.keys())
     return drifted
 
 
 def build(root: Path, manifest: Manifest = MANIFEST) -> None:
     expected = _expected(root, manifest)
-    for stale in _present(root, manifest) - expected.keys():
+    for stale in _present(root) - expected.keys():
         stale.unlink()
     for path, text in expected.items():
         path.parent.mkdir(parents=True, exist_ok=True)
-        path.write_text(text)
+        path.write_text(text, encoding="utf-8")

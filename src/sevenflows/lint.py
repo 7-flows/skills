@@ -19,7 +19,8 @@ NAME = re.compile(r"^(?!.*--)[a-z0-9](?:[a-z0-9-]{0,62}[a-z0-9])?$")
 
 
 def _frontmatter(skill_md: Path) -> dict[str, object] | None:
-    match = re.match(r"^---\n(.*?)\n---\n", skill_md.read_text(), re.DOTALL)
+    text = skill_md.read_text(encoding="utf-8")
+    match = re.match(r"^---\n(.*?)\n---\n", text, re.DOTALL)
     if match is None:
         return None
     data = yaml.safe_load(match.group(1))
@@ -28,7 +29,13 @@ def _frontmatter(skill_md: Path) -> dict[str, object] | None:
 
 def lint_skill(skill: Path) -> list[str]:
     folder = skill.name
-    meta = _frontmatter(skill / "SKILL.md")
+    if not (skill / "SKILL.md").is_file():
+        return [f"{folder}: SKILL.md is missing"]
+    try:
+        meta = _frontmatter(skill / "SKILL.md")
+    except yaml.YAMLError:
+        # A finding names the skill; a traceback leaves the reader to find it.
+        return [f"{folder}: frontmatter is not valid YAML"]
     if meta is None:
         return [f"{folder}: SKILL.md has no frontmatter"]
     findings = [

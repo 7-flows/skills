@@ -65,3 +65,31 @@ def test_missing_frontmatter_fails(tmp_path: Path) -> None:
     skill.mkdir()
     (skill / "SKILL.md").write_text("# No frontmatter\n")
     assert lint_skill(skill) == ["7flows-test: SKILL.md has no frontmatter"]
+
+
+def test_whitespace_only_description_is_missing(tmp_path: Path) -> None:
+    skill = write_skill(tmp_path, "name: 7flows-test\ndescription: '   '\n")
+    assert lint_skill(skill) == ["7flows-test: description is missing"]
+
+
+def test_frontmatter_that_is_not_a_mapping_is_no_frontmatter(tmp_path: Path) -> None:
+    skill = write_skill(tmp_path, "- name\n- description\n")
+    assert lint_skill(skill) == ["7flows-test: SKILL.md has no frontmatter"]
+
+
+def test_malformed_yaml_is_a_finding_not_a_crash(tmp_path: Path) -> None:
+    skill = write_skill(tmp_path, "name: 7flows-test\ndescription: Use when: belief\n")
+    assert lint_skill(skill) == ["7flows-test: frontmatter is not valid YAML"]
+
+
+def test_a_skill_folder_without_skill_md_is_a_finding(tmp_path: Path) -> None:
+    (tmp_path / "7flows-test").mkdir()
+    assert lint_skill(tmp_path / "7flows-test") == ["7flows-test: SKILL.md is missing"]
+
+
+def test_windows_line_endings_still_read_the_frontmatter(tmp_path: Path) -> None:
+    skill = tmp_path / "7flows-test"
+    skill.mkdir()
+    crlf = f"---\n{VALID}---\n\nBody.\n".replace("\n", "\r\n")
+    (skill / "SKILL.md").write_bytes(crlf.encode())
+    assert lint_skill(skill) == []
