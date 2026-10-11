@@ -2,7 +2,7 @@
 
 Adapts at every batch boundary. The spec never moves.
 Goal: slice 1 — a founder installs 7 Flows and runs the Test flow with K on
-Claude Code, claude.ai and Pi (C1–C24).
+Claude Code, claude.ai and Pi (C1–C26).
 Architecture: the method is written once under `method/` (CC BY-SA); a build
 step copies each skill's share into `skills/<name>/references/` (and
 inlines its core into SKILL.md), so every skill folder stands alone (claude.ai copies only the
@@ -36,7 +36,11 @@ Files:
 - .github/workflows/ci.yml — free gates on push
 
 ## State
-2026-10-11 — batch 3 reviewed and closed (3.1–3.3); batch 4 next. Batch 2 reviewed and closed (2.0–2.3). Batch 1 closed
+2026-10-11 — batch 3 reviewed and closed (3.1–3.3). Owner added C25
+(size the test at the pass line) and C26 (every trade served as fully as
+the web — "just as important"); seated as batch 4a, before release.
+Owner calls: no "set aside" exit after TOO CLOSE for now; flows.md
+one-liners approved (price under Sell). Batch 2 reviewed and closed (2.0–2.3). Batch 1 closed
 (1.1–1.3; C5, C7 ticked).
 Owner: Hybrid chosen (ADR); batch 2 approved. 2.0 done (C1 ticked):
 fresh install, headless run — no Read, no denials, ten fields in order.
@@ -209,6 +213,35 @@ minor (Gaps). `--tag toile sittings` exit 0: 14 cases 1.00, $7.67.
       voice-no-flattery's banned-word regex on every k and toile case
       (Gap) and rerun `--tag k` exit 0.
 
+## Batch 4a — the pass line sized, every trade
+- [ ] 4a.1 Size at the pass line (C25). Doc: NIST e-Handbook §7.2.4.1.
+      Files: skills/7flows-test/scripts/close_call.py,
+      tests/test_close_call.py, method/test/close-calls.md,
+      method/test/toile.md, evals/toile-size-{pass,small}/.
+      Interface: `close_call.py --plan TRIALS LINE` prints the smallest
+      count that passes, the largest that misses, and the band between;
+      says "too small" when no count can pass.
+      Done: pytest shows 200 at 5% → 16 passes, 4 misses, 5–15 too close;
+      150 at 20% → 39, 21; a size with no passing count → too small;
+      `claude plugin eval . --case 'toile-size-*'` exit 0 — K states both
+      numbers when the Pass line is written, and "too small" before a
+      test that can't pass; `--tag toile` stays exit 0.
+- [ ] 4a.2 Every trade (C26). Doc: method/voice.md; plugin-evals.
+      Files: method/test/{toile,swatch,close-calls}.md, method/k.md,
+      method/notes.md, skills/*/SKILL.md, evals/_fixtures/profile-*.md,
+      evals/trade-*/.
+      Work: read every K and Test text for web-only words (page, visitor,
+      sign-up, ticket, tier, churn); each example gets a non-web twin
+      (the lunch set, a clinic's rebookings, a school's open day) or is
+      made trade-neutral; the offer-not-care rule goes in the Toile's core.
+      Done: tests/test_method.py fails if a core example table has no
+      non-web example; `--tag trade` exit 0 with intake (bistro owner),
+      a Toile from belief to Decision (lunch set), a close call (lunch
+      covers), a Swatch (clinic: reviews and front-desk remarks), and
+      care refused (a test that changes a treatment → a Toile on the
+      offer instead); every trade case 1.00 with the plugin; the full
+      suite stays exit 0.
+
 ## Batch 4 — distribution and release
 - [ ] 4.1 Licences and ZIPs (C23). Doc: claude.com/docs/skills/how-to
       (ZIP layout); spdx.org/licenses. Files: LICENSE, LICENSE-METHOD,
@@ -241,23 +274,12 @@ minor (Gaps). `--tag toile sittings` exit 0: 14 cases 1.00, $7.67.
 - C17 without code (Bash declined, no python): the written range is now
   in the core, but no eval runs without Bash. 4.4's manual pass can try
   9 of 200 with code refused.
-- Owner delta (review #1): at 200 visitors and a 5% line, every result
-  from 5 to 15 is TOO CLOSE — the Pass line field doesn't size the test.
-  Proposal: run close_call at Pass line and tell the founder what the
-  planned size can decide ("with 200 visitors: 16+ passes, 4 or fewer
-  misses"), or size it there. Needs a new criterion — specify.
-- Owner note (review #7): after TOO CLOSE the only exits are a larger or
-  sharper test; a founder who wants to set the belief aside has no
-  Decision for it. C17 forbids Pivot there; a "set aside" may be wanted.
 - C21's other close — "changes a recorded assumption" (the profile or an
   open Toile rewritten) — has no eval; only the opens-a-Toile close does.
   swatch-opens-toile checks fields 6 and 7 are cut, not all seven
   headings in order.
 - Δ 0 on swatch-anecdote, swatch-all-seven, intake-skip: a plain agent
   does it too from the prompt alone. The cases still guard the skill.
-- Owner review: method/flows.md's one-line "what it does" for the six
-  unreleased flows was drafted from the ADR's gaps — not yet approved text.
-  3.3 moved price from Earn to Sell to match C8.
 - 4.2: `claude plugin validate` advises a README install line
   (`/plugin install 7flows --marketplace 7-flows/skills`).
 - claude.ai acceptance (C2, C3) has no automated gate — manual evidence only.
