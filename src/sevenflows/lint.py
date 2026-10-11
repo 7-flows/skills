@@ -79,13 +79,18 @@ def banned_words(voice_md: Path) -> list[str]:
     return [row.split("|")[1].strip().lower() for row in rows[2:]]
 
 
+def _stem(word: str) -> str:
+    # "leverage" must catch "leveraging" and "optimize" must catch the
+    # British "optimisation": drop a final e, let -ize be -ise.
+    stem = re.escape(word.removesuffix("e"))
+    return rf"\b{stem.replace('iz', 'i[sz]')}\w*"
+
+
 def lint_words(path: Path, root: Path, banned: list[str]) -> list[str]:
     text = path.read_text(encoding="utf-8")
     # Blank the exempt region line for line, so findings keep true line numbers.
     text = VOICE_REGION.sub(lambda m: "\n" * m.group().count("\n"), text)
-    patterns = [
-        (word, re.compile(rf"\b{re.escape(word)}\w*", re.IGNORECASE)) for word in banned
-    ]
+    patterns = [(word, re.compile(_stem(word), re.IGNORECASE)) for word in banned]
     return [
         f"{path.relative_to(root)}:{number}: banned word '{word}'"
         for number, line in enumerate(text.splitlines(), start=1)

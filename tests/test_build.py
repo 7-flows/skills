@@ -178,3 +178,24 @@ def test_a_core_without_skill_md_is_refused(tmp_path: Path) -> None:
     make_cored_tree(tmp_path).unlink()
     with pytest.raises(ValueError, match=r"SKILL\.md"):
         check(tmp_path, MANIFEST)
+
+
+def test_a_skill_md_whose_final_newline_was_trimmed_builds_in_one_pass(
+    tmp_path: Path,
+) -> None:
+    skill_md = make_cored_tree(tmp_path)
+    build(tmp_path, MANIFEST)
+    skill_md.write_text(skill_md.read_text().rstrip("\n"))
+    build(tmp_path, MANIFEST)
+    assert skill_md.read_text().count("<!-- built from") == 1
+    assert check(tmp_path, MANIFEST) == []
+
+
+def test_a_duplicated_region_is_built_once(tmp_path: Path) -> None:
+    skill_md = make_cored_tree(tmp_path)
+    build(tmp_path, MANIFEST)
+    built = skill_md.read_text()
+    region = built[len(HEAD) :]
+    skill_md.write_text(built + region)
+    build(tmp_path, MANIFEST)
+    assert skill_md.read_text() == built

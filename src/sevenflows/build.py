@@ -31,9 +31,10 @@ def _header(source: str) -> str:
 
 CORE = re.compile(r"<!-- core -->\n(.*?)<!-- /core -->", re.DOTALL)
 # The blank line before a region belongs to it, so removing one leaves the
-# hand-written head exactly as written.
+# hand-written head exactly as written. Editors may trim the file's final
+# newline, so the closing marker may end the file.
 REGION = re.compile(
-    r"\n?<!-- built from method/(\S+) — edit there -->\n.*?<!-- /built -->\n",
+    r"\n?<!-- built from method/(\S+) — edit there -->\n.*?<!-- /built -->(?:\n|\Z)",
     re.DOTALL,
 )
 

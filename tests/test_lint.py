@@ -184,3 +184,18 @@ def test_skill_md_of_499_lines_passes_and_500_fails(tmp_path: Path) -> None:
     assert lint_skill(skill) == []
     (skill / "SKILL.md").write_text(head + "x\n" * (pad + 1))
     assert lint_skill(skill) == ["7flows-test: SKILL.md is 500 lines, max 499"]
+
+
+def test_british_spellings_and_forms_that_drop_the_final_e_are_caught(
+    tmp_path: Path,
+) -> None:
+    voice = VOICE + "| Optimize | Improve |\n| Utilize | Use |\n"
+    make_words_repo(tmp_path, voice)
+    (tmp_path / "method" / "k.md").write_text(
+        "Leveraging it.\nPrice optimisation.\nWe utilised it.\nAn eyelet.\n"
+    )
+    assert lint(tmp_path) == [
+        "method/k.md:1: banned word 'leverage'",
+        "method/k.md:2: banned word 'optimize'",
+        "method/k.md:3: banned word 'utilize'",
+    ]
