@@ -40,10 +40,10 @@ last four after the results come in.
 | 4 | **Test design** | The cheapest, fastest test that could prove the belief wrong. Real behaviour, not opinions: a landing page, a direct ask, a pre-sale. | "A landing page at $49 a month; 200 visitors from targeted ads; count sign-ups." |
 | 5 | **Pass line** | The number that means the belief holds, written down before the test runs. | "5% of visitors sign up — 10 of 200." |
 | 6 | **Time box** | How long the test runs. Days, not months; a test that needs three months needs a smaller cut. | "7 days." |
-| 7 | **Results** | What happened, as raw numbers and quotes. No interpretation yet. | "9 of 200 signed up (4.5%). Two asked for a cheaper plan." |
-| 8 | **Learnings** | What the results mean, what surprised you, what you had wrong. | "Close to the line, not over it. Two people named $39 unprompted." |
-| 9 | **Decision** | Persevere, Pivot or Experiment Again — one word, then why. | "Experiment Again — the same page at $39, the same traffic." |
-| 10 | **Next action** | The specific thing you will do in the next 48 hours because of the decision. | "Build the $39 page and launch it by Wednesday." |
+| 7 | **Results** | What happened, as raw numbers and quotes. No interpretation yet. | "9 of 200 signed up (4.5%). Two asked whether there was a cheaper plan." |
+| 8 | **Learnings** | What the results mean, what surprised you, what you had wrong. | "One sign-up short of the line — too close to tell from chance. Price came up twice unprompted." |
+| 9 | **Decision** | Persevere, Pivot or Experiment Again — one word, then why. | "Experiment Again — the same $49 page, 800 visitors, so the answer is clear." |
+| 10 | **Next action** | The specific thing you will do in the next 48 hours because of the decision. | "Raise the ad budget to reach 800 visitors and relaunch by Wednesday." |
 
 ## Done
 
