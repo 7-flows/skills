@@ -34,7 +34,7 @@ Files:
 - .github/workflows/ci.yml — free gates on push
 
 ## State
-2026-10-11 — batch 2 reviewed and closed (2.0–2.3). Batch 1 closed
+2026-10-11 — batch 3 in flight: 3.1 done. Batch 2 reviewed and closed (2.0–2.3). Batch 1 closed
 (1.1–1.3; C5, C7 ticked).
 Owner: Hybrid chosen (ADR); batch 2 approved. 2.0 done (C1 ticked):
 fresh install, headless run — no Read, no denials, ten fields in order.
@@ -48,8 +48,9 @@ The Toile now saves on the first field given (toile-quick regressed
 when saving waited for a confirmed Assumption; fixed in one attempt).
 Batch 2 reviewed: one critical (a raw eval transcript with the home path
 was committed — removed in 8066245, now ignored; purged from history
-by owner's call, force-pushed 2026-10-11), four important (C16 day 1 and C18's 48 hours unshown, C14
-graded the fixture, lint missed -ise forms), six minor. All fixed but one
+by owner's call, force-pushed 2026-10-11), four important (C16 day 1
+and C18's 48 hours unshown, C14 graded the fixture, lint missed -ise
+forms), six minor. All fixed but one
 minor (Gaps). `--tag toile sittings` exit 0: 14 cases 1.00, $7.67.
 - Learned: a plugin skill's Read of its own references/ is refused under
   `claude -p` (prompted interactively); `allowed-tools: Read` makes the
@@ -62,7 +63,15 @@ minor (Gaps). `--tag toile sittings` exit 0: 14 cases 1.00, $7.67.
   met; C1 is the unticked one.
 - Gate hygiene: never pipe a gate through tail without pipefail — a red
   ruff hid behind exit 0 once (amended before push).
-- Spend so far on evals: ~$40.
+- 3.1 done (C17 ticked): `--tag toile` exit 0, eight cases 1.00 with the
+  plugin, $6.33. The close-call script lives in skills/7flows-test/scripts/
+  (not src/ as planned): claude.ai and Pi get only the skill folder; tests
+  load it by path, mypy covers it. Toile evals now pass `--allow-tools
+  Write Edit Bash`. Two attempts on one failure: K offered a sharper test
+  instead of the larger one C17 asks for; abstract wording didn't hold, a
+  quoted sentence and the script's own "Propose:" line did. The Toile's
+  example claimed 800 visitors would settle 4.5% vs 5% — it takes ~15,800.
+- Spend so far on evals: ~$56.
 - Evals that write notes need `--allow-tools Write Edit` on the command
   line; `allowed_tools` in the case alone isn't a grant. Judge rubrics must
   say what isn't a failure (a preface "five questions, one at a time" was
@@ -153,7 +162,7 @@ minor (Gaps). `--tag toile sittings` exit 0: 14 cases 1.00, $7.67.
       finds a dated record with `status: closed`.
 
 ## Batch 3 — close calls, the Swatch, honest routing
-- [ ] 3.1 Close-call verdict (C17). Doc: NIST e-Handbook §7.2.4.1 (Wilson),
+- [x] 3.1 Close-call verdict (C17). Doc: NIST e-Handbook §7.2.4.1 (Wilson),
       §7.2.4.2 (sample size). Files: src/sevenflows/close_call.py,
       method/test/close-calls.md, tests/test_close_call.py, evals/toile-close-call/.
       Done: pytest shows 9/200, 10/200, 0/30 vs 5% → too close; 25/200 →
@@ -201,8 +210,8 @@ minor (Gaps). `--tag toile sittings` exit 0: 14 cases 1.00, $7.67.
   seeded, a plain agent does it too. The cases still guard the skill.
 - One intake-walk run wrote profile.md in its own shape ("What we make")
   rather than the template's; no grader checks the template keys.
-- C17 (3.1): the pass-line-lock case leaves the close-call verdict to
-  3.1 — today it only checks that 4.5% isn't taken as a pass.
+- C17 without code: the written-formula fallback (claude.ai with code
+  execution off) has no eval; 4.4's manual pass should try 9 of 200.
 - C13 rests on voice-no-flattery's 9-word regex over one prompt; put the
   same regex grader on the other k and toile cases (no extra cost).
 - k-tag cases weren't rerun after the review's toile.md edits (K's own

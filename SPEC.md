@@ -57,7 +57,7 @@ on Claude Code, claude.ai and Pi.
 - [x] C16. A Toile spans two sittings: day 1 stops after Time box and is
       saved open; on day 8, "the results are in" reopens it.
       - Edge: two open Toiles → K lists both and asks which one.
-- [ ] C17. A result too close to the pass line to tell apart from chance
+- [x] C17. A result too close to the pass line to tell apart from chance
       cannot close as Persevere or Pivot: 9 of 200 sign-ups against 10
       needed → K names the one-sign-up gap and proposes Experiment Again
       with a larger test.
