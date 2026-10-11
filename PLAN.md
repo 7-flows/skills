@@ -38,6 +38,9 @@ Files:
 Owner: Hybrid chosen (ADR); batch 2 approved. 2.0 done (C1 ticked):
 fresh install, headless run — no Read, no denials, ten fields in order.
 2.1 done (C9, C13 ticked; C12 waits for a saved record in 2.3).
+2.2 done (C10, C11, C15, C18, C20 ticked): `--tag toile` exit 0, six
+cases 1.00 with the plugin, mean Δ +0.83, $3.00. The Test skill now
+carries notes.md (it saves on its own); toile-no-read guards the Hybrid.
 - Learned: a plugin skill's Read of its own references/ is refused under
   `claude -p` (prompted interactively); `allowed-tools: Read` makes the
   Skill call itself need approval — dead end (ADR). Evals grant Read, so
@@ -49,11 +52,15 @@ fresh install, headless run — no Read, no denials, ten fields in order.
   met; C1 is the unticked one.
 - Gate hygiene: never pipe a gate through tail without pipefail — a red
   ruff hid behind exit 0 once (amended before push).
-- Spend so far on evals: ~$8.00.
+- Spend so far on evals: ~$14.50.
 - Evals that write notes need `--allow-tools Write Edit` on the command
   line; `allowed_tools` in the case alone isn't a grant. Judge rubrics must
   say what isn't a failure (a preface "five questions, one at a time" was
   once misread as five questions).
+- Eval cases: a case.yaml needs `schema_version: "1.1"` and `name`;
+  seeded workspaces run only with `--scaffold`; `--case` keeps only the
+  last value given (use a glob); `file_exists` can't see scaffolded files —
+  grade them with `target: { source: file, path: … }`.
 - Plugin version unchanged → `plugin update` keeps the old cache; a fresh
   check needs uninstall + install (bump the version at release).
 
@@ -114,7 +121,7 @@ fresh install, headless run — no Read, no denials, ten fields in order.
       intake-fresh (`file_exists: 7flows-notes/profile.md`), intake-skip,
       intake-french (French reply, English field names) pass with
       `claude plugin eval . --tag k`.
-- [ ] 2.2 The Toile at full cut (C10, C11, C15, C18, C20). Doc: method source
+- [x] 2.2 The Toile at full cut (C10, C11, C15, C18, C20). Doc: method source
       core-x.md §Flow 1 (history); plugin-evals (llm graders).
       Files: modify method/test/toile.md, skills/7flows-test/SKILL.md;
       create evals/toile-{vague,pass-line-lock,close-needs-decision,quick}/.
@@ -171,11 +178,10 @@ fresh install, headless run — no Read, no denials, ten fields in order.
   tick C12 there.
 - 2.3: no eval walks the intake's questions 2–5 one per turn (C9 shown by
   first-question pacing, all-at-once save, skip). Add a history_file case.
+- C17 (3.1): the pass-line-lock case leaves the close-call verdict to
+  3.1 — today it only checks that 4.5% isn't taken as a pass.
 - Owner review: method/flows.md's one-line "what it does" for the six
   unreleased flows was drafted from the ADR's gaps — not yet approved text.
-- 2.2: no eval withholds Read — add a toile case with `allowed_tools:
-  [Skill]` whose grader finds the ten fields, so the Hybrid can't regress
-  silently (evals grant Read; only a manual `claude -p` showed it in 2.0).
 - 4.2: `claude plugin validate` advises a README install line
   (`/plugin install 7flows --marketplace 7-flows/skills`).
 - C14 not ticked: the method text and its field-order test are in (1.1),

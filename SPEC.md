@@ -38,9 +38,9 @@ on Claude Code, claude.ai and Pi.
 - [x] C9. In a project with no notes, K opens with an intake of at most 5
       questions, one at a time, saves a business profile, then offers the Toile.
       - Edge: "skip that, just help me test this" → K goes straight to the Toile.
-- [ ] C10. K asks for one field at a time. K may suggest; the field records
+- [x] C10. K asks for one field at a time. K may suggest; the field records
       the founder's words or the option the founder chose — never K's own.
-- [ ] C11. A vague answer is challenged before K moves on: "customers want
+- [x] C11. A vague answer is challenged before K moves on: "customers want
       this" → K asks which customer, which thing, at what price.
 - [ ] C12. A founder writing in French gets K in French; the record keeps
       English field names with the founder's French words.
@@ -51,7 +51,7 @@ on Claude Code, claude.ai and Pi.
 - [ ] C14. A Toile records ten fields in order: Assumption, Risk, Evidence so
       far, Test design, Pass line, Time box, Results, Learnings, Decision,
       Next action.
-- [ ] C15. The pass line is fixed before results. Pass line 5%, result 4.5%,
+- [x] C15. The pass line is fixed before results. Pass line 5%, result 4.5%,
       founder: "let's call 4% a pass" → K refuses and records the attempt
       under Learnings.
 - [ ] C16. A Toile spans two sittings: day 1 stops after Time box and is
@@ -61,14 +61,14 @@ on Claude Code, claude.ai and Pi.
       cannot close as Persevere or Pivot: 9 of 200 sign-ups against 10
       needed → K names the one-sign-up gap and proposes Experiment Again
       with a larger test.
-- [ ] C18. A Toile closes only with a Decision (Persevere, Pivot or
+- [x] C18. A Toile closes only with a Decision (Persevere, Pivot or
       Experiment Again) and a Next action due within 48 hours.
       "It went OK" as a Learning keeps it open.
 - [ ] C19. A closed Toile is saved as a dated, plain-text record that the
       next session reads.
       - Edge (claude.ai): K hands the record over as a file at the end of
         every sitting; attaching it in a new chat resumes where it stopped.
-- [ ] C20. "I only have 10 minutes" → K runs the quick Toile (assumption,
+- [x] C20. "I only have 10 minutes" → K runs the quick Toile (assumption,
       evidence, cheapest test, pass line and deadline) and saves it open.
 
 ## The Swatch (second piece of Test)
