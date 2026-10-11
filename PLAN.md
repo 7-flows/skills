@@ -34,7 +34,8 @@ Files:
 - .github/workflows/ci.yml — free gates on push
 
 ## State
-2026-10-11 — batch 1 reviewed and closed (1.1–1.3; C5, C7 ticked).
+2026-10-11 — batch 2 reviewed and closed (2.0–2.3). Batch 1 closed
+(1.1–1.3; C5, C7 ticked).
 Owner: Hybrid chosen (ADR); batch 2 approved. 2.0 done (C1 ticked):
 fresh install, headless run — no Read, no denials, ten fields in order.
 2.1 done (C9, C13 ticked; C12 waits for a saved record in 2.3).
@@ -156,7 +157,9 @@ minor (Gaps). `--tag toile sittings` exit 0: 14 cases 1.00, $7.67.
       §7.2.4.2 (sample size). Files: src/sevenflows/close_call.py,
       method/test/close-calls.md, tests/test_close_call.py, evals/toile-close-call/.
       Done: pytest shows 9/200, 10/200, 0/30 vs 5% → too close; 25/200 →
-      pass; 2/200 → miss; eval toile-close-call passes.
+      pass; 2/200 → miss; eval toile-close-call (seeded from
+      evals/_fixtures, 9 of 200) passes with `--scaffold --allow-tools
+      Write Edit`; `--tag toile` stays exit 0.
 - [ ] 3.2 The Swatch (C21; seeds C6 row 2). Doc: core-x.md §Flow 2
       (history); plugin-evals. Files: method/test/swatch.md,
       skills/7flows-test/SKILL.md, evals/swatch-{fires,anecdote,opens-toile}/.
@@ -165,7 +168,9 @@ minor (Gaps). `--tag toile sittings` exit 0: 14 cases 1.00, $7.67.
       (descriptions and triggering). Files: skills/7flows/SKILL.md,
       method/flows.md, evals/route-{idea,k,sell-unreleased}/.
       Done: `claude plugin eval . --tag route` exit 0, and every C6 row's
-      case (seeded in 1.3, 3.2) passes in the same run.
+      case (seeded in 1.3, 3.2) passes in the same run. Also: put
+      voice-no-flattery's banned-word regex on every k and toile case
+      (Gap) and rerun `--tag k` exit 0.
 
 ## Batch 4 — distribution and release
 - [ ] 4.1 Licences and ZIPs (C23). Doc: claude.com/docs/skills/how-to
@@ -182,10 +187,11 @@ minor (Gaps). `--tag toile sittings` exit 0: 14 cases 1.00, $7.67.
       .github/workflows/ci.yml, src/sevenflows/release.py.
       Done: release refuses to tag on a failing eval; on green it tags
       vX.Y.Z and attaches one ZIP per skill.
-- [ ] 4.4 claude.ai acceptance (C2, C3). Doc: support.claude.com articles
+- [ ] 4.4 claude.ai acceptance (C2, C3, C19). Doc: support.claude.com articles
       13837440 (plugins) and 12512198 (custom skills). Done: transcripts of a paid-plan
       marketplace install and a ZIP upload, each opening a Toile, saved
-      under evidence/.
+      under evidence/; a third where K hands the record over as a file and
+      a new chat with it attached resumes at the right field → tick C19.
 
 ## Gaps
 - 4.4: C19's claude.ai edge — the record handed over as a file, and an
