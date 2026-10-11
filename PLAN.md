@@ -39,8 +39,7 @@ Owner: Hybrid chosen (ADR); batch 2 approved, starting at 2.0.
 - Learned: a plugin skill's Read of its own references/ is refused under
   `claude -p` (prompted interactively); `allowed-tools: Read` makes the
   Skill call itself need approval — dead end (ADR). Evals grant Read, so
-  they can't see this. Owner's call pending: inline method text into
-  SKILL.md via build, or keep references/ — owner chose Hybrid.
+  they can't see this. Owner chose Hybrid (ADR) — task 2.0.
 - Review: fixed CLI exit-code tests, lint YAML/missing-file findings, build
   basename clash + orphan sweep, UTF-8, Toile example vs C17. Not
   reproduced: description over-firing on a code belief (3/3 silent; kept
