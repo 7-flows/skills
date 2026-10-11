@@ -35,7 +35,8 @@ Files:
 
 ## State
 2026-10-11 — batch 1 reviewed and closed (1.1–1.3; C5, C7 ticked).
-Owner: Hybrid chosen (ADR); batch 2 approved, starting at 2.0.
+Owner: Hybrid chosen (ADR); batch 2 approved. 2.0 done (C1 ticked):
+fresh install, headless run — no Read, no denials, ten fields in order.
 - Learned: a plugin skill's Read of its own references/ is refused under
   `claude -p` (prompted interactively); `allowed-tools: Read` makes the
   Skill call itself need approval — dead end (ADR). Evals grant Read, so
@@ -47,7 +48,9 @@ Owner: Hybrid chosen (ADR); batch 2 approved, starting at 2.0.
   met; C1 is the unticked one.
 - Gate hygiene: never pipe a gate through tail without pipefail — a red
   ruff hid behind exit 0 once (amended before push).
-- Spend so far on evals: ~$1.80.
+- Spend so far on evals: ~$1.93.
+- Plugin version unchanged → `plugin update` keeps the old cache; a fresh
+  check needs uninstall + install (bump the version at release).
 
 ## Batch 1 — walking skeleton: the Toile fires
 - [x] 1.1 Toile source, build and lint (C14). Doc: agentskills.io/specification
@@ -81,7 +84,7 @@ Owner: Hybrid chosen (ADR); batch 2 approved, starting at 2.0.
       Done: `claude plugin eval . --runs 3 --trust-plugin` exit 0.
 
 ## Batch 2 — K and the full Toile
-- [ ] 2.0 Hybrid build: essentials inline (C1). Doc: ADR 2026-10-11 Hybrid;
+- [x] 2.0 Hybrid build: essentials inline (C1). Doc: ADR 2026-10-11 Hybrid;
       code.claude.com/docs/en/skills (SKILL.md content).
       Files: modify src/sevenflows/build.py, method/test/toile.md (core
       markers), skills/7flows-test/SKILL.md (generated region),
@@ -162,10 +165,9 @@ Owner: Hybrid chosen (ADR); batch 2 approved, starting at 2.0.
 - 2.1: lint should enforce SKILL.md < 500 lines (AGENTS.md rule; review M7).
 - 2.1: K's description is broad — rerun `--tag silent` in 2.1's Done line
   (review M6), not only at release.
-- C1 not ticked: installed from GitHub, the Toile opens at Assumption, but
-  the skill can't read `references/toile.md` without a permission grant
-  (ADR 2026-10-11 "Open: a plugin skill can't read…") — "no other setup"
-  isn't yet true. Decide at the batch 1 re-plan.
+- 2.2: no eval withholds Read — add a toile case with `allowed_tools:
+  [Skill]` whose grader finds the ten fields, so the Hybrid can't regress
+  silently (evals grant Read; only a manual `claude -p` showed it in 2.0).
 - 4.2: `claude plugin validate` advises a README install line
   (`/plugin install 7flows --marketplace 7-flows/skills`).
 - C14 not ticked: the method text and its field-order test are in (1.1),

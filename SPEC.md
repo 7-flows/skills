@@ -8,7 +8,7 @@ Story: A founder installs 7 Flows and runs the Test flow with K, end to end,
 on Claude Code, claude.ai and Pi.
 
 ## Install
-- [ ] C1. A Claude Code user who adds the 7-flows/skills marketplace and
+- [x] C1. A Claude Code user who adds the 7-flows/skills marketplace and
       installs the suite can start a Toile in a new session, with no other setup.
 - [ ] C2. A claude.ai user on a paid plan who adds the 7-flows/skills GitHub
       repository as a marketplace and turns the suite on meets K in a new chat.
