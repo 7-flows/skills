@@ -100,7 +100,7 @@ on Claude Code, claude.ai and Pi.
 ## Release
 - [ ] C22. A release ships only when every eval case passes over 3 runs and
       the suite scores higher with the plugin than without it.
-- [ ] C23. Every skill states Apache-2.0, the method text states CC BY-SA
+- [x] C23. Every skill states Apache-2.0, the method text states CC BY-SA
       4.0, and both licence texts ship in the repo and in every ZIP.
 - [ ] C24. Each release has a SemVer number, a changelog entry, and one
       ZIP per skill attached.

@@ -50,7 +50,9 @@ SMALL; C26 ticked while no trade case closed a Toile or a Swatch — my
 ticking error, unticked until proven; the no-web-tools rule wasn't in the
 method; the size grader didn't require the band), 7 minor — all fixed.
 `--tag toile swatch trade` then the two new closes: 24 cases 1.00 with
-the plugin. A dated Next action ("by Friday") broke our own 48-hour rule
+the plugin. 4.1 done (C23): both licence texts in every skill folder and
+ZIP; `sevenflows package` writes dist/<skill>.zip, each unzips to a valid
+skill. A dated Next action ("by Friday") broke our own 48-hour rule
 on a Monday — cases now use "today"/"tomorrow". Batch 2 reviewed and closed (2.0–2.3). Batch 1 closed
 (1.1–1.3; C5, C7 ticked).
 Owner: Hybrid chosen (ADR); batch 2 approved. 2.0 done (C1 ticked):
@@ -255,7 +257,7 @@ minor (Gaps). `--tag toile sittings` exit 0: 14 cases 1.00, $7.67.
       suite stays exit 0.
 
 ## Batch 4 — distribution and release
-- [ ] 4.1 Licences and ZIPs (C23). Doc: claude.com/docs/skills/how-to
+- [x] 4.1 Licences and ZIPs (C23). Doc: claude.com/docs/skills/how-to
       (ZIP layout); spdx.org/licenses. Files: LICENSE, LICENSE-METHOD,
       src/sevenflows/package.py, tests/test_package.py.
       Done: each dist/<skill>.zip has `<skill>/SKILL.md` at its top level
@@ -295,6 +297,9 @@ minor (Gaps). `--tag toile sittings` exit 0: 14 cases 1.00, $7.67.
 - 4.2: `claude plugin validate` advises a README install line
   (`/plugin install 7flows --marketplace 7-flows/skills`).
 - claude.ai acceptance (C2, C3) has no automated gate — manual evidence only.
+- 4.4: claude.ai's upload page names only name and description; the
+  `license` line (Apache-2.0 and CC BY-SA 4.0) is the spec's, unproven on
+  claude.ai until the ZIP upload.
 - Unverified until 4.2/4.4: private-repo marketplaces on claude.ai; `pi
   install` from a git repo without package.json; claude.ai frontmatter
   strictness beyond the six fields.
