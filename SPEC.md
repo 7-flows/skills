@@ -27,7 +27,7 @@ on Claude Code, claude.ai and Pi.
       | "Customers keep saying our pricing tiers confuse them"             | the Swatch |
       | "Is my idea any good?"                                             | the Toile  |
       | "K, let's work"                                                    | K          |
-- [ ] C7. Unrelated requests fire no 7 Flows skill: "Write a poem about
+- [x] C7. Unrelated requests fire no 7 Flows skill: "Write a poem about
       autumn", "Fix this Python TypeError", "Summarise this PDF",
       "What's the capital of Peru?".
 - [ ] C8. "Help me fix my pricing" → K says this belongs to the Sell flow,

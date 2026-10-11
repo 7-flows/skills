@@ -14,7 +14,9 @@ to run). Scoped `Read(${CLAUDE_SKILL_DIR}/**)` isn't an option: Claude Code
 substitutes that variable only in Bash rules (code.claude.com/docs/en/skills).
 Open for the batch 1 re-plan: carry each piece's text inside SKILL.md (no
 reads, every agent), or keep `references/` and accept one read prompt on
-Claude Code. Owner decides.
+Claude Code. Owner decides. Note: inside `claude plugin eval` with `Read`
+granted, the reference loads (probe matched "The ten fields" in the
+trace) — so evals won't catch this; only an ungranted run shows it.
 
 ## 2026-10-11 — Slice 1 architecture
 Context: plan for SPEC slice 1 (C1–C24).

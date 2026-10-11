@@ -34,7 +34,8 @@ Files:
 - .github/workflows/ci.yml — free gates on push
 
 ## State
-2026-10-11 — plan approved. Next: batch 1 (C5, C7, C14; C1 via 1.2).
+2026-10-11 — batch 1 tasks verified (1.1–1.3). Next: batch 1 review,
+then re-plan with the owner's call on reference reads (ADR, open).
 
 ## Batch 1 — walking skeleton: the Toile fires
 - [x] 1.1 Toile source, build and lint (C14). Doc: agentskills.io/specification
@@ -60,7 +61,7 @@ Files:
       `claude plugin marketplace add 7-flows/skills` and `claude plugin
       install 7flows@7flows`, `claude -p "I think freelance designers would pay $49
       a month for invoicing"` opens a Toile at the Assumption field.
-- [ ] 1.3 First evals (C7; seeds C6 row 1). Doc: code.claude.com/docs/en/plugin-evals.
+- [x] 1.3 First evals (C7; seeds C6 row 1). Doc: code.claude.com/docs/en/plugin-evals.
       Files: create evals/toile-from-belief/{prompt.md,graders/fired.md},
       evals/silent-{poem,typeerror,pdf,peru}/{prompt.md,graders/silent.md}.
       Interfaces: grader `tool_used: Skill` matching `7flows-test`; silent
