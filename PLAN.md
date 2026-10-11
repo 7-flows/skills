@@ -35,11 +35,12 @@ Files:
 
 ## State
 2026-10-11 — batch 1 reviewed and closed (1.1–1.3; C5, C7 ticked).
+Owner: Hybrid chosen (ADR); batch 2 approved, starting at 2.0.
 - Learned: a plugin skill's Read of its own references/ is refused under
   `claude -p` (prompted interactively); `allowed-tools: Read` makes the
   Skill call itself need approval — dead end (ADR). Evals grant Read, so
   they can't see this. Owner's call pending: inline method text into
-  SKILL.md via build, or keep references/ and accept the prompt.
+  SKILL.md via build, or keep references/ — owner chose Hybrid.
 - Review: fixed CLI exit-code tests, lint YAML/missing-file findings, build
   basename clash + orphan sweep, UTF-8, Toile example vs C17. Not
   reproduced: description over-firing on a code belief (3/3 silent; kept
@@ -81,6 +82,18 @@ Files:
       Done: `claude plugin eval . --runs 3 --trust-plugin` exit 0.
 
 ## Batch 2 — K and the full Toile
+- [ ] 2.0 Hybrid build: essentials inline (C1). Doc: ADR 2026-10-11 Hybrid;
+      code.claude.com/docs/en/skills (SKILL.md content).
+      Files: modify src/sevenflows/build.py, method/test/toile.md (core
+      markers), skills/7flows-test/SKILL.md (generated region),
+      tests/test_build.py.
+      Interfaces: produces `<!-- core -->…<!-- /core -->` in method files and
+      `<!-- built from method/… — edit there -->` regions in SKILL.md; 2.1+
+      consume both.
+      Done: `build --check` fails on a hand-edited inline region; installed
+      fresh from GitHub, `claude -p "I think freelance designers would pay
+      $49 a month for invoicing"` names all ten fields' order without any
+      Read being refused (stream-json shows no permission_denials) → tick C1.
 - [ ] 2.1 K: intake, voice, language (C9, C12, C13). Doc:
       code.claude.com/docs/en/skills (bundled files); pi.dev/docs/latest/skills.
       Files: create method/{k,voice,notes,flows}.md, skills/7flows/SKILL.md;

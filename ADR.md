@@ -2,7 +2,19 @@
 
 Read before re-litigating anything. Newest first.
 
-## 2026-10-11 — Open: a plugin skill can't read its own references headless
+## 2026-10-11 — Hybrid: essentials inline, long text in references/
+Context: the open entry below; owner chose Hybrid at the batch 1 boundary.
+Decision: each method file marks its essentials (field names, order,
+rules) between `<!-- core -->` and `<!-- /core -->`. The build writes those
+regions into the skill's SKILL.md between generated markers, under the
+hand-written head, and still copies the whole file to references/. A skill
+runs from SKILL.md alone; references/ is depth, read when allowed. `method/`
+stays the single source; `build --check` covers both outputs.
+Rejected: inline everything (SKILL.md swells as flows land; loses
+progressive disclosure); references only (headless runs work blind; C1's
+"no other setup" fails on Claude Code).
+
+## 2026-10-11 — Resolved (Hybrid, above): a plugin skill can't read its own references headless
 Context: task 1.2 done-line. Installed from GitHub, `claude -p` fired
 `7flows:7flows-test` and opened the Toile at Assumption, but the Read of
 `references/toile.md` in the plugin cache was refused ("you haven't granted
