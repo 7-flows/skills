@@ -47,8 +47,8 @@ carries notes.md (it saves on its own); toile-no-read guards the Hybrid.
 The Toile now saves on the first field given (toile-quick regressed
 when saving waited for a confirmed Assumption; fixed in one attempt).
 Batch 2 reviewed: one critical (a raw eval transcript with the home path
-was committed — removed in 7a95ab8, now ignored; still in git history,
-owner's call), four important (C16 day 1 and C18's 48 hours unshown, C14
+was committed — removed in 8066245, now ignored; purged from history
+by owner's call, force-pushed 2026-10-11), four important (C16 day 1 and C18's 48 hours unshown, C14
 graded the fixture, lint missed -ise forms), six minor. All fixed but one
 minor (Gaps). `--tag toile sittings` exit 0: 14 cases 1.00, $7.67.
 - Learned: a plugin skill's Read of its own references/ is refused under
