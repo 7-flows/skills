@@ -24,6 +24,6 @@ Salon owners can't tell Pro from Business.
 ## So what
 Because of this, we should stop losing owners at the tier choice.
 
-## Action
-
 ## Assumption touched
+
+## Action

@@ -30,6 +30,6 @@ def test_the_swatch_has_the_seven_fields_in_order() -> None:
         "Pattern",
         "Strength",
         "So what",
-        "Action",
         "Assumption touched",
+        "Action",
     ]
