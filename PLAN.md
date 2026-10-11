@@ -4,8 +4,8 @@ Adapts at every batch boundary. The spec never moves.
 Goal: slice 1 — a founder installs 7 Flows and runs the Test flow with K on
 Claude Code, claude.ai and Pi (C1–C24).
 Architecture: the method is written once under `method/` (CC BY-SA); a build
-step copies each skill's share into `skills/<name>/references/` and
-`scripts/`, so every skill folder stands alone (claude.ai copies only the
+step copies each skill's share into `skills/<name>/references/` (and
+inlines its core into SKILL.md), so every skill folder stands alone (claude.ai copies only the
 skill's own folder). The repo is both the marketplace and the one plugin,
 `7flows`. Evals run locally at release; CI runs the free gates.
 Constraints: skill frontmatter = the six spec fields, description ≤ 200
@@ -22,10 +22,12 @@ Files:
 - method/test/close-calls.md — reading a result against the pass line
 - skills/7flows/SKILL.md — K: intake, routing, notes (hand-written)
 - skills/7flows-test/SKILL.md — Test flow: pick and run a piece (hand-written)
-- skills/*/references/, skills/*/scripts/, skills/*/LICENSE* — generated, committed
+- skills/*/references/, skills/*/LICENSE* — generated, committed
+- skills/7flows-test/scripts/close_call.py — Wilson 90% verdict and test
+  size (stdlib, PEP 723); written here, not generated — it ships in the
+  skill folder
 - src/sevenflows/build.py — method/ → skills/ copy; `--check` fails on drift
 - src/sevenflows/lint.py — frontmatter rules and banned words
-- src/sevenflows/close_call.py — Wilson 90% verdict (stdlib, PEP 723)
 - src/sevenflows/package.py — one ZIP per skill into dist/
 - src/sevenflows/cli.py — `sevenflows build|lint|package` entry point
 - .claude-plugin/plugin.json, .claude-plugin/marketplace.json
@@ -34,7 +36,7 @@ Files:
 - .github/workflows/ci.yml — free gates on push
 
 ## State
-2026-10-11 — batch 3 tasks done (3.1–3.3), awaiting review. Batch 2 reviewed and closed (2.0–2.3). Batch 1 closed
+2026-10-11 — batch 3 reviewed and closed (3.1–3.3); batch 4 next. Batch 2 reviewed and closed (2.0–2.3). Batch 1 closed
 (1.1–1.3; C5, C7 ticked).
 Owner: Hybrid chosen (ADR); batch 2 approved. 2.0 done (C1 ticked):
 fresh install, headless run — no Read, no denials, ten fields in order.
@@ -86,7 +88,18 @@ minor (Gaps). `--tag toile sittings` exit 0: 14 cases 1.00, $7.67.
   now says sharpening the Assumption isn't one. Dropped cases: two
   descriptions opened on quotes again; tests/test_evals.py now parses
   every prompt's frontmatter. Gates run before an eval, never beside it.
-- Spend so far on evals: ~$81.
+- Batch 3 reviewed: no critical, five important (no-code fallback pointed
+  at an unreadable reference; a Swatch could close with field 7 empty;
+  the banned-word regex failed French "transformer"; C6/C8 proven only
+  with a profile seeded; the pass-line sizing gap — owner delta, below),
+  seven minor. All fixed but two owner calls (Gaps). Swatch fields 6 and
+  7 swapped (Assumption touched before Action). Full suite after the
+  fixes: 33 cases, 32 at 1.00 first time; intake-skip's judge needed its
+  rubric to name the "who is it for?" collision (two attempts) → 1.00.
+  Mean Δ +0.28, $24.16.
+- Learned: a rubric that lists FAIL topics must say which look-alikes
+  pass; abstract method wording loses to a quoted example sentence.
+- Spend so far on evals: ~$114.
 - Evals that write notes need `--allow-tools Write Edit` on the command
   line; `allowed_tools` in the case alone isn't a grant. Judge rubrics must
   say what isn't a failure (a preface "five questions, one at a time" was
@@ -178,7 +191,7 @@ minor (Gaps). `--tag toile sittings` exit 0: 14 cases 1.00, $7.67.
 
 ## Batch 3 — close calls, the Swatch, honest routing
 - [x] 3.1 Close-call verdict (C17). Doc: NIST e-Handbook §7.2.4.1 (Wilson),
-      §7.2.4.2 (sample size). Files: src/sevenflows/close_call.py,
+      §7.2.4.2 (sample size). Files: skills/7flows-test/scripts/close_call.py,
       method/test/close-calls.md, tests/test_close_call.py, evals/toile-close-call/.
       Done: pytest shows 9/200, 10/200, 0/30 vs 5% → too close; 25/200 →
       pass; 2/200 → miss; eval toile-close-call (seeded from
@@ -225,16 +238,23 @@ minor (Gaps). `--tag toile sittings` exit 0: 14 cases 1.00, $7.67.
   seeded, a plain agent does it too. The cases still guard the skill.
 - One intake-walk run wrote profile.md in its own shape ("What we make")
   rather than the template's; no grader checks the template keys.
-- C17 without code: the written-formula fallback (claude.ai with code
-  execution off) has no eval; 4.4's manual pass should try 9 of 200.
+- C17 without code (Bash declined, no python): the written range is now
+  in the core, but no eval runs without Bash. 4.4's manual pass can try
+  9 of 200 with code refused.
+- Owner delta (review #1): at 200 visitors and a 5% line, every result
+  from 5 to 15 is TOO CLOSE — the Pass line field doesn't size the test.
+  Proposal: run close_call at Pass line and tell the founder what the
+  planned size can decide ("with 200 visitors: 16+ passes, 4 or fewer
+  misses"), or size it there. Needs a new criterion — specify.
+- Owner note (review #7): after TOO CLOSE the only exits are a larger or
+  sharper test; a founder who wants to set the belief aside has no
+  Decision for it. C17 forbids Pivot there; a "set aside" may be wanted.
 - C21's other close — "changes a recorded assumption" (the profile or an
   open Toile rewritten) — has no eval; only the opens-a-Toile close does.
-  No grader checks the Swatch's seven headings in order (C14's check
-  covers the Toile only).
-- Δ 0 on swatch-anecdote: told "let's cut a Swatch" with one signal, a
-  plain agent also calls it an anecdote.
-- The no-jargon grader sits on 25 cases; toile, sittings and swatch
-  haven't run with it yet — the 4.3 release run covers them.
+  swatch-opens-toile checks fields 6 and 7 are cut, not all seven
+  headings in order.
+- Δ 0 on swatch-anecdote, swatch-all-seven, intake-skip: a plain agent
+  does it too from the prompt alone. The cases still guard the skill.
 - Owner review: method/flows.md's one-line "what it does" for the six
   unreleased flows was drafted from the ADR's gaps — not yet approved text.
   3.3 moved price from Earn to Sell to match C8.
