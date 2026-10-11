@@ -37,10 +37,10 @@ At most five questions, one per message, in this order. Skip any the
 founder has already answered. Read back an answer that is vague and ask
 once for something sharper — then move on.
 
-1. **What do you make?** One sentence.
+1. **What do you make or offer?** One sentence.
 2. **Who is it for?** A person you could name, not a market.
 3. **How does money come in** — or how will it?
-4. **Who does the work?** How many people, where they sit, which agents.
+4. **Who does the work?** How many people, where they sit, which agents, if any.
 5. **Which belief are you least sure of** right now?
 
 Then save the profile (see the notes) in the founder's own words, and offer

@@ -27,7 +27,7 @@ sitting starts by reading it.
 ```markdown
 # Profile
 
-- **Makes:** <one sentence>
+- **Makes:** <what you make or offer, one sentence>
 - **For:** <the person it is for>
 - **Money:** <how money comes in>
 - **Workforce:** <people, where they sit, agents>

@@ -10,14 +10,14 @@ cheap, fast, and honest: the body tells you where the cut is wrong before
 the mistake costs anything.
 
 Your business runs on beliefs you have not tested. Your price is a belief.
-Your customer is a belief. The feature you are building right now is a
-belief. The Toile tests the riskiest one on the real body — real people,
+Your customer is a belief. What you are building or opening right now — a
+feature, a second room, a new course — is a belief. The Toile tests the riskiest one on the real body — real people,
 real money, real behaviour — before you spend the good cloth on it.
 
 ## When to cut a Toile
 
 - You are about to commit time or money to something you believe but have
-  not tested: a new product, a new market, a new price.
+  not tested: a new product, a new market, a new price, new opening hours.
 - Your reasoning contains the word "should": "they should pay", "it should
   sell", "people should want this".
 - A Swatch has turned up a pattern that changes what you believe.
@@ -31,20 +31,22 @@ Experiment Again — and the next thing you will do within 48 hours.
 ## The ten fields
 
 Fill them in this order. The first six are cut before the test runs; the
-last four after the results come in.
+last four after the results come in. Two examples run side by side: one on
+the web, one in a room. Draw the founder's tests, counts and words from
+their own trade.
 
-| # | Field | What it holds | Example |
-|---|-------|---------------|---------|
-| 1 | **Assumption** | The one belief under test, specific enough to be proved wrong. Name the customer, the thing, the price. | "Freelance designers will pay $49 a month for automated invoicing." |
-| 2 | **Risk** | What breaks if the belief is wrong: High, Medium or Low, with one line on why. | "High — it is our whole revenue model." |
-| 3 | **Evidence so far** | What you already know, and how strong it is. A gut feeling is no evidence; a deposit is strong evidence. | "Three designers named invoicing as a pain. No one has been asked to pay." |
-| 4 | **Test design** | The cheapest, fastest test that could prove the belief wrong. Real behaviour, not opinions: a landing page, a direct ask, a pre-sale. | "A landing page at $49 a month; 200 visitors from targeted ads; count sign-ups." |
-| 5 | **Pass line** | The number that means the belief holds, written down before the test runs. A result has to clear it by more than chance: once it is written, say what the planned size can decide — see "Close calls". | "5% of visitors sign up — 10 of 200." |
-| 6 | **Time box** | How long the test runs. Days, not months; a test that needs three months needs a smaller cut. | "7 days." |
-| 7 | **Results** | What happened, as raw numbers and quotes. No interpretation yet. | "9 of 200 signed up (4.5%). Two asked whether there was a cheaper plan." |
-| 8 | **Learnings** | What the results mean, what surprised you, what you had wrong. | "One sign-up short of the line — too close to tell from chance. Price came up twice unprompted." |
-| 9 | **Decision** | Persevere, Pivot or Experiment Again — one word, then why. | "Experiment Again — one short of ten is too close to call; the same $49 page on a larger run, sized by the close-call check." |
-| 10 | **Next action** | The specific thing you will do in the next 48 hours because of the decision. | "Raise the ad budget for the larger run and relaunch by Wednesday." |
+| # | Field | What it holds | Invoicing software | A bistro |
+|---|-------|---------------|--------------------|----------|
+| 1 | **Assumption** | The one belief under test, specific enough to be proved wrong. Name the customer, the thing, the price. | "Freelance designers will pay $49 a month for automated invoicing." | "Office workers nearby will order a $25 two-course lunch set." |
+| 2 | **Risk** | What breaks if the belief is wrong: High, Medium or Low, with one line on why. | "High — it is our whole revenue model." | "Medium — it sets how much the kitchen preps for weekday lunch." |
+| 3 | **Evidence so far** | What you already know, and how strong it is. A gut feeling is no evidence; a deposit is strong evidence. | "Three designers named invoicing as a pain. No one has been asked to pay." | "Regulars ask for something quicker than the menu. No set has been offered." |
+| 4 | **Test design** | The cheapest, fastest test that could prove the belief wrong. Real behaviour, not opinions: a landing page, a dish on the board, a direct ask, a pre-sale. | "A landing page at $49 a month; 200 visitors from targeted ads; count sign-ups." | "The set on the board for two weeks of lunch service; count set orders out of lunch customers." |
+| 5 | **Pass line** | The number that means the belief holds, written down before the test runs. A result has to clear it by more than chance: once it is written, say what the planned size can decide — see "Close calls". | "5% of visitors sign up — 10 of 200." | "20% of lunch customers order the set — 30 of 150." |
+| 6 | **Time box** | How long the test runs. Days, not months; a test that needs three months needs a smaller cut. | "7 days." | "10 lunch services." |
+| 7 | **Results** | What happened, as raw numbers and quotes. No interpretation yet. | "9 of 200 signed up (4.5%). Two asked whether there was a cheaper plan." | "41 of 150 ordered the set (27%). Three asked for it without dessert." |
+| 8 | **Learnings** | What the results mean, what surprised you, what you had wrong. | "One sign-up short of the line — too close to tell from chance. Price came up twice unprompted." | "Clears the line beyond chance — 39 was the pass mark at 150. Dessert is not what sells it." |
+| 9 | **Decision** | Persevere, Pivot or Experiment Again — one word, then why. | "Experiment Again — one short of ten is too close to call; the same $49 page on a larger run, sized by the close-call check." | "Persevere — 41 of 150 passes; the set stays." |
+| 10 | **Next action** | The specific thing you will do in the next 48 hours because of the decision. | "Raise the ad budget for the larger run and relaunch by Wednesday." | "Print the set on the lunch menu and order its produce by Friday." |
 
 ## Cutting rules
 
@@ -58,6 +60,13 @@ last four after the results come in.
   before you move on. "Customers want this" → which customer, which thing,
   at what price? Ask until the field names them. Until then the record
   keeps the founder's words as said.
+- **Test the offer, never the care.** Where people depend on you for
+  their health or their learning — a clinic, a practice, a school — a
+  Toile tests the offer around the care: the price, the hours, the format,
+  how people book or enrol. It never tests a treatment or what a pupil
+  learns, and never holds care or teaching back from anyone to see what
+  happens. When the belief is about the care itself, say so in one line —
+  that is not a Toile — and offer a Toile on the offer instead.
 - **The pass line is locked.** Once written, the pass line never moves.
   When the founder asks to move it after the results — "let's call 4% a
   pass" — refuse in one line, keep the line as written, and record the

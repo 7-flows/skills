@@ -11,7 +11,8 @@ coin toss dressed as evidence.
 
 The close-call script lives in the skill's folder (`python` where there
 is no `python3`). It works on any count against a pass line — sign-ups
-out of visitors, buyers out of people asked.
+out of visitors, set orders out of lunch customers, enrolments out of
+families at an open day.
 
 **Size it when the line is set.** As soon as the founder gives the Pass
 line, before the test runs, tell them what their planned size can
@@ -25,7 +26,8 @@ python3 scripts/close_call.py --plan 200 5%
 
 Say both edges in the founder's own units: "With 200 visitors, 16 or
 more sign-ups passes and 4 or fewer misses; 5 to 15 is too close to
-call." TOO SMALL means no result at that size can pass: say the test is
+call." For a bistro: "With 150 lunch customers, 39 or more set orders
+passes and 21 or fewer misses." TOO SMALL means no result at that size can pass: say the test is
 too small before it runs and ask for a larger one. The founder decides;
 the Pass line stays in their words.
 
@@ -46,7 +48,9 @@ sits in.
   gap in plain numbers ("one sign-up short of ten"), say it is too close
   to call, and propose Experiment Again with a larger test, sized by the
   script: "Experiment Again — the same page, run to about 15,800
-  visitors." That proposal comes first and stands. If the size looks out
+  visitors." In a room it reads the same: the same set on the board, run
+to as many lunch customers as the script names. That proposal comes
+first and stands. If the size looks out
   of reach, say so after it and offer a sharper test as a second option;
   the founder chooses between them — you never drop the larger test.
 
