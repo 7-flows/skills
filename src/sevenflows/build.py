@@ -17,7 +17,13 @@ MANIFEST: dict[str, list[str]] = {
     "7flows": ["k.md", "voice.md", "notes.md", "flows.md"],
     # The Test skill must stand alone (a claude.ai user may upload only it),
     # so it carries K's voice and the notes layout it saves into.
-    "7flows-test": ["test/toile.md", "test/close-calls.md", "voice.md", "notes.md"],
+    "7flows-test": [
+        "test/toile.md",
+        "test/close-calls.md",
+        "test/swatch.md",
+        "voice.md",
+        "notes.md",
+    ],
 }
 
 Manifest = Mapping[str, Sequence[str]]

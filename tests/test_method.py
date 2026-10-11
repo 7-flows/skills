@@ -21,3 +21,15 @@ def test_the_toile_has_the_ten_fields_in_order() -> None:
         "Decision",
         "Next action",
     ]
+
+
+def test_the_swatch_has_the_seven_fields_in_order() -> None:
+    assert field_names(METHOD / "test" / "swatch.md") == [
+        "Source",
+        "Signals",
+        "Pattern",
+        "Strength",
+        "So what",
+        "Action",
+        "Assumption touched",
+    ]
