@@ -72,7 +72,7 @@ on Claude Code, claude.ai and Pi.
       evidence, cheapest test, pass line and deadline) and saves it open.
 
 ## The Swatch (second piece of Test)
-- [ ] C21. The Swatch records seven fields and is done only when it opens a
+- [x] C21. The Swatch records seven fields and is done only when it opens a
       new Toile or changes a recorded assumption.
       - Edge: fewer than 3 signals → K calls it an anecdote and asks for
         more before naming a pattern.

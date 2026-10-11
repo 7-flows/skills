@@ -34,7 +34,7 @@ Files:
 - .github/workflows/ci.yml — free gates on push
 
 ## State
-2026-10-11 — batch 3 in flight: 3.1 done. Batch 2 reviewed and closed (2.0–2.3). Batch 1 closed
+2026-10-11 — batch 3 in flight: 3.1, 3.2 done. Batch 2 reviewed and closed (2.0–2.3). Batch 1 closed
 (1.1–1.3; C5, C7 ticked).
 Owner: Hybrid chosen (ADR); batch 2 approved. 2.0 done (C1 ticked):
 fresh install, headless run — no Read, no denials, ten fields in order.
@@ -71,7 +71,12 @@ minor (Gaps). `--tag toile sittings` exit 0: 14 cases 1.00, $7.67.
   instead of the larger one C17 asks for; abstract wording didn't hold, a
   quoted sentence and the script's own "Propose:" line did. The Toile's
   example claimed 800 visitors would settle 4.5% vs 5% — it takes ~15,800.
-- Spend so far on evals: ~$56.
+- 3.2 done (C21 ticked): `--tag swatch` exit 0, three cases 1.00 with
+  the plugin, $2.57, first attempt. The Test skill now carries both pieces
+  and opens with "Choose the piece"; its description names customer
+  feedback (199 chars). Seeds: _fixtures/profile-tiers.md (a salon
+  booking tool with three tiers), swatch-tiers-sowhat.md.
+- Spend so far on evals: ~$59.
 - Evals that write notes need `--allow-tools Write Edit` on the command
   line; `allowed_tools` in the case alone isn't a grant. Judge rubrics must
   say what isn't a failure (a preface "five questions, one at a time" was
@@ -169,7 +174,7 @@ minor (Gaps). `--tag toile sittings` exit 0: 14 cases 1.00, $7.67.
       pass; 2/200 → miss; eval toile-close-call (seeded from
       evals/_fixtures, 9 of 200) passes with `--scaffold --allow-tools
       Write Edit`; `--tag toile` stays exit 0.
-- [ ] 3.2 The Swatch (C21; seeds C6 row 2). Doc: core-x.md §Flow 2
+- [x] 3.2 The Swatch (C21; seeds C6 row 2). Doc: core-x.md §Flow 2
       (history); plugin-evals. Files: method/test/swatch.md,
       skills/7flows-test/SKILL.md, evals/swatch-{fires,anecdote,opens-toile}/.
       Done: `claude plugin eval . --tag swatch` exit 0.
@@ -212,6 +217,12 @@ minor (Gaps). `--tag toile sittings` exit 0: 14 cases 1.00, $7.67.
   rather than the template's; no grader checks the template keys.
 - C17 without code: the written-formula fallback (claude.ai with code
   execution off) has no eval; 4.4's manual pass should try 9 of 200.
+- C21's other close — "changes a recorded assumption" (the profile or an
+  open Toile rewritten) — has no eval; only the opens-a-Toile close does.
+  No grader checks the Swatch's seven headings in order (C14's check
+  covers the Toile only).
+- Δ 0 on swatch-anecdote: told "let's cut a Swatch" with one signal, a
+  plain agent also calls it an anecdote.
 - C13 rests on voice-no-flattery's 9-word regex over one prompt; put the
   same regex grader on the other k and toile cases (no extra cost).
 - k-tag cases weren't rerun after the review's toile.md edits (K's own
