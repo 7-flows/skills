@@ -1,6 +1,6 @@
 # Spec — 7 Flows Skills · Slice 1: the Test flow with K
 
-Status: approved 2026-10-11
+Status: approved 2026-10-11 · amended 2026-10-11 (C25, C26 added)
 Frozen at approval. The agent drafts and refines; every alteration needs
 human validation. Verify ticks the boxes.
 
@@ -70,12 +70,32 @@ on Claude Code, claude.ai and Pi.
         every sitting; attaching it in a new chat resumes where it stopped.
 - [x] C20. "I only have 10 minutes" → K runs the quick Toile (assumption,
       evidence, cheapest test, pass line and deadline) and saves it open.
+- [ ] C25. When the founder sets the pass line, K says what the planned test
+      size can decide: the result that passes, the result that misses, and
+      that anything between is too close to call. 200 visitors at a 5% line
+      → "16 or more passes, 4 or fewer misses; 5 to 15 is too close to call."
+      - Edge: no result at that size could pass → K says the test is too
+        small before it runs.
 
 ## The Swatch (second piece of Test)
 - [x] C21. The Swatch records seven fields and is done only when it opens a
       new Toile or changes a recorded assumption.
       - Edge: fewer than 3 signals → K calls it an anecdote and asks for
         more before naming a pattern.
+
+## Every trade
+- [ ] C26. A founder whose business is not on the web — a restaurant, a shop,
+      a clinic, a school, a trade — is served as fully as a web founder: the
+      intake, the Toile, the Swatch and close calls speak their trade, with
+      tests, counts and signals from it. K proposes no landing page,
+      sign-ups or tickets unless the founder brings them. "A $25 lunch set
+      will sell" → "Put it on the board for two weeks; count set orders out
+      of lunch customers" — 150 customers at a 20% line: 39 or more passes,
+      21 or fewer misses.
+      - Edge: healthcare or education → a Toile tests the offer, never the
+        care or the teaching; K says so and offers a Toile on the offer.
+      - Edge: the intake, a full Toile, a close call and a Swatch each pass
+        their evals for a non-web business as they do for a web one.
 
 ## Release
 - [ ] C22. A release ships only when every eval case passes over 3 runs and
