@@ -25,6 +25,7 @@ real money, real behaviour — before you spend the good cloth on it.
 One belief tested against evidence, a clear decision — Persevere, Pivot or
 Experiment Again — and the next thing you will do within 48 hours.
 
+<!-- core -->
 ## The ten fields
 
 Fill them in this order. The first six are cut before the test runs; the
@@ -47,3 +48,4 @@ last four after the results come in.
 
 You can answer, in two sentences: what did we learn, and what are we doing
 about it? A vague answer means the Toile is still on the table.
+<!-- /core -->

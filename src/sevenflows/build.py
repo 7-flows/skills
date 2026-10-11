@@ -2,8 +2,13 @@
 
 claude.ai copies only a skill's own folder into its sandbox, so every skill
 needs its own copy; the method is still written once, under method/.
+
+A source's essentials, marked `<!-- core -->`…`<!-- /core -->`, are also
+written into the skill's SKILL.md: a headless Claude Code run can't read the
+skill's references/ without a grant (ADR 2026-10-11 Hybrid).
 """
 
+import re
 from collections.abc import Mapping, Sequence
 from pathlib import Path
 
@@ -21,17 +26,67 @@ def _header(source: str) -> str:
     )
 
 
+CORE = re.compile(r"<!-- core -->\n(.*?)<!-- /core -->", re.DOTALL)
+# The blank line before a region belongs to it, so removing one leaves the
+# hand-written head exactly as written.
+REGION = re.compile(
+    r"\n?<!-- built from method/(\S+) — edit there -->\n.*?<!-- /built -->\n",
+    re.DOTALL,
+)
+
+
+def _core(source: str, text: str) -> str | None:
+    regions = CORE.findall(text)
+    if text.count("<!-- core -->") != len(regions):
+        raise ValueError(f"method/{source}: unclosed <!-- core --> marker")
+    return "\n".join(regions) if regions else None
+
+
+def _region(source: str, core: str) -> str:
+    return f"<!-- built from method/{source} — edit there -->\n{core}<!-- /built -->\n"
+
+
+def _inlined(skill_md: str, cores: dict[str, str]) -> str:
+    """Rewrite SKILL.md's built regions in place; append new ones at the end."""
+    placed: set[str] = set()
+
+    def rewrite(match: re.Match[str]) -> str:
+        source = match.group(1)
+        if source not in cores or source in placed:
+            return ""
+        placed.add(source)
+        return "\n" + _region(source, cores[source])
+
+    text = REGION.sub(rewrite, skill_md)
+    for source, core in cores.items():
+        if source not in placed:
+            text = text.rstrip("\n") + "\n\n" + _region(source, core)
+    return text
+
+
 def _expected(root: Path, manifest: Manifest) -> dict[Path, str]:
     expected: dict[Path, str] = {}
     for skill, sources in manifest.items():
+        cores: dict[str, str] = {}
         for source in sources:
             text = (root / "method" / source).read_text(encoding="utf-8")
+            if (core := _core(source, text)) is not None:
+                cores[source] = core
             target = root / "skills" / skill / "references" / Path(source).name
             # references/ is flat, so two sources with one basename would
             # silently overwrite each other.
             if target in expected:
                 raise ValueError(f"{skill}: two sources would land on {target.name}")
             expected[target] = _header(source) + text
+        skill_md = root / "skills" / skill / "SKILL.md"
+        if skill_md.is_file():
+            current = skill_md.read_text(encoding="utf-8")
+            if REGION.search(current) or cores:
+                expected[skill_md] = _inlined(current, cores)
+        elif cores:
+            raise ValueError(
+                f"{skill}: SKILL.md is missing, nowhere to inline the core"
+            )
     return expected
 
 

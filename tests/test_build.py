@@ -81,3 +81,100 @@ def test_check_reports_references_of_a_skill_left_out_of_the_manifest(
     orphan.parent.mkdir(parents=True, exist_ok=True)
     orphan.write_text("left over\n")
     assert check(tmp_path, MANIFEST) == [orphan]
+
+
+CORED = (
+    "# The Toile\n\nWhy.\n\n<!-- core -->\n## Fields\n1. Assumption\n<!-- /core -->\n"
+)
+HEAD = "---\nname: 7flows-test\ndescription: Test a belief.\n---\n\n# Test\n\nRun it.\n"
+
+
+def make_cored_tree(root: Path, source: str = CORED) -> Path:
+    make_tree(root)
+    (root / "method" / "test" / "toile.md").write_text(source)
+    skill_md = root / "skills" / "7flows-test" / "SKILL.md"
+    skill_md.write_text(HEAD)
+    return skill_md
+
+
+def test_build_writes_the_core_into_skill_md_under_the_head(tmp_path: Path) -> None:
+    skill_md = make_cored_tree(tmp_path)
+    build(tmp_path, MANIFEST)
+    assert skill_md.read_text() == (
+        HEAD + "\n<!-- built from method/test/toile.md — edit there -->\n"
+        "## Fields\n1. Assumption\n<!-- /built -->\n"
+    )
+
+
+def test_build_is_stable_on_a_second_run(tmp_path: Path) -> None:
+    skill_md = make_cored_tree(tmp_path)
+    build(tmp_path, MANIFEST)
+    first = skill_md.read_text()
+    build(tmp_path, MANIFEST)
+    assert skill_md.read_text() == first
+    assert check(tmp_path, MANIFEST) == []
+
+
+def test_check_reports_a_hand_edited_inline_region(tmp_path: Path) -> None:
+    skill_md = make_cored_tree(tmp_path)
+    build(tmp_path, MANIFEST)
+    skill_md.write_text(skill_md.read_text().replace("Assumption", "Hunch"))
+    assert check(tmp_path, MANIFEST) == [skill_md]
+
+
+def test_check_reports_a_core_change_not_yet_built(tmp_path: Path) -> None:
+    skill_md = make_cored_tree(tmp_path)
+    build(tmp_path, MANIFEST)
+    (tmp_path / "method" / "test" / "toile.md").write_text(CORED.replace("1.", "One."))
+    assert skill_md in check(tmp_path, MANIFEST)
+
+
+def test_hand_written_text_around_the_region_survives_a_rebuild(tmp_path: Path) -> None:
+    skill_md = make_cored_tree(tmp_path)
+    build(tmp_path, MANIFEST)
+    skill_md.write_text(skill_md.read_text() + "\n## After\n\nKept.\n")
+    (tmp_path / "method" / "test" / "toile.md").write_text(CORED.replace("1.", "One."))
+    build(tmp_path, MANIFEST)
+    text = skill_md.read_text()
+    assert text.startswith(HEAD)
+    assert "One. Assumption\n<!-- /built -->\n\n## After\n\nKept.\n" in text
+
+
+def test_several_core_regions_join_in_source_order(tmp_path: Path) -> None:
+    source = (
+        CORED + "\nAside.\n\n<!-- core -->\n## Done\nTwo sentences.\n<!-- /core -->\n"
+    )
+    skill_md = make_cored_tree(tmp_path, source)
+    build(tmp_path, MANIFEST)
+    assert "1. Assumption\n\n## Done\nTwo sentences.\n<!-- /built -->" in (
+        skill_md.read_text()
+    )
+    assert "Aside." not in skill_md.read_text()
+
+
+def test_a_source_without_core_leaves_skill_md_alone(tmp_path: Path) -> None:
+    skill_md = make_cored_tree(tmp_path, "# The Toile\n")
+    build(tmp_path, MANIFEST)
+    assert skill_md.read_text() == HEAD
+
+
+def test_a_region_whose_source_left_the_manifest_is_removed(tmp_path: Path) -> None:
+    skill_md = make_cored_tree(tmp_path)
+    build(tmp_path, MANIFEST)
+    (tmp_path / "method" / "test" / "toile.md").write_text("# The Toile\n")
+    copy = tmp_path / "skills" / "7flows-test" / "references" / "toile.md"
+    assert check(tmp_path, MANIFEST) == [copy, skill_md]
+    build(tmp_path, MANIFEST)
+    assert skill_md.read_text() == HEAD
+
+
+def test_an_unclosed_core_marker_is_refused(tmp_path: Path) -> None:
+    make_cored_tree(tmp_path, "<!-- core -->\n## Fields\n")
+    with pytest.raises(ValueError, match=r"unclosed"):
+        check(tmp_path, MANIFEST)
+
+
+def test_a_core_without_skill_md_is_refused(tmp_path: Path) -> None:
+    make_cored_tree(tmp_path).unlink()
+    with pytest.raises(ValueError, match=r"SKILL\.md"):
+        check(tmp_path, MANIFEST)
