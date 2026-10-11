@@ -37,6 +37,7 @@ Files:
 2026-10-11 — batch 1 reviewed and closed (1.1–1.3; C5, C7 ticked).
 Owner: Hybrid chosen (ADR); batch 2 approved. 2.0 done (C1 ticked):
 fresh install, headless run — no Read, no denials, ten fields in order.
+2.1 done (C9, C13 ticked; C12 waits for a saved record in 2.3).
 - Learned: a plugin skill's Read of its own references/ is refused under
   `claude -p` (prompted interactively); `allowed-tools: Read` makes the
   Skill call itself need approval — dead end (ADR). Evals grant Read, so
@@ -48,7 +49,11 @@ fresh install, headless run — no Read, no denials, ten fields in order.
   met; C1 is the unticked one.
 - Gate hygiene: never pipe a gate through tail without pipefail — a red
   ruff hid behind exit 0 once (amended before push).
-- Spend so far on evals: ~$1.93.
+- Spend so far on evals: ~$8.00.
+- Evals that write notes need `--allow-tools Write Edit` on the command
+  line; `allowed_tools` in the case alone isn't a grant. Judge rubrics must
+  say what isn't a failure (a preface "five questions, one at a time" was
+  once misread as five questions).
 - Plugin version unchanged → `plugin update` keeps the old cache; a fresh
   check needs uninstall + install (bump the version at release).
 
@@ -96,7 +101,7 @@ fresh install, headless run — no Read, no denials, ten fields in order.
       fresh from GitHub, `claude -p "I think freelance designers would pay
       $49 a month for invoicing"` names all ten fields' order without any
       Read being refused (stream-json shows no permission_denials) → tick C1.
-- [ ] 2.1 K: intake, voice, language (C9, C12, C13). Doc:
+- [x] 2.1 K: intake, voice, language (C9, C12, C13). Doc:
       code.claude.com/docs/en/skills (bundled files); pi.dev/docs/latest/skills.
       Files: create method/{k,voice,notes,flows}.md, skills/7flows/SKILL.md;
       modify src/sevenflows/build.py (manifest), src/sevenflows/lint.py
@@ -162,9 +167,12 @@ fresh install, headless run — no Read, no denials, ten fields in order.
       under evidence/.
 
 ## Gaps
-- 2.1: lint should enforce SKILL.md < 500 lines (AGENTS.md rule; review M7).
-- 2.1: K's description is broad — rerun `--tag silent` in 2.1's Done line
-  (review M6), not only at release.
+- 2.3: C12's record half — a French Toile saved with English field names;
+  tick C12 there.
+- 2.3: no eval walks the intake's questions 2–5 one per turn (C9 shown by
+  first-question pacing, all-at-once save, skip). Add a history_file case.
+- Owner review: method/flows.md's one-line "what it does" for the six
+  unreleased flows was drafted from the ADR's gaps — not yet approved text.
 - 2.2: no eval withholds Read — add a toile case with `allowed_tools:
   [Skill]` whose grader finds the ten fields, so the Hybrid can't regress
   silently (evals grant Read; only a manual `claude -p` showed it in 2.0).

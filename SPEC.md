@@ -35,7 +35,7 @@ on Claude Code, claude.ai and Pi.
       Sell piece is invented.
 
 ## K, the master cutter
-- [ ] C9. In a project with no notes, K opens with an intake of at most 5
+- [x] C9. In a project with no notes, K opens with an intake of at most 5
       questions, one at a time, saves a business profile, then offers the Toile.
       - Edge: "skip that, just help me test this" → K goes straight to the Toile.
 - [ ] C10. K asks for one field at a time. K may suggest; the field records
@@ -44,7 +44,7 @@ on Claude Code, claude.ai and Pi.
       this" → K asks which customer, which thing, at what price.
 - [ ] C12. A founder writing in French gets K in French; the record keeps
       English field names with the founder's French words.
-- [ ] C13. K's replies use none of the voice guide's banned words, and praise
+- [x] C13. K's replies use none of the voice guide's banned words, and praise
       the work, never the person ("Great question" never appears).
 
 ## The Toile (signature piece of Test)
