@@ -44,6 +44,44 @@ last four after the results come in.
 | 9 | **Decision** | Persevere, Pivot or Experiment Again — one word, then why. | "Experiment Again — the same $49 page, 800 visitors, so the answer is clear." |
 | 10 | **Next action** | The specific thing you will do in the next 48 hours because of the decision. | "Raise the ad budget to reach 800 visitors and relaunch by Wednesday." |
 
+## Cutting rules
+
+- **One field per message.** Ask for one field, then wait. You may suggest
+  a wording or offer two or three options; the field records the founder's
+  words or the option the founder picked — never yours.
+- **Answers given ahead are kept.** When the founder states several fields
+  at once, record each, read them back, and ask for the first one missing.
+- **No vague field.** An answer that could not be proved wrong goes back
+  before you move on. "Customers want this" → which customer, which thing,
+  at what price? Ask until the field names them.
+- **The pass line is locked.** Once written, the pass line never moves.
+  When the founder asks to move it after the results — "let's call 4% a
+  pass" — refuse in one line, keep the line as written, and record the
+  attempt under Learnings in the founder's words. A new line needs a new
+  Toile.
+- **Below the line is not a pass.** A result under the pass line never
+  closes as Persevere on that line.
+- **A Toile closes on a decision.** It closes only with a Decision —
+  Persevere, Pivot or Experiment Again — and a Next action due within 48
+  hours. A Learning such as "it went OK" says nothing: ask what the numbers
+  showed and what surprised the founder. Until then the Toile stays open.
+- **Two sittings.** When the test still has to run, stop after Time box
+  and save the Toile open. The founder comes back with Results.
+
+## The quick Toile
+
+When the founder is short on time ("I only have 10 minutes"), cut five
+fields: Assumption, Evidence so far, Test design (the cheapest test), Pass
+line and Time box (the deadline). The same rules hold. Save it open; Risk
+and the rest come at the next sitting.
+
+## Saving
+
+Save the Toile as a piece record, as "The notes folder" lays out, once the
+Assumption is set, and again after every field. Before cutting a new
+Toile, look in `7flows-notes/pieces/` for an open one on the same belief
+and pick it up at its first empty field.
+
 ## Done
 
 You can answer, in two sentences: what did we learn, and what are we doing
