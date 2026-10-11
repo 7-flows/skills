@@ -49,7 +49,7 @@ Files:
       Done: `uv run sevenflows build --check` exit 0; `uv run agentskills
       validate skills/7flows-test` prints "Valid skill"; a test proves a
       seventh frontmatter key and a 201-char description both fail lint.
-- [ ] 1.2 Plugin and marketplace from one repo (C5, C1). Doc:
+- [x] 1.2 Plugin and marketplace from one repo (C5, C1). Doc:
       code.claude.com/docs/en/plugins-reference, /plugins/marketplace-reference,
       /plugins/cli-reference#plugin-validate.
       Files: create .claude-plugin/plugin.json, .claude-plugin/marketplace.json;
@@ -134,6 +134,12 @@ Files:
       under evidence/.
 
 ## Gaps
+- C1 not ticked: installed from GitHub, the Toile opens at Assumption, but
+  the skill can't read `references/toile.md` without a permission grant
+  (ADR 2026-10-11 "Open: a plugin skill can't read…") — "no other setup"
+  isn't yet true. Decide at the batch 1 re-plan.
+- 4.2: `claude plugin validate` advises a README install line
+  (`/plugin install 7flows --marketplace 7-flows/skills`).
 - C14 not ticked: the method text and its field-order test are in (1.1),
   but a *saved record* with the ten fields lands in 2.3 — tick C14 there.
 - claude.ai acceptance (C2, C3) has no automated gate — manual evidence only.

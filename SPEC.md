@@ -17,7 +17,7 @@ on Claude Code, claude.ai and Pi.
       - Edge: only the Test skill uploaded → a Toile still runs end to end.
 - [ ] C4. A Pi user who follows the install page's Pi steps meets K in a new
       session in that project.
-- [ ] C5. Every skill passes the Agent Skills validator, and the suite passes
+- [x] C5. Every skill passes the Agent Skills validator, and the suite passes
       the Claude plugin validator in strict mode, with zero errors.
 
 ## Reaching K

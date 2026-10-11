@@ -2,6 +2,20 @@
 
 Read before re-litigating anything. Newest first.
 
+## 2026-10-11 — Open: a plugin skill can't read its own references headless
+Context: task 1.2 done-line. Installed from GitHub, `claude -p` fired
+`7flows:7flows-test` and opened the Toile at Assumption, but the Read of
+`references/toile.md` in the plugin cache was refused ("you haven't granted
+it yet") — headless runs have no one to answer the prompt; interactive users
+would be asked. K carried on without the field list.
+Dead end: `allowed-tools: Read` in the skill frontmatter — under `-p` the
+Skill call itself was then refused (a skill that grants tools needs approval
+to run). Scoped `Read(${CLAUDE_SKILL_DIR}/**)` isn't an option: Claude Code
+substitutes that variable only in Bash rules (code.claude.com/docs/en/skills).
+Open for the batch 1 re-plan: carry each piece's text inside SKILL.md (no
+reads, every agent), or keep `references/` and accept one read prompt on
+Claude Code. Owner decides.
+
 ## 2026-10-11 — Slice 1 architecture
 Context: plan for SPEC slice 1 (C1–C24).
 Decision: write the method once under `method/`; a build step copies each
