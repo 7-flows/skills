@@ -2,6 +2,26 @@
 
 Read before re-litigating anything. Newest first.
 
+## 2026-10-11 — Slice 1 architecture
+Context: plan for SPEC slice 1 (C1–C24).
+Decision: write the method once under `method/`; a build step copies each
+skill's share into its own folder and fails on drift. claude.ai copies only
+the skill's folder into its sandbox (claude.com/docs/skills/how-to), so a
+skill cannot rely on a sibling's files. The repo is marketplace and plugin
+at once, both named `7flows`, source `./` — `claude plugin validate --strict`
+passes on that layout (plugins/marketplace-reference). Skills `7flows` (K)
+and `7flows-test`, prefixed because `.agents/skills` is a shared namespace.
+Descriptions ≤ 200 chars: support.claude.com 12512198 still says 200 while
+claude.com docs say 1,024 — take the stricter. Close calls use the Wilson
+90% interval against the pass line (NIST e-Handbook §7.2.4.1), run as a
+script because mental arithmetic drifts. Evals run locally at release, on
+the owner's account; CI runs only free gates.
+Rejected: shared references via `${CLAUDE_PLUGIN_ROOT}` (Claude Code only;
+breaks claude.ai ZIPs and Pi); textbook Wald interval (Brown, Cai &
+DasGupta 2001: erratic at small n); "≥ 10 successes" rule (no authoritative
+source); evals in CI (needs a paid credential in GitHub secrets, costs on
+every push).
+
 ## 2026-10-11 — Stack and seeded rules
 Context: craftsman init; the repo owns the method and the skills.
 Decision: method as Markdown (one file per flow and mode) in this repo;
