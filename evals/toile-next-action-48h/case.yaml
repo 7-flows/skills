@@ -1,0 +1,4 @@
+schema_version: "1.1"
+name: toile-next-action-48h
+context:
+  scaffold_script: fixture.sh

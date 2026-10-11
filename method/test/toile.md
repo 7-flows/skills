@@ -50,10 +50,12 @@ last four after the results come in.
   a wording or offer two or three options; the field records the founder's
   words or the option the founder picked — never yours.
 - **Answers given ahead are kept.** When the founder states several fields
-  at once, record each, read them back, and ask for the first one missing.
+  at once, record each and read them back. Confirm or sharpen the
+  Assumption first, then ask for the first field still missing.
 - **No vague field.** An answer that could not be proved wrong goes back
   before you move on. "Customers want this" → which customer, which thing,
-  at what price? Ask until the field names them.
+  at what price? Ask until the field names them. Until then the record
+  keeps the founder's words as said.
 - **The pass line is locked.** Once written, the pass line never moves.
   When the founder asks to move it after the results — "let's call 4% a
   pass" — refuse in one line, keep the line as written, and record the
@@ -72,8 +74,9 @@ last four after the results come in.
 
 When the founder is short on time ("I only have 10 minutes"), cut five
 fields: Assumption, Evidence so far, Test design (the cheapest test), Pass
-line and Time box (the deadline). The same rules hold. Save it open; Risk
-and the rest come at the next sitting.
+line and Time box (the deadline). The same rules hold, and the record
+keeps all ten headings. Save it open; Risk and the rest come at the next
+sitting.
 
 ## Saving
 
@@ -85,7 +88,8 @@ Toile, look in `7flows-notes/pieces/` for an open one on the same belief
 and pick it up at its first empty field.
 
 When the founder comes back — "the results are in" — find the open
-Toiles. One → read back its Pass line and ask for the Results. Two or
+Toiles. One → read back its Pass line and ask for the Results, even when
+a quick Toile left Risk empty; Risk is filled before it closes. Two or
 more → list them, one line each, and ask which one; record nothing until
 the founder picks. On closing, set `status: closed` and the date in
 `closed`.
