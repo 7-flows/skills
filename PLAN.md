@@ -37,7 +37,7 @@ Files:
 2026-10-11 — plan approved. Next: batch 1 (C5, C7, C14; C1 via 1.2).
 
 ## Batch 1 — walking skeleton: the Toile fires
-- [ ] 1.1 Toile source, build and lint (C14). Doc: agentskills.io/specification
+- [x] 1.1 Toile source, build and lint (C14). Doc: agentskills.io/specification
       (frontmatter, layout); docs.astral.sh/uv (project scripts).
       Files: create method/test/toile.md, skills/7flows-test/SKILL.md,
       src/sevenflows/{build,lint,cli}.py, tests/test_build.py,
@@ -134,6 +134,8 @@ Files:
       under evidence/.
 
 ## Gaps
+- C14 not ticked: the method text and its field-order test are in (1.1),
+  but a *saved record* with the ten fields lands in 2.3 — tick C14 there.
 - claude.ai acceptance (C2, C3) has no automated gate — manual evidence only.
 - Unverified until 4.2/4.4: private-repo marketplaces on claude.ai; `pi
   install` from a git repo without package.json; claude.ai frontmatter
