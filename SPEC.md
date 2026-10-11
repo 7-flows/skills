@@ -70,7 +70,7 @@ on Claude Code, claude.ai and Pi.
         every sitting; attaching it in a new chat resumes where it stopped.
 - [x] C20. "I only have 10 minutes" → K runs the quick Toile (assumption,
       evidence, cheapest test, pass line and deadline) and saves it open.
-- [ ] C25. When the founder sets the pass line, K says what the planned test
+- [x] C25. When the founder sets the pass line, K says what the planned test
       size can decide: the result that passes, the result that misses, and
       that anything between is too close to call. 200 visitors at a 5% line
       → "16 or more passes, 4 or fewer misses; 5 to 15 is too close to call."

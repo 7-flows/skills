@@ -214,7 +214,7 @@ minor (Gaps). `--tag toile sittings` exit 0: 14 cases 1.00, $7.67.
       (Gap) and rerun `--tag k` exit 0.
 
 ## Batch 4a — the pass line sized, every trade
-- [ ] 4a.1 Size at the pass line (C25). Doc: NIST e-Handbook §7.2.4.1.
+- [x] 4a.1 Size at the pass line (C25). Doc: NIST e-Handbook §7.2.4.1.
       Files: skills/7flows-test/scripts/close_call.py,
       tests/test_close_call.py, method/test/close-calls.md,
       method/test/toile.md, evals/toile-size-{pass,small}/.
