@@ -2,7 +2,7 @@ from pathlib import Path
 
 import pytest
 
-from sevenflows.lint import banned_words, lint, lint_skill
+from sevenflows.lint import LICENCE_LINE, banned_words, lint, lint_licence, lint_skill
 
 VALID = "name: 7flows-test\ndescription: Test a belief before you build on it.\n"
 
@@ -107,7 +107,7 @@ def make_words_repo(root: Path, voice: str | None = VOICE) -> None:
     if voice is not None:
         (root / "method" / "voice.md").write_text(voice)
     (root / "skills").mkdir()
-    write_skill(root / "skills", VALID)
+    write_skill(root / "skills", VALID + f"license: {LICENCE_LINE}\n")
 
 
 def test_banned_words_come_from_the_voice_table(tmp_path: Path) -> None:
@@ -144,7 +144,7 @@ def test_a_banned_word_in_a_skill_is_a_finding(tmp_path: Path) -> None:
     make_words_repo(tmp_path)
     skill_md = tmp_path / "skills" / "7flows-test" / "SKILL.md"
     skill_md.write_text(skill_md.read_text() + "Leverage it.\n")
-    assert lint(tmp_path) == ["skills/7flows-test/SKILL.md:7: banned word 'leverage'"]
+    assert lint(tmp_path) == ["skills/7flows-test/SKILL.md:8: banned word 'leverage'"]
 
 
 def test_the_list_itself_its_copies_and_its_built_region_are_exempt(
@@ -199,3 +199,26 @@ def test_british_spellings_and_forms_that_drop_the_final_e_are_caught(
         "method/k.md:2: banned word 'optimize'",
         "method/k.md:3: banned word 'utilize'",
     ]
+
+
+def test_a_licence_line_naming_both_licences_passes(tmp_path: Path) -> None:
+    skill = write_skill(tmp_path, VALID + f"license: {LICENCE_LINE}\n")
+    assert lint_licence(skill) == []
+
+
+@pytest.mark.parametrize(
+    "licence", ["", "license: Apache-2.0\n", "license: CC BY-SA 4.0\n"]
+)
+def test_a_licence_line_missing_either_licence_fails(
+    tmp_path: Path, licence: str
+) -> None:
+    skill = write_skill(tmp_path, VALID + licence)
+    assert lint_licence(skill) == [
+        "7flows-test: license must name Apache-2.0 and CC BY-SA 4.0"
+    ]
+
+
+def test_lint_runs_the_licence_rule_on_every_skill(tmp_path: Path) -> None:
+    make_words_repo(tmp_path)
+    write_skill(tmp_path / "skills", "name: 7flows\ndescription: K.\n", "7flows")
+    assert lint(tmp_path) == ["7flows: license must name Apache-2.0 and CC BY-SA 4.0"]

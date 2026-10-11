@@ -2,7 +2,7 @@ from pathlib import Path
 
 import pytest
 
-from sevenflows.build import build, check
+from sevenflows.build import LICENCES, build, check
 
 MANIFEST = {"7flows-test": ["test/toile.md"]}
 
@@ -11,6 +11,8 @@ def make_tree(root: Path) -> None:
     (root / "method" / "test").mkdir(parents=True)
     (root / "method" / "test" / "toile.md").write_text("# The Toile\n")
     (root / "skills" / "7flows-test").mkdir(parents=True)
+    for name in LICENCES:
+        (root / name).write_text(f"{name} text\n")
 
 
 def test_build_copies_method_files_into_the_skill(tmp_path: Path) -> None:
@@ -46,8 +48,11 @@ def test_check_reports_a_source_change_not_yet_built(tmp_path: Path) -> None:
 
 def test_check_reports_a_missing_copy(tmp_path: Path) -> None:
     make_tree(tmp_path)
+    skill = tmp_path / "skills" / "7flows-test"
     assert check(tmp_path, MANIFEST) == [
-        tmp_path / "skills" / "7flows-test" / "references" / "toile.md"
+        skill / "LICENSE",
+        skill / "LICENSE-METHOD",
+        skill / "references" / "toile.md",
     ]
 
 
@@ -199,3 +204,34 @@ def test_a_duplicated_region_is_built_once(tmp_path: Path) -> None:
     skill_md.write_text(built + region)
     build(tmp_path, MANIFEST)
     assert skill_md.read_text() == built
+
+
+def test_build_puts_both_licence_texts_in_every_skill(tmp_path: Path) -> None:
+    make_tree(tmp_path)
+    build(tmp_path, MANIFEST)
+    skill = tmp_path / "skills" / "7flows-test"
+    assert (skill / "LICENSE").read_text() == "LICENSE text\n"
+    assert (skill / "LICENSE-METHOD").read_text() == "LICENSE-METHOD text\n"
+
+
+def test_check_reports_a_licence_text_changed_at_the_root(tmp_path: Path) -> None:
+    make_tree(tmp_path)
+    build(tmp_path, MANIFEST)
+    (tmp_path / "LICENSE-METHOD").write_text("a newer text\n")
+    assert check(tmp_path, MANIFEST) == [
+        tmp_path / "skills" / "7flows-test" / "LICENSE-METHOD"
+    ]
+
+
+def test_a_missing_root_licence_is_refused(tmp_path: Path) -> None:
+    make_tree(tmp_path)
+    (tmp_path / "LICENSE").unlink()
+    with pytest.raises(ValueError, match="LICENSE is missing"):
+        build(tmp_path, MANIFEST)
+
+
+def test_every_copied_reference_names_the_method_licence(tmp_path: Path) -> None:
+    make_tree(tmp_path)
+    build(tmp_path, MANIFEST)
+    copied = tmp_path / "skills" / "7flows-test" / "references" / "toile.md"
+    assert "CC BY-SA 4.0" in copied.read_text().splitlines()[0]

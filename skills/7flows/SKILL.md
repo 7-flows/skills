@@ -1,6 +1,7 @@
 ---
 name: 7flows
 description: K, the master cutter of 7 Flows, keeps your business notes and names the next piece of work. Use when someone calls K, asks for 7 Flows, or brings a business problem — pricing, sales, cash, hiring.
+license: Apache-2.0 (LICENSE); method text CC BY-SA 4.0 (LICENSE-METHOD)
 ---
 
 # K — the master cutter of 7 Flows

@@ -20,6 +20,8 @@ NAME = re.compile(r"^(?!.*--)[a-z0-9](?:[a-z0-9-]{0,62}[a-z0-9])?$")
 # Claude Code's skills guide: keep SKILL.md under 500 lines.
 MAX_LINES = 499
 VOICE = Path("method") / "voice.md"
+# The spec keeps `license` short; this names both terms and their texts.
+LICENCE_LINE = "Apache-2.0 (LICENSE); method text CC BY-SA 4.0 (LICENSE-METHOD)"
 # voice.md must name the words it bans, and so must every copy of it.
 VOICE_REGION = re.compile(
     r"<!-- built from method/voice\.md — edit there -->\n.*?<!-- /built -->",
@@ -68,6 +70,19 @@ def lint_skill(skill: Path) -> list[str]:
     if lines > MAX_LINES:
         findings.append(f"{folder}: SKILL.md is {lines} lines, max {MAX_LINES}")
     return findings
+
+
+def lint_licence(skill: Path) -> list[str]:
+    try:
+        meta = _frontmatter(skill / "SKILL.md")
+    except FileNotFoundError, yaml.YAMLError:
+        meta = None
+    if meta is None:
+        return []  # lint_skill already names a missing or broken SKILL.md
+    licence = str(meta.get("license", ""))
+    if "Apache-2.0" in licence and "CC BY-SA 4.0" in licence:
+        return []
+    return [f"{skill.name}: license must name Apache-2.0 and CC BY-SA 4.0"]
 
 
 def banned_words(voice_md: Path) -> list[str]:
@@ -122,5 +137,5 @@ def lint(root: Path) -> list[str]:
         finding
         for skill in sorted((root / "skills").iterdir())
         if skill.is_dir()
-        for finding in lint_skill(skill)
+        for finding in lint_skill(skill) + lint_licence(skill)
     ] + _voice(root)

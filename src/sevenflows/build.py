@@ -28,10 +28,16 @@ MANIFEST: dict[str, list[str]] = {
 
 Manifest = Mapping[str, Sequence[str]]
 
+# Repo-root licence texts every skill carries: a skill uploaded alone must
+# still say which terms its code (Apache-2.0) and its method text (CC BY-SA)
+# come under.
+LICENCES = ("LICENSE", "LICENSE-METHOD")
+
 
 def _header(source: str) -> str:
     return (
-        f"<!-- Copied from method/{source} by `sevenflows build`. Edit there. -->\n\n"
+        f"<!-- Copied from method/{source} by `sevenflows build`. Edit there. "
+        "7 Flows method text, CC BY-SA 4.0 — see LICENSE-METHOD. -->\n\n"
     )
 
 
@@ -74,9 +80,21 @@ def _inlined(skill_md: str, cores: dict[str, str]) -> str:
     return text
 
 
+def _licences(root: Path) -> dict[str, str]:
+    texts: dict[str, str] = {}
+    for name in LICENCES:
+        if not (root / name).is_file():
+            raise ValueError(f"{name} is missing at the repo root")
+        texts[name] = (root / name).read_text(encoding="utf-8")
+    return texts
+
+
 def _expected(root: Path, manifest: Manifest) -> dict[Path, str]:
     expected: dict[Path, str] = {}
+    licences = _licences(root)
     for skill, sources in manifest.items():
+        for name, text in licences.items():
+            expected[root / "skills" / skill / name] = text
         cores: dict[str, str] = {}
         for source in sources:
             text = (root / "method" / source).read_text(encoding="utf-8")
@@ -103,7 +121,9 @@ def _expected(root: Path, manifest: Manifest) -> dict[Path, str]:
 def _present(root: Path) -> set[Path]:
     # Every skill, not just the manifest's: one dropped from the manifest
     # must not keep shipping its old copies.
-    return {p for p in (root / "skills").glob("*/references/*") if p.is_file()}
+    copies = [*(root / "skills").glob("*/references/*")]
+    copies += [p for name in LICENCES for p in (root / "skills").glob(f"*/{name}")]
+    return {p for p in copies if p.is_file()}
 
 
 def check(root: Path, manifest: Manifest = MANIFEST) -> list[Path]:

@@ -1,6 +1,7 @@
 ---
 name: 7flows-test
 description: Test a business belief before building on it — the Toile and the Swatch, from the 7 Flows method. Use when someone states an assumption or idea, asks "will this work?", or shares customer feedback.
+license: Apache-2.0 (LICENSE); method text CC BY-SA 4.0 (LICENSE-METHOD)
 ---
 
 # Test — the first of the 7 Flows

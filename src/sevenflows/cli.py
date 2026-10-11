@@ -4,6 +4,7 @@ from pathlib import Path
 
 from sevenflows.build import build, check
 from sevenflows.lint import lint
+from sevenflows.package import package
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -14,6 +15,7 @@ def main(argv: list[str] | None = None) -> int:
         "--check", action="store_true", help="report drift, change nothing"
     )
     commands.add_parser("lint", help="check every skill's frontmatter")
+    commands.add_parser("package", help="write one ZIP per skill into dist/")
     args = parser.parse_args(argv)
     root = Path.cwd()
 
@@ -25,6 +27,16 @@ def main(argv: list[str] | None = None) -> int:
         for path in drifted:
             print(f"out of date: {path.relative_to(root)} — run `sevenflows build`")
         return 1 if drifted else 0
+
+    if args.command == "package":
+        try:
+            archives = package(root)
+        except ValueError as error:
+            print(error)
+            return 1
+        for archive in archives:
+            print(archive.relative_to(root))
+        return 0
 
     findings = lint(root)
     for finding in findings:

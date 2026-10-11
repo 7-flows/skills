@@ -1,4 +1,4 @@
-<!-- Copied from method/notes.md by `sevenflows build`. Edit there. -->
+<!-- Copied from method/notes.md by `sevenflows build`. Edit there. 7 Flows method text, CC BY-SA 4.0 — see LICENSE-METHOD. -->
 
 # The notes
 
