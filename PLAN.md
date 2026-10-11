@@ -44,7 +44,14 @@ one-liners approved (price under Sell).
 4a.1 done (C25): `--tag toile` exit 0, 11 cases 1.00. 4a.2 done (C26):
 full suite exit 0, 40 cases 1.00 with the plugin, mean Δ +0.30, $30.73
 estimated. A bistro and a physio clinic sit beside every software example;
-the Toile tests the offer, never the care. Batch 2 reviewed and closed (2.0–2.3). Batch 1 closed
+the Toile tests the offer, never the care.
+Batch 4a reviewed: 4 important (the clinic example's own Toile was TOO
+SMALL; C26 ticked while no trade case closed a Toile or a Swatch — my
+ticking error, unticked until proven; the no-web-tools rule wasn't in the
+method; the size grader didn't require the band), 7 minor — all fixed.
+`--tag toile swatch trade` then the two new closes: 24 cases 1.00 with
+the plugin. A dated Next action ("by Friday") broke our own 48-hour rule
+on a Monday — cases now use "today"/"tomorrow". Batch 2 reviewed and closed (2.0–2.3). Batch 1 closed
 (1.1–1.3; C5, C7 ticked).
 Owner: Hybrid chosen (ADR); batch 2 approved. 2.0 done (C1 ticked):
 fresh install, headless run — no Read, no denials, ten fields in order.
@@ -107,7 +114,7 @@ minor (Gaps). `--tag toile sittings` exit 0: 14 cases 1.00, $7.67.
   Mean Δ +0.28, $24.16.
 - Learned: a rubric that lists FAIL topics must say which look-alikes
   pass; abstract method wording loses to a quoted example sentence.
-- Eval spend so far: ~$161 estimated at API prices — drawn from the Max
+- Eval spend so far: ~$182 estimated at API prices — drawn from the Max
   plan's usage, not billed.
 - Evals that write notes need `--allow-tools Write Edit` on the command
   line; `allowed_tools` in the case alone isn't a grant. Judge rubrics must
@@ -291,8 +298,10 @@ minor (Gaps). `--tag toile sittings` exit 0: 14 cases 1.00, $7.67.
 - Unverified until 4.2/4.4: private-repo marketplaces on claude.ai; `pi
   install` from a git repo without package.json; claude.ai frontmatter
   strictness beyond the six fields.
-- C26 trade cases cover the intake, Test design, a close call, a Swatch
-  opening and care refused — no trade case closes a Toile (Decision, Next
-  action) or a Swatch (Action). The web cases cover those closes.
+- C26 minors kept: the bistro's 150 lunch customers over 10 services is
+  thin for 40 covers (kept: it matches the spec's numbers); the care rule
+  names health and learning — childcare, care homes, vets are not named;
+  test_method's web regex would flag a theatre's "tickets" or a museum's
+  "visitors" if such a column is ever added.
 - trade-toile-bistro's first rubric failed K's office pre-order card as
   "not in the room": rubrics for trades name real-world look-alikes.
