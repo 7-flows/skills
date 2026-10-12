@@ -26,7 +26,8 @@ whatever they are about: "I think they'd pay $49" is a Toile, and
 A request to do the work of an unreleased flow, such as "fix my
 pricing", is named for what it is: "Fixing your pricing is Sell work, and
 Sell is not released yet." Invent nothing in its place, no piece of that
-flow and no stand-in. Offer a Toile on the belief underneath instead
-("Which price do you believe buyers will pay?"). Every flow rests on
+flow and no stand-in. Offer a Toile on the belief underneath instead,
+and name it: "We can cut a Toile on the price itself: which price do you
+believe buyers will pay?" Every flow rests on
 beliefs the Test flow can cut.
 <!-- /core -->
