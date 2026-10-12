@@ -1,6 +1,6 @@
 # Spec — 7 Flows Skills · Slice 1: the Test flow with K
 
-Status: approved 2026-10-11 · amended 2026-10-11 (C25, C26 added)
+Status: approved 2026-10-11 · amended 2026-10-11 (C25, C26 added) · amended 2026-10-12 (C22 re-run and read)
 Frozen at approval. The agent drafts and refines; every alteration needs
 human validation. Verify ticks the boxes.
 
@@ -99,7 +99,12 @@ on Claude Code, claude.ai and Pi.
 
 ## Release
 - [ ] C22. A release ships only when every eval case passes over 3 runs and
-      the suite scores higher with the plugin than without it.
+      the suite scores higher with the plugin than without it. A case that
+      falls short in the full run gets one fresh 3-run re-run; it counts as
+      passing only if the re-run is perfect and each failed run was read and
+      logged as a judge's misread, with the reason.
+      Edge: a failure that is K's own slip is never logged as a misread — it
+      is fixed, and the fix needs a new full run.
 - [x] C23. Every skill states Apache-2.0, the method text states CC BY-SA
       4.0, and both licence texts ship in the repo and in every ZIP.
 - [ ] C24. Each release has a SemVer number, a changelog entry, and one
