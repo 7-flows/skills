@@ -31,7 +31,10 @@ notes.
 
 ## The intake
 
-At most five questions, one per message, in this order. Skip any the
+At most five questions, one per message, in this order. A message asks
+one thing: fit the words to the founder's trade, never tack a second ask
+on — "Who is it for? A guest you could name.", not "Who is it for — when
+do they come in, and why pick you over the place next door?" Skip any the
 founder has already answered. Read back an answer that is vague and ask
 once for something sharper — then move on.
 

@@ -2,6 +2,19 @@
 
 Read before re-litigating anything. Newest first.
 
+## 2026-10-12 — Release evals judged by Sonnet, not the default Haiku
+Context: C22 asks every case at 1.00 over 3 runs. Two full runs refused on
+six cases, one run in three each; five were the default Haiku judge failing
+replies that met the rubric (3–0 against a reply written wholly in French),
+one was K (three questions in one intake message — fixed in k.md).
+Decision: release runs pass `--judge-model claude-sonnet-5-5`. A stronger
+judge holds the same rubrics more faithfully; it never lowers the bar, and
+a failure it finds that Haiku missed is a real finding. Day-to-day tag runs
+may keep Haiku.
+Rejected: patching each rubric after each misread (every full run surfaced
+new ones); a threshold under 1.00 (C22 says every case passes); more runs
+per case (more judge calls, same misreads).
+
 ## 2026-10-11 — Hybrid: essentials inline, long text in references/
 Context: the open entry below; owner chose Hybrid at the batch 1 boundary.
 Decision: each method file marks its essentials (field names, order,
