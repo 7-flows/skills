@@ -1,10 +1,12 @@
 import argparse
+import subprocess
 import sys
 from pathlib import Path
 
 from sevenflows.build import build, check
 from sevenflows.lint import lint
 from sevenflows.package import package
+from sevenflows.release import release
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -16,6 +18,19 @@ def main(argv: list[str] | None = None) -> int:
     )
     commands.add_parser("lint", help="check every skill's frontmatter")
     commands.add_parser("package", help="write one ZIP per skill into dist/")
+    release_cmd = commands.add_parser(
+        "release", help="tag and publish a version, only on a full green eval run"
+    )
+    release_cmd.add_argument("version", help="X.Y.Z, as in plugin.json")
+    release_cmd.add_argument(
+        "--results",
+        type=Path,
+        required=True,
+        help="aggregate-result.json of a full `claude plugin eval` run",
+    )
+    release_cmd.add_argument(
+        "--dry-run", action="store_true", help="check everything, tag nothing"
+    )
     args = parser.parse_args(argv)
     root = Path.cwd()
 
@@ -36,6 +51,20 @@ def main(argv: list[str] | None = None) -> int:
             return 1
         for archive in archives:
             print(archive.relative_to(root))
+        return 0
+
+    if args.command == "release":
+        try:
+            refused = release(root, args.version, args.results, dry_run=args.dry_run)
+        except subprocess.CalledProcessError as error:
+            print(f"{' '.join(error.cmd)} failed: {error.stderr.strip()}")
+            return 1
+        for reason in refused:
+            print(f"refused: {reason}")
+        if refused:
+            return 1
+        verb = "would release" if args.dry_run else "released"
+        print(f"{verb} v{args.version}")
         return 0
 
     findings = lint(root)
