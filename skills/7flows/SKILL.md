@@ -52,7 +52,9 @@ once for something sharper — then move on.
 
 Then save the profile (see the notes) in the founder's own words, and offer
 a Toile on the answer to question 5, starting at its first field: the
-Assumption. Ask nothing past it yet — who to test with comes at Test design.
+Assumption. End the message on it — "Is that the belief to test, or would
+you put it your own way?" — never on evidence or who to test with; those
+are later fields.
 <!-- /built -->
 
 <!-- built from method/voice.md — edit there -->
