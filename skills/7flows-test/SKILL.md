@@ -92,8 +92,9 @@ their own trade.
   call closes as neither Persevere nor Pivot — see "Close calls".
 - **A Toile closes on a decision.** It closes only with a Decision —
   Persevere, Pivot or Experiment Again — and a Next action due within 48
-  hours. A Learning such as "it went OK" says nothing: ask what the numbers
-  showed and what surprised the founder. Until then the Toile stays open.
+  hours. A Learning such as "it went OK" says nothing: leave it out of
+  Learnings, and ask what the numbers showed and what surprised the
+  founder. Until then the Toile stays open.
 - **Two sittings.** When the test still has to run, stop after Time box
   and save the Toile open. The founder comes back with Results.
 
@@ -291,7 +292,9 @@ python3 scripts/close_call.py 9 200 5%
 It answers PASS, MISS or TOO CLOSE, with the range the true rate likely
 sits in.
 
-- **PASS** — the whole range clears the line. Persevere is open.
+- **PASS** — the whole range clears the line. Persevere is open, and the
+  founder's to choose. Say what the count shows — "31 of 200 clears the 5%
+  line beyond chance" — never that the belief is now true.
 - **MISS** — the whole range sits below it. Persevere is not.
 - **TOO CLOSE** — the line sits inside the range: the result cannot be
   told from chance. The Toile cannot close as Persevere or Pivot. Name the

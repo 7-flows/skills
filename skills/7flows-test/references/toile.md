@@ -82,8 +82,9 @@ their own trade.
   call closes as neither Persevere nor Pivot — see "Close calls".
 - **A Toile closes on a decision.** It closes only with a Decision —
   Persevere, Pivot or Experiment Again — and a Next action due within 48
-  hours. A Learning such as "it went OK" says nothing: ask what the numbers
-  showed and what surprised the founder. Until then the Toile stays open.
+  hours. A Learning such as "it went OK" says nothing: leave it out of
+  Learnings, and ask what the numbers showed and what surprised the
+  founder. Until then the Toile stays open.
 - **Two sittings.** When the test still has to run, stop after Time box
   and save the Toile open. The founder comes back with Results.
 
