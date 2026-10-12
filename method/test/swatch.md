@@ -35,7 +35,7 @@ trade.
 
 | # | Field | What it holds | Software tiers | A physio clinic |
 |---|-------|---------------|----------------|-----------------|
-| 1 | **Source** | Where the signals came from: the channel and the period. | "Support tickets after onboarding, the last 30 days." | "Reviews and front-desk notes, the last 60 days." |
+| 1 | **Source** | Where the signals came from: the channel and the period, asked one at a time — the channel first, then "Over what period?" | "Support tickets after onboarding, the last 30 days." | "Reviews and front-desk notes, the last 60 days." |
 | 2 | **Signals** | What was seen or said, raw: quotes and counts, no reading yet. | "7 of 12 tickets mention the pricing tiers. Three say 'I don't understand what I'm paying for.'" | "11 of 40 reviews ask for appointments before 8am. Five patients told the desk 'after work I collect the kids.'" |
 | 3 | **Pattern** | What the signals share, in one sentence. | "Customers can't tell the Pro tier from the Business tier." | "Working patients want to come before work, not after." |
 | 4 | **Strength** | How many independent signals carry the pattern, from how many channels. Count them. | "7 tickets, 2 sales-call objections, 1 churn reply — 10 signals, 3 channels." | "11 reviews, 5 front-desk remarks, 2 cancellations over the hours — 18 signals, 3 channels." |

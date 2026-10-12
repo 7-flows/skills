@@ -383,3 +383,22 @@ def test_an_unreadable_rerun_is_a_refusal(tmp_path: Path) -> None:
     assert release(tmp_path, "0.1.0", results, Git(tmp_path), reruns=[missing]) == [
         f"cannot read the eval results at {missing}"
     ]
+
+
+def test_a_run_whose_session_errored_refuses_whatever_its_score() -> None:
+    run = result()
+    runs = run["cases"][0]["arms"]["with"]
+    runs[1] = {**runs[1], "error": "exit 1: You've hit your limit"}
+    assert refusals(run, CASES, CHANGED) == [
+        "swatch-fires run 2 ended in an error: exit 1: You've hit your limit"
+    ]
+
+
+def test_an_errored_session_without_the_plugin_refuses_too() -> None:
+    run = result()
+    run["cases"][1]["arms"]["without"] = [{"score": 0.0, "error": "timed out"}] * 3
+    assert refusals(run, CASES, CHANGED) == [
+        "toile-quick run 1 without the plugin ended in an error: timed out",
+        "toile-quick run 2 without the plugin ended in an error: timed out",
+        "toile-quick run 3 without the plugin ended in an error: timed out",
+    ]

@@ -95,6 +95,15 @@ def refusals(
         found.append(f"not in this run: {', '.join(missing)}")
     if gone := sorted(ran - cases):
         found.append(f"no longer a case: {', '.join(gone)}")
+    # A session cut short (a usage limit, a timeout) is still scored, and the
+    # run isn't marked partial: its score says nothing about K.
+    for case in result["cases"]:
+        for arm, label in (("with", ""), ("without", " without the plugin")):
+            found += [
+                f"{case['name']} run {n}{label} ended in an error: {run['error']}"
+                for n, run in enumerate(case["arms"].get(arm, []), start=1)
+                if run.get("error")
+            ]
     for case in result["cases"]:
         name = case["name"]
         if (short := _short(case)) is None:
