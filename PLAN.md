@@ -58,9 +58,16 @@ K with "What do you make or offer?". Pi needs no package.json: it finds
 skills/ by convention; project packages load only once the project is
 trusted (`pi -a` for one run, `/trust` to keep it). 4.3 built, not done:
 `sevenflows release` refuses on every real run so far (partial, filtered,
-stale, under 1.00); CI runs the six free gates (green). Four full runs
-never came back all 1.00 — judge misreads plus two real K slips; budget
-spent, owner's call pending (ADR "Open: C22"). A dated Next action ("by Friday") broke our own 48-hour rule
+stale, under 1.00); CI runs the six free gates (green). Owner amended C22
+(re-run and read); the gate reads `--rerun` results and
+evals/readings/v<version>.md. Eight full runs (2026-10-12), best 41 of 42;
+each found real K slips, all fixed: three asks in one intake message, an
+offer tacked on, a bistro asked its menu, "it went OK" filed as Learnings,
+a PASS read as proof, a Swatch-opened Toile built on the Pattern not the
+Action, the Sell hand-off not naming the Toile, intake-walk replaying
+without K loaded. Run 8 hit the plan's usage limit mid-way — void. Open:
+swatch-fires asked "where… and over what period?" (two asks). Paused for
+the owner before more full runs (~$36 each). A dated Next action ("by Friday") broke our own 48-hour rule
 on a Monday — cases now use "today"/"tomorrow". Batch 2 reviewed and closed (2.0–2.3). Batch 1 closed
 (1.1–1.3; C5, C7 ticked).
 Owner: Hybrid chosen (ADR); batch 2 approved. 2.0 done (C1 ticked):
@@ -309,6 +316,9 @@ minor (Gaps). `--tag toile sittings` exit 0: 14 cases 1.00, $7.67.
 - Unverified until 4.4: claude.ai frontmatter strictness beyond the six
   fields. (The repo is public, so private-repo marketplaces no longer
   matter.)
+- 4.3: `claude plugin eval` left a run cut off by the usage limit
+  `partial: false`; the gate refused it only on scores. Refuse any run
+  whose sessions errored.
 - 4.3: the README installs from main; once v0.1.0 is tagged, consider
   pinning the install lines to the tag (`#v0.1.0`, `@v0.1.0`).
 - C26 minors kept: the bistro's 150 lunch customers over 10 services is
