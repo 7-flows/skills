@@ -89,7 +89,9 @@ def test_release_prints_each_refusal_and_exits_1(
 ) -> None:
     calls: list[tuple[str, Path, bool]] = []
 
-    def refuse(root: Path, version: str, results: Path, dry_run: bool) -> list[str]:
+    def refuse(
+        root: Path, version: str, results: Path, dry_run: bool, reruns: list[Path]
+    ) -> list[str]:
         calls.append((version, results, dry_run))
         return ["toile-quick scored 0.93, not 1.00", "main is not pushed to origin"]
 
@@ -122,3 +124,19 @@ def test_a_failing_git_or_gh_command_is_reported_not_a_traceback(
     monkeypatch.chdir(tmp_path)
     assert main(["release", "0.1.0", "--results", "r.json"]) == 1
     assert capsys.readouterr().out == "gh release failed: no auth\n"
+
+
+def test_release_takes_each_rerun_given(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    seen: list[list[Path]] = []
+
+    def record(*args: object, reruns: list[Path], **kwargs: object) -> list[str]:
+        seen.append(reruns)
+        return []
+
+    monkeypatch.setattr(cli, "release", record)
+    monkeypatch.chdir(tmp_path)
+    argv = ["release", "0.1.0", "--results", "r.json", "--rerun", "a.json"]
+    assert main([*argv, "--rerun", "b.json", "--dry-run"]) == 0
+    assert seen == [[Path("a.json"), Path("b.json")]]

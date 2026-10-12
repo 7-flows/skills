@@ -43,7 +43,9 @@ def test_a_full_green_run_after_the_last_change_ships() -> None:
 
 def test_a_case_below_a_perfect_score_refuses() -> None:
     run = result(case("toile-quick", score=0.93), case("swatch-fires"))
-    assert refusals(run, CASES, CHANGED) == ["toile-quick scored 0.93, not 1.00"]
+    assert refusals(run, CASES, CHANGED) == [
+        "toile-quick scored 0.93, not 1.00, and has no fresh re-run"
+    ]
 
 
 def test_a_case_with_fewer_than_three_runs_refuses() -> None:
@@ -56,7 +58,7 @@ def test_a_run_whose_judges_were_skipped_refuses() -> None:
     skipped["arms"]["with"] = [{"score": 1.0, "skippedPaidGraders": True}] * 3
     run = result(skipped, case("swatch-fires"))
     assert refusals(run, CASES, CHANGED) == [
-        "toile-quick: the cost ceiling skipped its judges"
+        "toile-quick had its judges skipped by the cost ceiling"
     ]
 
 
@@ -224,7 +226,7 @@ def test_a_failing_eval_never_tags(tmp_path: Path) -> None:
     )
     git = Git(tmp_path)
     assert release(tmp_path, "0.1.0", results, git) == [
-        "toile-quick scored 0.60, not 1.00"
+        "toile-quick scored 0.60, not 1.00, and has no fresh re-run"
     ]
     assert git.wrote() == []
     assert not (tmp_path / "dist").exists()
@@ -280,4 +282,104 @@ def test_times_from_another_zone_are_told_in_utc() -> None:
     assert refusals(run, CASES, paris) == [
         "the run started 2026-10-12 08:30 UTC, before the last change to the "
         "skills or evals at 2026-10-12 09:00 UTC"
+    ]
+
+
+# C22: a short case gets one fresh 3-run re-run, and every failed run of the
+# full run is read and logged as a judge's misread.
+def short_run() -> Any:
+    short = case("toile-quick", score=0.67)
+    short["arms"]["with"] = [{"score": 1.0}, {"score": 0.0}, {"score": 1.0}]
+    return result(short, case("swatch-fires"))
+
+
+def rerun(score: float = 1.0, started: str = "2026-10-12T11:00:00.000Z") -> Any:
+    return result(case("toile-quick", score=score), started=started)
+
+
+READ = "- toile-quick run 2: misread — one question; the judge counted the hint\n"
+
+
+def test_a_short_case_with_a_perfect_fresh_rerun_and_its_reading_ships() -> None:
+    assert refusals(short_run(), CASES, CHANGED, [rerun()], READ) == []
+
+
+def test_a_rerun_that_falls_short_refuses() -> None:
+    assert refusals(short_run(), CASES, CHANGED, [rerun(0.89)], READ) == [
+        "toile-quick re-run scored 0.89, not 1.00"
+    ]
+
+
+def test_a_rerun_older_than_the_full_run_is_no_rerun() -> None:
+    old = rerun(started="2026-10-12T09:30:00.000Z")
+    assert refusals(short_run(), CASES, CHANGED, [old], READ) == [
+        "toile-quick scored 0.67, not 1.00, and has no fresh re-run"
+    ]
+
+
+def test_a_partial_rerun_is_no_rerun() -> None:
+    partial = rerun()
+    partial["partial"] = True
+    assert refusals(short_run(), CASES, CHANGED, [partial], READ) == [
+        "toile-quick scored 0.67, not 1.00, and has no fresh re-run"
+    ]
+
+
+def test_a_rerun_with_fewer_than_three_runs_refuses() -> None:
+    short = result(case("toile-quick", runs=2), started="2026-10-12T11:00:00.000Z")
+    assert refusals(short_run(), CASES, CHANGED, [short], READ) == [
+        "toile-quick re-run ran 2 times, not 3"
+    ]
+
+
+@pytest.mark.parametrize(
+    "readings",
+    [
+        "",
+        "- toile-quick run 1: misread — wrong run\n",
+        "- toile-quick run 2: misread —\n",
+        "- toile-quick run 2: K's slip — asked two things\n",
+    ],
+)
+def test_every_failed_run_must_be_read_as_a_misread_with_a_reason(
+    readings: str,
+) -> None:
+    assert refusals(short_run(), CASES, CHANGED, [rerun()], readings) == [
+        "toile-quick run 2 failed and is not logged as a misread with its reason"
+    ]
+
+
+def test_the_latest_fresh_rerun_is_the_one_that_counts() -> None:
+    first = rerun(0.89, started="2026-10-12T11:00:00.000Z")
+    second = rerun(1.0, started="2026-10-12T12:00:00.000Z")
+    assert refusals(short_run(), CASES, CHANGED, [second, first], READ) == []
+
+
+def test_a_release_reads_its_reruns_and_the_versions_readings(
+    tmp_path: Path,
+) -> None:
+    results = make_repo(tmp_path)
+    results.write_text(json.dumps(short_run()))
+    again = tmp_path / "rerun.json"
+    again.write_text(json.dumps(rerun()))
+    (tmp_path / "evals" / "readings").mkdir()
+    (tmp_path / "evals" / "readings" / "v0.1.0.md").write_text(READ)
+    git = Git(tmp_path)
+    assert release(tmp_path, "0.1.0", results, git, reruns=[again]) == []
+    assert git.wrote()[0][:4] == ["git", "tag", "-a", "v0.1.0"]
+
+
+def test_logging_the_readings_does_not_make_the_run_stale(tmp_path: Path) -> None:
+    results = make_repo(tmp_path)
+    git = Git(tmp_path)
+    release(tmp_path, "0.1.0", results, git, dry_run=True)
+    log = next(c for c in git.calls if c[1] == "log")
+    assert ":(exclude)evals/readings" in log
+
+
+def test_an_unreadable_rerun_is_a_refusal(tmp_path: Path) -> None:
+    results = make_repo(tmp_path)
+    missing = tmp_path / "nowhere.json"
+    assert release(tmp_path, "0.1.0", results, Git(tmp_path), reruns=[missing]) == [
+        f"cannot read the eval results at {missing}"
     ]

@@ -29,6 +29,13 @@ def main(argv: list[str] | None = None) -> int:
         help="aggregate-result.json of a full `claude plugin eval` run",
     )
     release_cmd.add_argument(
+        "--rerun",
+        type=Path,
+        action="append",
+        default=[],
+        help="aggregate-result.json of a fresh re-run of the cases that fell short",
+    )
+    release_cmd.add_argument(
         "--dry-run", action="store_true", help="check everything, tag nothing"
     )
     args = parser.parse_args(argv)
@@ -55,7 +62,13 @@ def main(argv: list[str] | None = None) -> int:
 
     if args.command == "release":
         try:
-            refused = release(root, args.version, args.results, dry_run=args.dry_run)
+            refused = release(
+                root,
+                args.version,
+                args.results,
+                dry_run=args.dry_run,
+                reruns=args.rerun,
+            )
         except subprocess.CalledProcessError as error:
             print(f"{' '.join(error.cmd)} failed: {error.stderr.strip()}")
             return 1
