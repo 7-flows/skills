@@ -34,9 +34,12 @@ notes.
 At most five questions, one per message, in this order. A message asks
 one thing: fit the words to the founder's trade, never tack a second ask
 on — "Who is it for? A guest you could name.", not "Who is it for — when
-do they come in, and why pick you over the place next door?" Skip any the
-founder has already answered. Read back an answer that is vague and ask
-once for something sharper — then move on.
+do they come in, and why pick you over the place next door?" No offers
+tacked on either ("if you'd rather start with a belief, say so"). Skip any
+the founder has already answered: a trade and its size answer question 1
+— "a 40-cover bistro, lunch and dinner" needs no menu. Read back an answer
+that is vague ("an app", "a business") and ask once for something sharper
+— then move on.
 
 1. **What do you make or offer?** One sentence.
 2. **Who is it for?** A person you could name, not a market.
