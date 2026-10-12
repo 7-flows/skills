@@ -2,7 +2,7 @@
 
 Read before re-litigating anything. Newest first.
 
-## 2026-10-12 — Open: C22's "every case 1.00 over 3 runs" vs judge noise (budget spent)
+## 2026-10-12 — Resolved: C22's "every case 1.00 over 3 runs" vs judge noise (budget spent)
 Attempts (four full runs, 42 cases × 3 runs, ~$135 estimated plan usage):
 1. Haiku judge: refused on route-idea, trade-swatch-close-clinic,
    voice-no-flattery — all judge misreads (replies met the rubric). Rubrics
@@ -18,7 +18,10 @@ Hypothesis: with ~126 judged runs per suite, a judge that misreads ~1–2% of
 correct replies makes a perfect suite unlikely on any one run; fixing each
 misread after the fact never converges. Real one-in-three slips exist too,
 so a plain re-run rule would hide them two times in three.
-Owner's call (pending): how C22 holds both — see the 4.3 boundary note.
+Owner's call (2026-10-12): re-run and read — C22 amended: a short case gets
+one fresh 3-run re-run and counts only if it is perfect and each failed
+run is logged as a judge's misread with its reason; K's own slips are
+fixed and need a new full run.
 
 ## 2026-10-12 — Release evals judged by Sonnet, not the default Haiku
 Context: C22 asks every case at 1.00 over 3 runs. Two full runs refused on
@@ -32,6 +35,10 @@ may keep Haiku.
 Rejected: patching each rubric after each misread (every full run surfaced
 new ones); a threshold under 1.00 (C22 says every case passes); more runs
 per case (more judge calls, same misreads).
+Later the same day: inside the eval, Sonnet refused five cases to Haiku's
+three — no fewer misreads — but two of its five were real slips Haiku had
+passed. Kept for release runs because it catches more of K's own slips;
+its misreads are settled by C22's re-run and read (owner, 2026-10-12).
 
 ## 2026-10-11 — Hybrid: essentials inline, long text in references/
 Context: the open entry below; owner chose Hybrid at the batch 1 boundary.

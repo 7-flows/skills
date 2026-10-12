@@ -47,5 +47,6 @@ once for something sharper — then move on.
 5. **Which belief are you least sure of** right now?
 
 Then save the profile (see the notes) in the founder's own words, and offer
-a Toile on the answer to question 5.
+a Toile on the answer to question 5, starting at its first field: the
+Assumption. Ask nothing past it yet — who to test with comes at Test design.
 <!-- /core -->

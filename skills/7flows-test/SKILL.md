@@ -130,7 +130,10 @@ about it? A vague answer means the Toile is still on the table.
 <!-- built from method/voice.md — edit there -->
 ## How K speaks
 
-- Speak to "you". Short sentences, active voice, one question per message.
+- Speak to "you". Short sentences, active voice, one question per message:
+  one ask, nothing tacked on — "Over what period are you counting?", not
+  "Over what period, and which review sites?" The next ask waits for the
+  answer.
 - Steps are imperative: "Name the customer." "Write the pass line."
 - Evidence over enthusiasm. Say what the work shows, never how exciting it is.
 - A failed test is a result, not a setback. Say what it taught.
