@@ -69,9 +69,13 @@ trade.
 
 Save the Swatch as a piece record (`piece: swatch`), as "The notes folder"
 lays out, from the first field given and after every change. When its
-Action opens a Toile, start that Toile in its own record — its Assumption
-from the Swatch's Pattern, read back for the founder to confirm — and
-name the Toile's file under Action. When it changes an assumption, write
+Action opens a Toile, start that Toile in its own record and name its
+file under Action. The Toile's Assumption is the Action's belief, in the
+founder's words — "a quarter of the working patients offered a 7am slot
+book it" — never the Pattern, which is what was heard, not what to test.
+Read it back for the founder to confirm or sharpen; a number in it ("a
+quarter") waits for the Pass line, and nothing past the Assumption is
+asked or filled yet. When it changes an assumption, write
 the new words where the old ones were recorded and name the file under
 Action. Then set the Swatch `status: closed` and the date.
 <!-- /core -->
