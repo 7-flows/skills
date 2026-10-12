@@ -10,7 +10,7 @@ import json
 import re
 import subprocess
 from collections.abc import Callable, Sequence
-from datetime import datetime
+from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any
 
@@ -38,7 +38,7 @@ def eval_cases(root: Path) -> set[str]:
 
 
 def _when(moment: datetime) -> str:
-    return moment.strftime("%Y-%m-%d %H:%M UTC")
+    return moment.astimezone(UTC).strftime("%Y-%m-%d %H:%M UTC")
 
 
 def refusals(result: Any, cases: set[str], changed_at: datetime) -> list[str]:

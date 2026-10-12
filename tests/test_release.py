@@ -272,3 +272,12 @@ def test_the_link_references_at_the_foot_stay_out_of_the_notes() -> None:
         "[0.1.0]: https://github.com/7-flows/skills/releases/tag/v0.1.0\n"
     )
     assert changelog_entry(footed, "0.1.0") == "### Added\n- K and the Test flow."
+
+
+def test_times_from_another_zone_are_told_in_utc() -> None:
+    paris = datetime.fromisoformat("2026-10-12T11:00:00+02:00")
+    run = result(started="2026-10-12T08:30:00.000Z")
+    assert refusals(run, CASES, paris) == [
+        "the run started 2026-10-12 08:30 UTC, before the last change to the "
+        "skills or evals at 2026-10-12 09:00 UTC"
+    ]
