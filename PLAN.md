@@ -56,7 +56,11 @@ skill. 4.2 done (C4): the README's Pi steps, followed verbatim in a fresh
 project (Pi 1.1.0, its default model Kimi K2.6 via OpenRouter), answer as
 K with "What do you make or offer?". Pi needs no package.json: it finds
 skills/ by convention; project packages load only once the project is
-trusted (`pi -a` for one run, `/trust` to keep it). A dated Next action ("by Friday") broke our own 48-hour rule
+trusted (`pi -a` for one run, `/trust` to keep it). 4.3 built, not done:
+`sevenflows release` refuses on every real run so far (partial, filtered,
+stale, under 1.00); CI runs the six free gates (green). Four full runs
+never came back all 1.00 — judge misreads plus two real K slips; budget
+spent, owner's call pending (ADR "Open: C22"). A dated Next action ("by Friday") broke our own 48-hour rule
 on a Monday — cases now use "today"/"tomorrow". Batch 2 reviewed and closed (2.0–2.3). Batch 1 closed
 (1.1–1.3; C5, C7 ticked).
 Owner: Hybrid chosen (ADR); batch 2 approved. 2.0 done (C1 ticked):

@@ -2,6 +2,24 @@
 
 Read before re-litigating anything. Newest first.
 
+## 2026-10-12 — Open: C22's "every case 1.00 over 3 runs" vs judge noise (budget spent)
+Attempts (four full runs, 42 cases × 3 runs, ~$135 estimated plan usage):
+1. Haiku judge: refused on route-idea, trade-swatch-close-clinic,
+   voice-no-flattery — all judge misreads (replies met the rubric). Rubrics
+   named the look-alikes; each 1.00 alone.
+2. Haiku judge: refused on intake-first-question, toile-quick (misreads) and
+   trade-intake-bistro (real: three questions in one message — k.md fixed).
+   A targeted run then failed intake-french 3–0 on a reply wholly in French.
+3. Sonnet judge (ADR below): refused on five cases. Re-judged one at a time
+   by Sonnet with a reason, four of five PASS; two slips are real
+   (trade-swatch-clinic asks two things at once; intake-walk jumps to test
+   design before the Assumption).
+Hypothesis: with ~126 judged runs per suite, a judge that misreads ~1–2% of
+correct replies makes a perfect suite unlikely on any one run; fixing each
+misread after the fact never converges. Real one-in-three slips exist too,
+so a plain re-run rule would hide them two times in three.
+Owner's call (pending): how C22 holds both — see the 4.3 boundary note.
+
 ## 2026-10-12 — Release evals judged by Sonnet, not the default Haiku
 Context: C22 asks every case at 1.00 over 3 runs. Two full runs refused on
 six cases, one run in three each; five were the default Haiku judge failing
