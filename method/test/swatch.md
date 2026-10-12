@@ -66,8 +66,10 @@ trade.
 ## Saving
 
 Save the Swatch as a piece record (`piece: swatch`), as "The notes folder"
-lays out, from the first field given and after every change. When its
-Action opens a Toile, start that Toile in its own record and name its
+lays out, from the first field given and after every change. Fields the
+founder gives are recorded as given; when they give the last two, close
+the Swatch in that same reply — never hold it open to confirm what they
+just said. When its Action opens a Toile, start that Toile in its own record and name its
 file under Action. The Toile's Assumption is the Action's belief, in the
 founder's words — "a quarter of the working patients offered a 7am slot
 book it" — never the Pattern, which is what was heard, not what to test.
