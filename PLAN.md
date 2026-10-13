@@ -66,8 +66,18 @@ offer tacked on, a bistro asked its menu, "it went OK" filed as Learnings,
 a PASS read as proof, a Swatch-opened Toile built on the Pattern not the
 Action, the Sell hand-off not naming the Toile, intake-walk replaying
 without K loaded. Run 8 hit the plan's usage limit mid-way — void. Open:
-swatch-fires asked "where… and over what period?" (two asks). Paused for
-the owner before more full runs (~$36 each). A dated Next action ("by Friday") broke our own 48-hour rule
+swatch-fires asked "where… and over what period?" (two asks) — fixed
+(Source asked one part at a time); the gate now refuses errored sessions.
+4.4: owner ran all four claude.ai checks (marketplace, ZIP upload — the
+`license` line accepted — record handed over and resumed, no-code close
+call) and reports all pass, 2026-10-12; transcripts for evidence/ still
+to come, then tick C2, C3, C19. Final full run (2026-10-12 14:28 UTC):
+38 of 42; three misreads (route-k, trade-care-refused, trade-toile-close-
+bistro) and one slip (swatch-opens-toile held the Swatch open to confirm a
+given field) — fixed in e938010, every Swatch case 1.00. Per C22 a new
+full run is due. NEXT: owner's go on that run (~$36), then read, re-run,
+log readings, dry-run, and the owner's go on the v0.1.0 tag. Paused at the
+owner's request. A dated Next action ("by Friday") broke our own 48-hour rule
 on a Monday — cases now use "today"/"tomorrow". Batch 2 reviewed and closed (2.0–2.3). Batch 1 closed
 (1.1–1.3; C5, C7 ticked).
 Owner: Hybrid chosen (ADR); batch 2 approved. 2.0 done (C1 ticked):
